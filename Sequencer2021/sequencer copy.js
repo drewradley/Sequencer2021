@@ -1,3 +1,5 @@
+// this file seems to be an example file for some type of code -Richard
+
 /**
  * Pizza delivery prompt example
  * run example by writing `node pizza.js` in your console
