@@ -1,4 +1,5 @@
 <!-- use this to run the program -Richard -->
+<!-- we'll have to edit the general layout later since it's faulty but i think we should first implement the js -->
 
 <!doctype html>
 
@@ -22,7 +23,7 @@
   <img src="images/OOMPHHeader.png">
   <hr>
     <div class="container">
-        
+
     <!-- Content here -->
     <div class="row">
       <div class="col-sm-4">
@@ -57,9 +58,9 @@
         <select name="Fall15" id="Fall15">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
-       
+
         <div id="Fall1Select">
           <hr width="100%">
         <label for="Fall1">Choose a Fall 1 course:</label>
@@ -67,9 +68,9 @@
         <select name="Fall1" id="Fall1">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
-         
+
         <div id="Fall2Select">
           <hr width="100%">
         <label for="Fall2">Choose a Fall 2 course:</label>
@@ -77,7 +78,7 @@
         <select name="Fall2" id="Fall2">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div> -->
 
         <!-- SPRING SELECTS -->
@@ -88,9 +89,9 @@
         <select name="Spring15" id="Spring15">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
-       
+
         <div id="Spring1Select">
           <hr width="100%">
         <label for="Spring1">Choose a Spring 1 course:</label>
@@ -98,9 +99,9 @@
         <select name="Spring1" id="Spring1">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
-         
+
         <div id="Spring2Select">
           <hr width="100%">
         <label for="Spring2">Choose a Spring 2 course:</label>
@@ -108,9 +109,9 @@
         <select name="Spring2" id="Spring2">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div> -->
-        
+
         <!-- SUMMER SELECTS -->
         <!-- <div id="Summer15Select">
           <hr width="100%">
@@ -119,9 +120,9 @@
         <select name="Summer15" id="Summer15">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div> -->
-       
+
         <!-- <div id="Summer1Select">
           <hr width="100%">
         <label for="Summer1">Choose a Summer 1 course:</label>
@@ -129,9 +130,9 @@
         <select name="Summer1" id="Summer1">
           <option>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
-         
+
         <div id="Summer2Select">
           <hr width="100%">
         <label for="Summer2">Choose a Summer 2 course:</label>
@@ -139,10 +140,10 @@
         <select name="Summer2" id="Summer2">
           <option value=0>Choose a course</option>
         </select>
-          <br><br> 
+          <br><br>
         </div>
       </div> -->
-      
+
       <!-- <div id="Selects0" class="col-sm-4">
       </div>
       <div id="Selects1" class="col-sm-4">
@@ -151,7 +152,7 @@
       <div id="Selects2" class="col-sm-4">
         asdfasdasd
       </div> -->
- 
+
     </div>
     <div class="container">
       <div class="row align-items-start">
@@ -171,7 +172,7 @@
           </div>
         </div>
       </div>
-     
+
     </div>
   <!-- <div id="CandB"></div> -->
 </div>
@@ -197,8 +198,8 @@
 
 //'Start' function
   $(document).ready(function(){
-   
-    
+
+
   });
   // $('#Fall15').change(function(){
   //   //alert($(this).val());
@@ -278,9 +279,9 @@
   //         }
 
   //       }
-        
+
   // }
-  
+
   ////////////////////////GARBAGE///////////////////////////
   function CourseListing(arr) {
       courses=arr;
@@ -293,7 +294,7 @@
           //console.log(courses[iI]);
           if(courses[iI].term===xX || courses[iI].term===-1){
             var nameTitle=courses[iI].name+": "+courses[iI].title;
-            
+
             courseOfferings.push(nameTitle);
           }
         }
@@ -301,7 +302,7 @@
           //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
-        
+
         hr = document.createElement("hr");
         linebreak = document.createElement("br");
         label=document.createElement("p");
@@ -313,18 +314,18 @@
         myParent0.appendChild(selectList);
 
 
-        
+
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
-            option.style.width = "100px"; 
+            option.style.width = "100px";
             option.value = courseOfferings[i];
             option.text = courseOfferings[i];
             selectList.appendChild(option);
-          
+
         }
         }
-      
+
     }
     for (let xX=0;xX<terms.length;xX++)
     {
@@ -335,7 +336,7 @@
           //console.log(courses[iI]);
           if(courses[iI].term===xX || courses[iI].term===-1){
             var nameTitle=courses[iI].name+": "+courses[iI].title;
-            
+
             courseOfferings.push(nameTitle);
           }
         }
@@ -343,7 +344,7 @@
           //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
-        
+
         hr = document.createElement("hr");
         linebreak = document.createElement("br");
         label=document.createElement("p");
@@ -355,18 +356,18 @@
         myParent1.appendChild(selectList);
 
 
-        
+
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
-            option.style.width = "100px"; 
+            option.style.width = "100px";
             option.value = courseOfferings[i];
             option.text = courseOfferings[i];
             selectList.appendChild(option);
-          
+
         }
         }
-      
+
     }
     for (let xX=0;xX<terms.length;xX++)
     {
@@ -377,7 +378,7 @@
           //console.log(courses[iI]);
           if(courses[iI].term===xX || courses[iI].term===-1){
             var nameTitle=courses[iI].name+": "+courses[iI].title;
-            
+
             courseOfferings.push(nameTitle);
           }
         }
@@ -385,7 +386,7 @@
           //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
-        
+
         hr = document.createElement("hr");
         linebreak = document.createElement("br");
         label=document.createElement("p");
@@ -397,28 +398,28 @@
         myParent2.appendChild(selectList);
 
 
-        
+
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
-            option.style.width = "100px"; 
+            option.style.width = "100px";
             option.value = courseOfferings[i];
             option.text = courseOfferings[i];
             selectList.appendChild(option);
-          
+
         }
         }
-      
+
     }
-  }  
-  
+  }
+
 
   ////////////////////////GARBAGE///////////////////////////
 
 
    /////////////////////GARBAGE END///////////////////////////
   </script>
-  
+
   <script src="./js/courses.js"></script>
 
   <!-- <script src="./js/sample1.js"></script> -->
@@ -427,8 +428,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="./js/login.js"></script> -->
       </div>
-      <img src="images/OOMPHFooter.png">    
+      <img src="images/OOMPHFooter.png">
 </body>
 </html>
-
-

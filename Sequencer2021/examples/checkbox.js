@@ -1,5 +1,5 @@
 // this file seems to be an example file for some type of code -Richard
-
+// we can use this for the dropdowns? like prompting for an input - Rachel
 'use strict';
 var inquirer = require('inquirer');
 

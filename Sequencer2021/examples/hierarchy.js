@@ -1,5 +1,5 @@
 // this file seems to be an example file for some type of code -Richard
-
+// we can use this to determine order of input e.g. start date first, then courses
 /**
  * Heirarchical conversation example
  */
