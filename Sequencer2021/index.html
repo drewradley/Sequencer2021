@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>OOMPH Sequencer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
@@ -20,7 +19,8 @@
 </head>
 
 <body>
-  <img src="images/OOMPHHeader.png">
+  <!-- don't need this picture right now -->
+  <!-- <img src="images/OOMPHHeader.png"> -->
   <hr>
     <div class="container">
 
@@ -30,15 +30,9 @@
         <div id="hide">
         <label  for="startingTerm">Choose starting term:</label>
           <select name="startingTerm" id="startingTerm">
-            <!-- <option value=0>Fall 1 (15 week course)</option> -->
             <option value=1>Fall 1</option>
-            <!-- <option value=2>Fall 2</option> -->
-            <!-- <option value=3>Spring 1 (15 week course)</option> -->
             <option value=4>Spring 1</option>
-            <!-- <option value=5>Spring 2</option> -->
-            <!-- <option value=6>Summer 1 (15 week course)</option> -->
             <option value=7>Summer 1</option>
-            <!-- <option value=8>Summer 2</option> -->
 
           </select>
           <br><br>
@@ -48,134 +42,28 @@
           </select>
           <br><br>
           <button class= "btn btn-success" id="btn0">Update Start Term/Year</button>
-
         </div>
-        <!-- FALL SELECTS -->
-        <!-- <div id="Fall15Select">
-          <hr width="100%">
-        <label for="Fall15">Choose a Fall full-term course:</label>
-        <br>
-        <select name="Fall15" id="Fall15">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-
-        <div id="Fall1Select">
-          <hr width="100%">
-        <label for="Fall1">Choose a Fall 1 course:</label>
-        <br>
-        <select name="Fall1" id="Fall1">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-
-        <div id="Fall2Select">
-          <hr width="100%">
-        <label for="Fall2">Choose a Fall 2 course:</label>
-        <br>
-        <select name="Fall2" id="Fall2">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div> -->
-
-        <!-- SPRING SELECTS -->
-        <!-- <div id="Spring15Select">
-          <hr width="100%">
-        <label for="Spring15">Choose a Spring full-term course:</label>
-        <br>
-        <select name="Spring15" id="Spring15">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-
-        <div id="Spring1Select">
-          <hr width="100%">
-        <label for="Spring1">Choose a Spring 1 course:</label>
-        <br>
-        <select name="Spring1" id="Spring1">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-
-        <div id="Spring2Select">
-          <hr width="100%">
-        <label for="Spring2">Choose a Spring 2 course:</label>
-        <br>
-        <select name="Spring2" id="Spring2">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div> -->
-
-        <!-- SUMMER SELECTS -->
-        <!-- <div id="Summer15Select">
-          <hr width="100%">
-        <label for="Summer15">Choose a Summer full-term course:</label>
-        <br>
-        <select name="Summer15" id="Summer15">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div> -->
-
-        <!-- <div id="Summer1Select">
-          <hr width="100%">
-        <label for="Summer1">Choose a Summer 1 course:</label>
-        <br>
-        <select name="Summer1" id="Summer1">
-          <option>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-
-        <div id="Summer2Select">
-          <hr width="100%">
-        <label for="Summer2">Choose a Summer 2 course:</label>
-        <br>
-        <select name="Summer2" id="Summer2">
-          <option value=0>Choose a course</option>
-        </select>
-          <br><br>
-        </div>
-      </div> -->
-
-      <!-- <div id="Selects0" class="col-sm-4">
       </div>
-      <div id="Selects1" class="col-sm-4">
-        asdfasdfsd
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col">
+            Year 1
+            <div id="Selects0">
+            </div>
+          </div>
+          <div class="col">
+            Year 2
+            <div id="Selects1">
+            </div>
+          </div>
+          <div class="col">
+            Year 3
+            <div id="Selects2">
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="Selects2" class="col-sm-4">
-        asdfasdasd
-      </div> -->
-
     </div>
-    <div class="container">
-      <div class="row align-items-start">
-        <div class="col">
-          Year 1
-          <div id="Selects0">
-          </div>
-        </div>
-        <div class="col">
-          Year 2
-          <div id="Selects1">
-          </div>
-        </div>
-        <div class="col">
-          Year 3
-          <div id="Selects2">
-          </div>
-        </div>
-      </div>
-
-    </div>
-  <!-- <div id="CandB"></div> -->
-</div>
   <script>
   //variables
   let courses =[];
@@ -184,122 +72,28 @@
   var myParent2 = document.getElementById("Selects2");
 
   var terms =['Fall 15','Fall 1','Fall 2','Spring 15','Spring 1','Spring 2','Summer 15','Summer 1 ','Summer 2',]
-  // var Fall15 = document.getElementById("Fall15");
-  // var Fall1 = document.getElementById("Fall1");
-  // var Fall2 = document.getElementById("Fall2");
-
-  // var Spring15 = document.getElementById("Spring15");
-  // var Spring1 = document.getElementById("Spring1");
-  // var Spring2 = document.getElementById("Spring2");
-
-  // var Summer15 = document.getElementById("Summer15");
-  // var Summer1 = document.getElementById("Summer1");
-  // var Summer2 = document.getElementById("Summer2");
-
+  
+// Dont think this "start function" is useful at all
 //'Start' function
   $(document).ready(function(){
 
-
   });
-  // $('#Fall15').change(function(){
-  //   //alert($(this).val());
-  //   console.log(courses[$(this).val()]);
-  // });
-  //Set 'course[]' to 'courses.js'
-  // function CourseListing(arr) {
-  //     courses=arr;
-  //     for(var i = 0; i < courses.length; i++) {
-
-  //         //SET UP FALL SELECTS
-  //         if(courses[i].term===0){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Fall15.appendChild(el);
-  //         }
-  //         if(courses[i].term===1){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Fall1.appendChild(el);
-  //         }
-  //         if(courses[i].term===2){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Fall2.appendChild(el);
-  //         }
-  //         //SET UP SPRING SELECTS
-  //         if(courses[i].term===3){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Spring15.appendChild(el);
-  //         }
-  //         if(courses[i].term===4){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Spring1.appendChild(el);
-  //         }
-  //         if(courses[i].term===5){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Spring2.appendChild(el);
-  //         }
-
-  //         //SET UP SUMMER SELECTS
-  //         if(courses[i].term===6){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Summer15.appendChild(el);
-  //         }
-  //         if(courses[i].term===7){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Summer1.appendChild(el);
-  //         }
-  //         if(courses[i].term===8){
-  //           var opt = courses[i].name +": "+courses[i].title;
-  //           var el = document.createElement("option");
-  //           el.textContent = opt;
-  //           el.value = i;
-  //           Summer2.appendChild(el);
-  //         }
-
-  //       }
-
-  // }
 
   ////////////////////////GARBAGE///////////////////////////
-  function CourseListing(arr) {
-      courses=arr;
-      for (let xX=0;xX<terms.length;xX++)
-    {
-        //Create array of options to be added
-        var courseOfferings = [];
-        for(let iI=0; iI<courses.length;iI++)
-        {
-          //console.log(courses[iI]);
-          if(courses[iI].term===xX || courses[iI].term===-1){
-            var nameTitle=courses[iI].name+": "+courses[iI].title;
-
-            courseOfferings.push(nameTitle);
-          }
+function CourseListing(arr) {
+  courses=arr;
+  //Creates first year of sequencer
+    for (let xX=0;xX<terms.length;xX++) {
+      //Create array of options to be added
+      var courseOfferings = [];
+      for(let iI=0; iI<courses.length;iI++) {
+        if(courses[iI].term===xX || courses[iI].term===-1){
+          var nameTitle=courses[iI].name+": "+courses[iI].title;
+          courseOfferings.push(nameTitle);
         }
-        if(courseOfferings.length>1){
-          //Create and append select list
+      }
+      if(courseOfferings.length>1){
+        //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
 
@@ -313,8 +107,6 @@
         myParent0.appendChild(label);
         myParent0.appendChild(selectList);
 
-
-
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
@@ -322,26 +114,21 @@
             option.value = courseOfferings[i];
             option.text = courseOfferings[i];
             selectList.appendChild(option);
-
         }
-        }
-
+      }
     }
-    for (let xX=0;xX<terms.length;xX++)
-    {
-        //Create array of options to be added
-        var courseOfferings = [];
-        for(let iI=0; iI<courses.length;iI++)
-        {
-          //console.log(courses[iI]);
-          if(courses[iI].term===xX || courses[iI].term===-1){
-            var nameTitle=courses[iI].name+": "+courses[iI].title;
-
-            courseOfferings.push(nameTitle);
-          }
+    //Creates second year of sequencer
+    for (let xX=0;xX<terms.length;xX++) {
+      //Create array of options to be added
+      var courseOfferings = [];
+      for(let iI=0; iI<courses.length;iI++) {
+        if(courses[iI].term===xX || courses[iI].term===-1){
+          var nameTitle=courses[iI].name+": "+courses[iI].title;
+          courseOfferings.push(nameTitle);
         }
-        if(courseOfferings.length>1){
-          //Create and append select list
+      }
+      if(courseOfferings.length>1){
+        //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
 
@@ -355,8 +142,6 @@
         myParent1.appendChild(label);
         myParent1.appendChild(selectList);
 
-
-
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
@@ -366,24 +151,20 @@
             selectList.appendChild(option);
 
         }
-        }
-
+      }
     }
-    for (let xX=0;xX<terms.length;xX++)
-    {
-        //Create array of options to be added
-        var courseOfferings = [];
-        for(let iI=0; iI<courses.length;iI++)
-        {
-          //console.log(courses[iI]);
-          if(courses[iI].term===xX || courses[iI].term===-1){
-            var nameTitle=courses[iI].name+": "+courses[iI].title;
-
-            courseOfferings.push(nameTitle);
-          }
+    // Creates third year of sequencer
+    for (let xX=0;xX<terms.length;xX++) {
+      //Create array of options to be added
+      var courseOfferings = [];
+      for(let iI=0; iI<courses.length;iI++) {
+        if(courses[iI].term===xX || courses[iI].term===-1){
+          var nameTitle=courses[iI].name+": "+courses[iI].title;
+          courseOfferings.push(nameTitle);
         }
-        if(courseOfferings.length>1){
-          //Create and append select list
+      }
+      if(courseOfferings.length>1){
+        //Create and append select list
         var selectList = document.createElement("select");
         selectList.id = "mySelect"+xX.toString();
 
@@ -397,8 +178,6 @@
         myParent2.appendChild(label);
         myParent2.appendChild(selectList);
 
-
-
         //Create and append the options
         for (var i = 0; i < courseOfferings.length; i++) {
             var option = document.createElement("option");
@@ -406,28 +185,16 @@
             option.value = courseOfferings[i];
             option.text = courseOfferings[i];
             selectList.appendChild(option);
-
         }
-        }
-
+      }
     }
   }
-
-
-  ////////////////////////GARBAGE///////////////////////////
-
-
-   /////////////////////GARBAGE END///////////////////////////
   </script>
 
   <script src="./js/courses.js"></script>
 
-  <!-- <script src="./js/sample1.js"></script> -->
-
-
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<!-- <script type="text/javascript" src="./js/login.js"></script> -->
-      </div>
-      <img src="images/OOMPHFooter.png">
+   <!-- don't need this picture right now  -->
+  <!-- <img src="images/OOMPHFooter.png"> -->
 </body>
 </html>
