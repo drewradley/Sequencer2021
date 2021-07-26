@@ -31,17 +31,35 @@
         <label  for="startingTerm">Choose starting term:</label>
           <select name="startingTerm" id="startingTerm">
             <option value=1>Fall 1</option>
+            <option value=2>Fall 2</option>
             <option value=4>Spring 1</option>
+            <option value=5>Spring 2</option>
             <option value=7>Summer 1</option>
+            <option value=8>Summer 2</option>
 
           </select>
           <br><br>
           <label for="startingYear">Choose starting year:</label>
           <select name="startingYear" id="startingYear">
-            <option value=0>Choose a year</option>
+            <option value=1>2017</option>
+            <option value=2>2018</option>
+            <option value=3>2019</option>
+            <option value=4>2020</option>
+            <option value=5>2021</option>
+            <option value=6>2022</option>
           </select>
           <br><br>
-          <button class= "btn btn-success" id="btn0">Update Start Term/Year</button>
+
+        <label for="concentration">Choose Concentration:</label>
+        <select name="concentration" id="concentration">
+          <option value=1>Healthy Policy & Management</option>
+          <option value=2>Epidemiology & Biostatistics</option>
+          <option value=3>Interdisciplinary</option>
+        </select>
+        <br><br>
+
+          <button class= "btn btn-success" id="btn0">Update</button>
+          <br><br>
         </div>
       </div>
       <div class="container">
@@ -72,7 +90,7 @@
   var myParent2 = document.getElementById("Selects2");
 
   var terms =['Fall 15','Fall 1','Fall 2','Spring 15','Spring 1','Spring 2','Summer 15','Summer 1 ','Summer 2',]
-  
+
 // Dont think this "start function" is useful at all
 //'Start' function
   $(document).ready(function(){
