@@ -27,43 +27,43 @@ function changeTerms(choice) {
   const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine"];
   const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine"];
   const terms = ["Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 1", "Summer 2"];
-  
+
   if (choice == 1) {
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearOne[i]);
       changeTerm.innerHTML = terms[i];
-    } 
-    for (let i = 0; i < 9; i++) { 
+    }
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearTwo[i]);
       changeTerm.innerHTML = terms[i];
     }
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearThree[i]);
       changeTerm.innerHTML = terms[i];
     }
   } else if (choice == 2) {
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearOne[i]);
       changeTerm.innerHTML = terms[((3 + i) % 9)];
     }
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearTwo[i]);
       changeTerm.innerHTML = terms[((3 + i) % 9)];
     }
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearThree[i]);
       changeTerm.innerHTML = terms[((3 + i) % 9)];
     }
   } else if (choice == 3) {
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearOne[i]);
       changeTerm.innerHTML = terms[(6 + i) % 9];
     }
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearTwo[i]);
       changeTerm.innerHTML = terms[(6 + i) % 9];
     }
-    for (let i = 0; i < 9; i++) { 
+    for (let i = 0; i < 9; i++) {
       var changeTerm = document.getElementById(yearThree[i]);
       changeTerm.innerHTML = terms[(6 + i) % 9];
     }
