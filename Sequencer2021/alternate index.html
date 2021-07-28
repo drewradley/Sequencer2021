@@ -9,14 +9,11 @@
   <title>OOMPH Sequencer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Javascript File -->
+  <script src="js/script.js"></script>
 </head>
-
-
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <body>
   <!-- don't need this picture right now -->
@@ -27,51 +24,48 @@
     <!-- Content here -->
     <div class="row">
       <div class="col-sm-4">
+        <!-- User Input -->
         <div id="hide">
-        <label  for="startingTerm">Choose starting term:</label>
-          <select name="startingTerm" id="startingTerm">
-            <option value=1>Fall 1</option>
-            <option value=2>Fall 2</option>
-            <option value=4>Spring 1</option>
-            <option value=5>Spring 2</option>
-            <option value=7>Summer 1</option>
-            <option value=8>Summer 2</option>
-
-          </select>
+          <label  for="startingTerm">Choose starting term:</label>
+            <select name="startingTerm" id="startingTerm">
+              <option value=1>Fall 1</option>
+              <option value=2>Spring 1</option>
+              <option value=3>Summer 1</option>
+            </select>
           <br><br>
+
           <label for="startingYear">Choose starting year:</label>
-          <select name="startingYear" id="startingYear">
-            <option value=1>2017</option>
-            <option value=2>2018</option>
-            <option value=3>2019</option>
-            <option value=4>2020</option>
-            <option value=5>2021</option>
-            <option value=6>2022</option>
-          </select>
+            <select name="startingYear" id="startingYear">
+              <option value=1>2021</option>
+              <option value=2>2022</option>
+              <option value=3>2023</option>
+            </select>
           <br><br>
 
-        <label for="concentration">Choose Concentration:</label>
-        <select name="concentration" id="concentration">
-          <option value=1>Healthy Policy & Management</option>
-          <option value=2>Epidemiology & Biostatistics</option>
-          <option value=3>Interdisciplinary</option>
-        </select>
-        <br><br>
+          <label for="concentration">Choose Concentration:</label>
+            <select name="concentration" id="concentration">
+              <option value=1>Healthy Policy & Management</option>
+              <option value=2>Epidemiology & Biostatistics</option>
+              <option value=3>Interdisciplinary</option>
+            </select>
+          <br><br>
 
-          <button class= "btn btn-success" id="btn0">Update</button>
+          <button class= "btn btn-success" id="btn0" onclick="updatePage()">Update</button>
           <br><br>
         </div>
       </div>
+
       <div class="container">
         <div class="row align-items-start">
+          <!-- Year 1 -->
           <div class="col">
             Year 1
             <br><br>
             <div class="groupOne">
               <div id="classOne">
-                <div id="nameOne">
-                  Fall 15
-                </div>
+                <label id="nameOneOne">
+                  <!-- Fall 15 -->
+                </label>
                 <div>
                   <select name="selectOne" id="selectOne">
                     <option value=1>Class 1</option>
@@ -82,9 +76,9 @@
               </div>
               <br>
               <div id="classTwo">
-                <div id="nameTwo">
-                  Fall 1
-                </div>
+                <label id="nameOneTwo">
+                  <!-- Fall 1 -->
+                </label>
                 <div>
                   <select name="selectTwo" id="selectTwo">
                     <option value=1>Class 1</option>
@@ -95,9 +89,9 @@
               </div>
               <br>
               <div id="classThree">
-                <div id="nameThree">
-                  Fall 2
-                </div>
+                <label id="nameOneThree">
+                  <!-- Fall 2 -->
+                </label>
                 <div>
                   <select name="selectThree" id="selectThree">
                     <option value=1>Class 1</option>
@@ -112,9 +106,9 @@
             
             <div class="groupTwo">
               <div id="classFour">
-                <div id="nameFour">
+                <label id="nameOneFour">
                   Spring 15
-                </div>
+                </label>
                 <div>
                   <select name="selectFour" id="selectFour">
                     <option value=1>Class 1</option>
@@ -125,9 +119,9 @@
               </div>
               <br>
               <div id="classFive">
-                <div id="nameFive">
+                <label id="nameOneFive">
                   Spring 1
-                </div>
+                </label>
                 <div>
                   <select name="selectFive" id="selectFive">
                     <option value=1>Class 1</option>
@@ -138,9 +132,9 @@
               </div>
               <br>
               <div id="classSix">
-                <div id="nameSix">
+                <label id="nameOneSix">
                   Spring 2
-                </div>
+                </label>
                 <div>
                   <select name="selectSix" id="selectSix">
                     <option value=1>Class 1</option>
@@ -155,9 +149,9 @@
 
             <div class="groupThree">
               <div id="classSeven">
-                <div id="nameSeven">
+                <label id="nameOneSeven">
                   Summer 15
-                </div>
+                </label>
                 <div>
                   <select name="selectSeven" id="selectSeven">
                     <option value=1>Class 1</option>
@@ -168,9 +162,9 @@
               </div>
               <br>
               <div id="classEight">
-                <div id="nameEight">
+                <label id="nameOneEight">
                   Summer 1
-                </div>
+                </label>
                 <div>
                   <select name="selectEight" id="selectEight">
                     <option value=1>Class 1</option>
@@ -181,9 +175,9 @@
               </div>
               <br>
               <div id="classNine">
-                <div id="nameNine">
+                <label id="nameOneNine">
                   Summer 2
-                </div>
+                </label>
                 <div>
                   <select name="selectNine" id="selectNine">
                     <option value=1>Class 1</option>
@@ -201,9 +195,9 @@
             <br><br>
             <div class="groupOne">
               <div id="classOne">
-                <div id="nameOne">
+                <label id="nameTwoOne">
                   Fall 15
-                </div>
+                </label>
                 <div>
                   <select name="selectOne" id="selectOne">
                     <option value=1>Class 1</option>
@@ -214,9 +208,9 @@
               </div>
               <br>
               <div id="classTwo">
-                <div id="nameTwo">
+                <label id="nameTwoTwo">
                   Fall 1
-                </div>
+                </label>
                 <div>
                   <select name="selectTwo" id="selectTwo">
                     <option value=1>Class 1</option>
@@ -227,9 +221,9 @@
               </div>
               <br>
               <div id="classThree">
-                <div id="nameThree">
+                <label id="nameTwoThree">
                   Fall 2
-                </div>
+                </label>
                 <div>
                   <select name="selectThree" id="selectThree">
                     <option value=1>Class 1</option>
@@ -244,9 +238,9 @@
             
             <div class="groupTwo">
               <div id="classFour">
-                <div id="nameFour">
+                <label id="nameTwoFour">
                   Spring 15
-                </div>
+                </label>
                 <div>
                   <select name="selectFour" id="selectFour">
                     <option value=1>Class 1</option>
@@ -257,9 +251,9 @@
               </div>
               <br>
               <div id="classFive">
-                <div id="nameFive">
+                <label id="nameTwoFive">
                   Spring 1
-                </div>
+                </label>
                 <div>
                   <select name="selectFive" id="selectFive">
                     <option value=1>Class 1</option>
@@ -270,9 +264,9 @@
               </div>
               <br>
               <div id="classSix">
-                <div id="nameSix">
+                <label id="nameTwoSix">
                   Spring 2
-                </div>
+                </label>
                 <div>
                   <select name="selectSix" id="selectSix">
                     <option value=1>Class 1</option>
@@ -287,9 +281,9 @@
 
             <div class="groupThree">
               <div id="classSeven">
-                <div id="nameSeven">
+                <label id="nameTwoSeven">
                   Summer 15
-                </div>
+                </label>
                 <div>
                   <select name="selectSeven" id="selectSeven">
                     <option value=1>Class 1</option>
@@ -300,9 +294,9 @@
               </div>
               <br>
               <div id="classEight">
-                <div id="nameEight">
+                <label id="nameTwoEight">
                   Summer 1
-                </div>
+                </label>
                 <div>
                   <select name="selectEight" id="selectEight">
                     <option value=1>Class 1</option>
@@ -313,9 +307,9 @@
               </div>
               <br>
               <div id="classNine">
-                <div id="nameNine">
+                <label id="nameTwoNine">
                   Summer 2
-                </div>
+                </label>
                 <div>
                   <select name="selectNine" id="selectNine">
                     <option value=1>Class 1</option>
@@ -333,9 +327,9 @@
             <br><br>
             <div class="groupOne">
               <div id="classOne">
-                <div id="nameOne">
+                <label id="nameThreeOne">
                   Fall 15
-                </div>
+                </label>
                 <div>
                   <select name="selectOne" id="selectOne">
                     <option value=1>Class 1</option>
@@ -346,9 +340,9 @@
               </div>
               <br>
               <div id="classTwo">
-                <div id="nameTwo">
+                <label id="nameThreeTwo">
                   Fall 1
-                </div>
+                </label>
                 <div>
                   <select name="selectTwo" id="selectTwo">
                     <option value=1>Class 1</option>
@@ -359,9 +353,9 @@
               </div>
               <br>
               <div id="classThree">
-                <div id="nameThree">
+                <label id="nameThreeThree">
                   Fall 2
-                </div>
+                </label>
                 <div>
                   <select name="selectThree" id="selectThree">
                     <option value=1>Class 1</option>
@@ -376,9 +370,9 @@
             
             <div class="groupTwo">
               <div id="classFour">
-                <div id="nameFour">
+                <label id="nameThreeFour">
                   Spring 15
-                </div>
+                </label>
                 <div>
                   <select name="selectFour" id="selectFour">
                     <option value=1>Class 1</option>
@@ -389,9 +383,9 @@
               </div>
               <br>
               <div id="classFive">
-                <div id="nameFive">
+                <label id="nameThreeFive">
                   Spring 1
-                </div>
+                </label>
                 <div>
                   <select name="selectFive" id="selectFive">
                     <option value=1>Class 1</option>
@@ -402,9 +396,9 @@
               </div>
               <br>
               <div id="classSix">
-                <div id="nameSix">
+                <label id="nameThreeSix">
                   Spring 2
-                </div>
+                </label>
                 <div>
                   <select name="selectSix" id="selectSix">
                     <option value=1>Class 1</option>
@@ -419,9 +413,9 @@
 
             <div class="groupThree">
               <div id="classSeven">
-                <div id="nameSeven">
+                <label id="nameThreeSeven">
                   Summer 15
-                </div>
+                </label>
                 <div>
                   <select name="selectSeven" id="selectSeven">
                     <option value=1>Class 1</option>
@@ -432,9 +426,9 @@
               </div>
               <br>
               <div id="classEight">
-                <div id="nameEight">
+                <label id="nameThreeEight">
                   Summer 1
-                </div>
+                </label>
                 <div>
                   <select name="selectEight" id="selectEight">
                     <option value=1>Class 1</option>
@@ -445,9 +439,9 @@
               </div>
               <br>
               <div id="classNine">
-                <div id="nameNine">
+                <label id="nameThreeNine">
                   Summer 2
-                </div>
+                </label>
                 <div>
                   <select name="selectNine" id="selectNine">
                     <option value=1>Class 1</option>
