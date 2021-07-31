@@ -18,7 +18,17 @@ function getConcentration() {
 
 // Updates the page based on user input
 function updatePage() {
-  changeTerms(getStartingTerm());
+  if (getStartingTerm() >= 2 && getStartingYear() == 1) {
+    var changeTerm = document.getElementById("error");
+    changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
+  } else {
+    if (document.getElementById("error").value != "") {
+      var changeTerm = document.getElementById("error");
+      changeTerm.innerHTML = "";
+    }
+    changeTerms(getStartingTerm());
+    changeDates(getStartingTerm(), getStartingYear);
+  }
 }
 
 // Changes the semesters on the page
@@ -27,45 +37,95 @@ function changeTerms(choice) {
   const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine"];
   const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine"];
   const terms = ["Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 1", "Summer 2"];
+  const start = (choice - 1) * 3;
 
-  if (choice == 1) {
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearOne[i]);
-      changeTerm.innerHTML = terms[i];
+  for (let i = 0; i < 9; i++) {
+    var changeTerm = document.getElementById(yearOne[i]);
+    changeTerm.innerHTML = terms[(start + i) % 9];
+  }
+  for (let i = 0; i < 9; i++) {
+    var changeTerm = document.getElementById(yearTwo[i]);
+    changeTerm.innerHTML = terms[(start + i) % 9];
+  }
+  for (let i = 0; i < 9; i++) {
+    var changeTerm = document.getElementById(yearThree[i]);
+    changeTerm.innerHTML = terms[(start + i) % 9];
+  }
+}
+
+// Changes the dates by the semesters on the page
+function changeDates(term, year) {
+  // const fall = ["8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21", "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22"];
+  // const spring = ["1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22", "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23"];
+  // const summer = ["5/9/22 - 6/26/22", "6/27/22 - 8/14/22", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"];
+
+  // order goes fall, spring, summer and then repeat
+  const dates = 
+  [
+    "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21", 
+    "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22", 
+    "5/9/22 - 8/14/22", "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
+    "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
+    "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23",
+    "5/8/23 - 8/13/23", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
+  ];
+  // const yearOne = ["dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine"];
+  // const yearTwo = ["dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine"];
+  // const yearThree = ["dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"];
+
+  const years = 
+  [
+  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", 
+  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine",
+  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"
+  ];
+  var start = 0;
+
+  if (year == 1) {
+    // 21 fall -> spring -> summer
+    if (term == 1) {
+      var start = 0;
     }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearTwo[i]);
-      changeTerm.innerHTML = terms[i];
+  } else if (year == 2) {
+    // 22 fall -> spring -> summer
+    if (term == 1) {
+      var start = 9;
+    } else if (term == 2) {
+      var start = 3;
+    } else if (term == 3) {
+      var start = 6;
     }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearThree[i]);
-      changeTerm.innerHTML = terms[i];
-    }
-  } else if (choice == 2) {
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearOne[i]);
-      changeTerm.innerHTML = terms[((3 + i) % 9)];
-    }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearTwo[i]);
-      changeTerm.innerHTML = terms[((3 + i) % 9)];
-    }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearThree[i]);
-      changeTerm.innerHTML = terms[((3 + i) % 9)];
-    }
-  } else if (choice == 3) {
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearOne[i]);
-      changeTerm.innerHTML = terms[(6 + i) % 9];
-    }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearTwo[i]);
-      changeTerm.innerHTML = terms[(6 + i) % 9];
-    }
-    for (let i = 0; i < 9; i++) {
-      var changeTerm = document.getElementById(yearThree[i]);
-      changeTerm.innerHTML = terms[(6 + i) % 9];
+  } else if (year == 3) {
+    // 23 fall -> spring -> summer
+    if (term == 1) {
+      var start = 19;
+    } else if (term == 2) {
+      var start = 12;
+    } else if (term == 3) {
+      var start = 15;
     }
   }
+
+  for (let i = 0; i < 9; i++) {
+    var changeTerm = document.getElementById(years[i]);
+    if (start + i > 17) {
+      changeTerm.innerHTML = "TBD";
+    } else {
+      changeTerm.innerHTML = dates[start + i];
+    }
+  }
+  for (let i = 9; i < 18; i++) {
+    var changeTerm = document.getElementById(years[i]);
+    if (start + i > 17) {
+      changeTerm.innerHTML = "TBD";
+    } else {
+      changeTerm.innerHTML = dates[start + i];
+    }  }
+  for (let i = 18; i < 27; i++) {
+    var changeTerm = document.getElementById(years[i]);
+    if (start + i > 17) {
+      changeTerm.innerHTML = "TBD";
+    } else {
+      changeTerm.innerHTML = dates[start + i];
+    }  }
 }
