@@ -22,12 +22,12 @@ function updatePage() {
     var changeTerm = document.getElementById("error");
     changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
   } else {
-    if (document.getElementById("error").value != "") {
+    if (document.getElementById("error").value != null) {
       var changeTerm = document.getElementById("error");
       changeTerm.innerHTML = "";
     }
     changeTerms(getStartingTerm());
-    changeDates(getStartingTerm(), getStartingYear);
+    changeDates(getStartingTerm(), getStartingYear());
   }
 }
 
@@ -82,28 +82,28 @@ function changeDates(term, year) {
   var start = 0;
 
   if (year == 1) {
-    // 21 fall -> spring -> summer
+    // 2021 fall
     if (term == 1) {
-      var start = 0;
+      start = 0;
     }
   } else if (year == 2) {
-    // 22 fall -> spring -> summer
-    if (term == 1) {
-      var start = 9;
-    } else if (term == 2) {
-      var start = 3;
+    // 2022 spring -> summer -> fall
+    if (term == 2) {
+      start = 3;
     } else if (term == 3) {
-      var start = 6;
+      start = 6;
+    } else if (term == 1) {
+      start = 9;
     }
   } else if (year == 3) {
-    // 23 fall -> spring -> summer
-    if (term == 1) {
-      var start = 19;
-    } else if (term == 2) {
-      var start = 12;
+    // 2023 spring -> summer -> fall
+    if (term == 2) {
+      start = 12;
     } else if (term == 3) {
-      var start = 15;
-    }
+      start = 15;
+    } else if (term == 1) {
+      start = 18;
+    } 
   }
 
   for (let i = 0; i < 9; i++) {
