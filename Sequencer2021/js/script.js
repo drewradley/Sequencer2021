@@ -60,10 +60,10 @@ function changeDates(term, year) {
   // const summer = ["5/9/22 - 6/26/22", "6/27/22 - 8/14/22", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"];
 
   // order goes fall, spring, summer and then repeat
-  const dates = 
+  const dates =
   [
-    "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21", 
-    "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22", 
+    "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21",
+    "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22",
     "5/9/22 - 8/14/22", "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
     "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
     "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23",
@@ -73,9 +73,9 @@ function changeDates(term, year) {
   // const yearTwo = ["dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine"];
   // const yearThree = ["dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"];
 
-  const years = 
+  const years =
   [
-  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", 
+  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine",
   "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine",
   "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"
   ];
@@ -103,7 +103,7 @@ function changeDates(term, year) {
       start = 15;
     } else if (term == 1) {
       start = 18;
-    } 
+    }
   }
 
   for (let i = 0; i < 9; i++) {
@@ -129,3 +129,27 @@ function changeDates(term, year) {
       changeTerm.innerHTML = dates[start + i];
     }  }
 }
+
+// // List of mandatory core classes
+// const coreClasses = {
+//   "PHW200G", "PHW200E", "PHW200F", "PHW142", "PHW250", "PHW289"
+// }
+// // List of HPM requirements
+// const HPM = {
+//   "PHW220M", "PHW227A", "PHW223", "PHW224", "PHW250", "PHW289", "PHW226A", "PHW226C"
+// }
+// // List of electives for HPM concentration
+// const HPMElectives = {
+//   "PHW209", "PHW236A", "PHW226F", "PH290", "PHW250B", "PHW252C", "PHW241R", "PHW253", "PHW257", "PHW236A", "PHW260",
+//   "PHW205", "PHW218", "PHW219", "PHW272A" "PHW227", "PHW272C", "PHW212", "PHW209", "PHW213"
+// }
+// // List of EpiBios requirements
+// // ignore copies, certain classes are listed under the same name w diff titles
+// const epiBios = {
+//   "PHW241R", "PHW250B", "PH251", "PH290", "PHW219", "PH252", "PHW272C", "PH290"
+// }
+// // List of electives for EpiBios concentration
+// const epiBiosElectives = {
+//   "PHW260", "PHW253", "PHW257", "PHW212", "PHW209", "PHW213", "PHW272A", "PHW277", "PHW272C", "PHW205", "PHW218",
+//   "PHW219", "PHW209", "PHW236A", "PHW226F"
+// }

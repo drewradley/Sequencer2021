@@ -15,5 +15,6 @@ Types of Courses:
 - CommunityHealth
 
 Term: Term offered
-
-Series: which track
+  Maybe 1: Fall, 2: Spring, 3: Summer?
+Year: Which year it's taken (1, 2, or 3)
+Series: Which track

@@ -6,29 +6,29 @@ form.login {
 
 .kc-off-notice{
   display: inline-block !important;
-}			
-.latest_posts_B3RPXBplJR .box02{ 
-  background-color:#fdb515;			
-}			
-.latest_posts_B3RPXBplJR a{				
-  color:#fdb515;			
-}			
-.latest_posts_B3RPXBplJR .box01:hover , .latest_posts_B3RPXBplJR .box03:hover, .latest_posts_B3RPXBplJR .box05:hover{		-webkit-box-shadow:0px 0px 0px 10px #fdb515;				
-  -moz-box-shadow:0px 0px 0px 10px #fdb515;				
-  box-shadow:0px 0px 0px 10px #fdb515;			
-}			
-.latest_posts_B3RPXBplJR .box02:hover{				
-  -webkit-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);				
-  -moz-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);				
-  box-shadow:0px 0px 0px 10px rgba(39,39,39,1);			
-}			
-.latest_posts_B3RPXBplJR .box04:hover{				
-  -webkit-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);				
-  -moz-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);				
-  box-shadow:0px 0px 0px 10px rgba(39,39,39,1);			
-}			
-.kc-container{max-width:1170px;} 
-      
+}
+.latest_posts_B3RPXBplJR .box02{
+  background-color:#fdb515;
+}
+.latest_posts_B3RPXBplJR a{
+  color:#fdb515;
+}
+.latest_posts_B3RPXBplJR .box01:hover , .latest_posts_B3RPXBplJR .box03:hover, .latest_posts_B3RPXBplJR .box05:hover{		-webkit-box-shadow:0px 0px 0px 10px #fdb515;
+  -moz-box-shadow:0px 0px 0px 10px #fdb515;
+  box-shadow:0px 0px 0px 10px #fdb515;
+}
+.latest_posts_B3RPXBplJR .box02:hover{
+  -webkit-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+  -moz-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+  box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+}
+.latest_posts_B3RPXBplJR .box04:hover{
+  -webkit-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+  -moz-box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+  box-shadow:0px 0px 0px 10px rgba(39,39,39,1);
+}
+.kc-container{max-width:1170px;}
+
 @media only screen and (min-width:1000px) and (max-width:5000px){
   body.kc-css-system .kc-css-666833{
        width:50%;
@@ -66,7 +66,7 @@ form.login {
   }
   body.kc-css-system .kc-css-774169.kc_title,body.kc-css-system .kc-css-774169 .kc_title,body.kc-css-system .kc-css-774169 .kc_title a.kc_title_link{
       color:#000000;text-align:center;
-  }   
+  }
   body.kc-css-system .kc-css-768960{
       color:#000000;display:none;
   }
@@ -90,7 +90,7 @@ form.login {
   }
   body.kc-css-system .kc-css-824972{
       display:none;
-  }   
+  }
   body.kc-css-system .kc-css-774169{
       display:none;
   }
@@ -126,5 +126,3 @@ form.login {
       display:block;
   }
 }
-  
-
