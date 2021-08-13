@@ -130,26 +130,37 @@ function changeDates(term, year) {
     }  }
 }
 
-// // List of mandatory core classes
-// const coreClasses = {
-//   "PHW200G", "PHW200E", "PHW200F", "PHW142", "PHW250", "PHW289"
-// }
-// // List of HPM requirements
-// const HPM = {
-//   "PHW220M", "PHW227A", "PHW223", "PHW224", "PHW250", "PHW289", "PHW226A", "PHW226C"
-// }
-// // List of electives for HPM concentration
-// const HPMElectives = {
-//   "PHW209", "PHW236A", "PHW226F", "PH290", "PHW250B", "PHW252C", "PHW241R", "PHW253", "PHW257", "PHW236A", "PHW260",
-//   "PHW205", "PHW218", "PHW219", "PHW272A" "PHW227", "PHW272C", "PHW212", "PHW209", "PHW213"
-// }
-// // List of EpiBios requirements
-// // ignore copies, certain classes are listed under the same name w diff titles
-// const epiBios = {
-//   "PHW241R", "PHW250B", "PH251", "PH290", "PHW219", "PH252", "PHW272C", "PH290"
-// }
-// // List of electives for EpiBios concentration
-// const epiBiosElectives = {
-//   "PHW260", "PHW253", "PHW257", "PHW212", "PHW209", "PHW213", "PHW272A", "PHW277", "PHW272C", "PHW205", "PHW218",
-//   "PHW219", "PHW209", "PHW236A", "PHW226F"
-// }
+// Deletes the drop down menu options
+function deleteOption(id) {
+  var parent = document.getElementById(id);
+  var contents = parent.children;
+  var length = contents.length
+  for (let i = 0; i < length; i++) {
+    parent.removeChild(contents[0]);
+  }
+}
+
+// Adds a drop down option to the menu
+function addOption(parentId, id, content, color) {
+  var element = document.createElement("option");
+  element.innerHTML = content;
+  element.style = "background-color:" + color;
+  document.getElementById(parentId).appendChild(element);
+}
+
+// Clears all the drop down menus
+function clearAll() {
+  const menu =
+    [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine"
+    ];
+  for (const id of menu) {
+    deleteOption(id);
+  }
+}
+
+function changeMenus() {
+
+}
