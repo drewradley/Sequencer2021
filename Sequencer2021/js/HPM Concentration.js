@@ -1,40 +1,53 @@
 // Health Policy and Management Concentration
 
 // Required Courses
-const PHW224 = {
+var PHW224 = {
   name: "Organizational Behavior & Management in Healthcare",
   term: "Fall 1",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
-const PHW220M = {
+var PHW220M = {
   name: "Health Policy Methods",
   term: "Fall 2",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
-const PHW227A = {
+var PHW227A = {
   name: "Healthcare Finance",
   term: "Spring 2",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
-const PHW223 = {
+var PHW223 = {
   name: "Strategic Management & the Health Sector",
   term: "Summer 2",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
 // Economics Requirement (Choose ONE)
-const PHW226A = {
+var PHW226A = {
   name: "Health Economics",
   term: "Fall 2",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
-const PHW226C = {
+var PHW226C = {
   name: "Economics of Population Health",
   term: "Spring 1",
-  units: 3
+  units: 3,
+  color: "Red",
+  type: "HPM Concentration"
 };
 
+var hpmConcentration = [PHW224, PHW220M, PHW227A, PHW223, PHW226A, PHW226C];

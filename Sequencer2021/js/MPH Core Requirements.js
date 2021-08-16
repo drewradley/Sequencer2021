@@ -1,37 +1,51 @@
 // MPH Degree Course Requirements
 
-const PHW200G = {
+var PHW200G = {
   name: "Health and Social Behavior",
   term: "Fall 1",
-  units: 3
+  units: 3,
+  color: "Grey",
+  type: "Core"
 };
 
-const PHW250 = {
+var PHW250 = {
   name: "Epidemiologic Methods",
   term: "Fall 2",
-  units: 3
+  units: 3,
+  color: "Grey",
+  type: "Core"
 };
 
-const PHW200F= {
+var PHW200F= {
   name: "Intro to Environmental Health Science",
   term: "Spring 1",
-  units: 3
+  units: 3,
+  color: "Grey",
+  type: "Core"
 };
 
-const PHW142 = {
+var PHW142 = {
   name: "Introduction to Probability and Statistics",
   term: "Spring 2",
-  units: 4
+  units: 4,
+  color: "Grey",
+  type: "Core"
 };
 
-const PHW200E= {
+var PHW200E= {
   name: "Health Policy and Management",
   term: "Summer 1",
-  units: 3
+  units: 3,
+  color: "Grey",
+  type: "Core"
 };
 
-const PHW289 = {
+var PHW289 = {
   name: "Interdisciplinary Seminar",
   term: "Summer 1",
-  units: 3
+  units: 3,
+  color: "Grey",
+  type: "Core"
 };
+
+var coreRequirements = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW289];

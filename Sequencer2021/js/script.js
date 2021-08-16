@@ -28,6 +28,7 @@ function updatePage() {
     }
     changeTerms(getStartingTerm());
     changeDates(getStartingTerm(), getStartingYear());
+    changeMenus(getConcentration(), getStartingTerm());
   }
 }
 
@@ -141,7 +142,7 @@ function deleteOption(id) {
 }
 
 // Adds a drop down option to the menu
-function addOption(parentId, id, content, color) {
+function addOption(parentId, content, color) {
   var element = document.createElement("option");
   element.innerHTML = content;
   element.style = "background-color:" + color;
@@ -161,6 +162,185 @@ function clearAll() {
   }
 }
 
-function changeMenus() {
+// combines two lists together bsed on cond
+function addListCond(initial, other, cond) {
+  for(let i=0; i < other.length; i++) {
+    if (other[i].term == cond) {
+      initial.push(other[i]);
+    } 
+  }
+}
 
+// combines two lists together
+function addList(initial, other) {
+  for(let i=0; i < other.length; i++) {
+    initial.push(other[i]);
+  }
+}
+
+// updates all the menus with classes
+function changeMenus(concentration, startTerm) {
+  var hpm = [];
+  var hpmSummerFifteen = [];
+  var hpmSummerTwo = [];
+  var epiBio = [];
+  var epiBioSummerFifteen = [];
+  var epiBioSummerTwo = [];
+  // MPH Core Requirements (Grey)
+  coreRequirements
+  // EpiBio required concentration classes (Green)
+  epiBioConcentration
+  addListCond(epiBioSummerFifteen, epiBioConcentration, "Summer 15");
+  addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
+  addList(epiBio, epiBioConcentration);
+  // HPM required concentration classes (Red)
+  hpmConcentration
+  addListCond(hpmSummerFifteen, hpmConcentration, "Summer 15");
+  addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
+  addList(hpm, hpmConcentration);
+  // Epidemiology and Infectious Diseases Elective Courses for HPM (Purple)
+  infectiousDiseaseHpmElectives
+  addListCond(hpmSummerFifteen, infectiousDiseaseHpmElectives, "Summer 15");
+  addListCond(hpmSummerTwo, infectiousDiseaseHpmElectives, "Summer 2");
+  addList(hpm, infectiousDiseaseHpmElectives);
+  // Epidemiology and Infectious Diseases Elective Courses for EpiBio (Purple)
+  infectiousDiseaseEpiBioElectives
+  addListCond(epiBioSummerFifteen, infectiousDiseaseEpiBioElectives, "Summer 15");
+  addListCond(epiBioSummerTwo, infectiousDiseaseEpiBioElectives, "Summer 2");
+  addList(epiBio, infectiousDiseaseEpiBioElectives);
+  // Regulatory Science Elective Courses (Orange)
+  regulatoryScienceElectives
+  addListCond(hpmSummerFifteen, regulatoryScienceElectives, "Summer 15");
+  addListCond(hpmSummerTwo, regulatoryScienceElectives, "Summer 2");
+  addList(hpm, regulatoryScienceElectives);
+  addListCond(epiBioSummerFifteen, regulatoryScienceElectives, "Summer 15");
+  addListCond(epiBioSummerTwo, regulatoryScienceElectives, "Summer 2");
+  addList(epiBio, regulatoryScienceElectives);
+  // Community Health Science Elective Courses (Yellow)
+  communityHealthElectives
+  addListCond(hpmSummerFifteen, communityHealthElectives, "Summer 15");
+  addListCond(hpmSummerTwo, communityHealthElectives, "Summer 2");
+  addList(hpm, communityHealthElectives);
+  addListCond(epiBioSummerFifteen, communityHealthElectives, "Summer 15");
+  addListCond(epiBioSummerTwo, communityHealthElectives, "Summer 2");
+  addList(epiBio, communityHealthElectives);
+  // Special Data Science for Public Health Elective Courses (Pink)
+  spacialDataScienceElectives
+  addListCond(hpmSummerFifteen, spacialDataScienceElectives, "Summer 15");
+  addListCond(hpmSummerTwo, spacialDataScienceElectives, "Summer 2");
+  addList(hpm, spacialDataScienceElectives);
+  addListCond(epiBioSummerFifteen, spacialDataScienceElectives, "Summer 15");
+  addListCond(epiBioSummerTwo, spacialDataScienceElectives, "Summer 2");
+  addList(epiBio, spacialDataScienceElectives);
+  // Global Health Elective Courses (Tan)
+  globalHealthElectives
+  addListCond(hpmSummerFifteen, globalHealthElectives, "Summer 15");
+  addListCond(hpmSummerTwo, globalHealthElectives, "Summer 2");
+  addList(hpm, globalHealthElectives);
+  addListCond(epiBioSummerFifteen, globalHealthElectives, "Summer 15");
+  addListCond(epiBioSummerTwo, globalHealthElectives, "Summer 2");
+  addList(epiBio, globalHealthElectives);
+
+  clearAll();
+  updateColumn(coreRequirements, startTerm, 1);
+  // HPM -> EpiBio -> Interdisciplinary
+  if (concentration == 1) {
+    updateColumn(hpmSummerFifteen, startTerm, 1);
+    updateColumn(hpmSummerTwo, startTerm, 1);
+    updateColumn(hpm, startTerm, 2);
+    updateColumn(hpm, startTerm, 3);
+  } else if (concentration == 2) {
+    updateColumn(epiBioSummerFifteen, startTerm, 1);
+    updateColumn(epiBioSummerTwo, startTerm, 1);
+    updateColumn(epiBio, startTerm, 2);
+    updateColumn(epiBio, startTerm, 3);
+  } else if (concentration == 3) {
+
+  }
+}
+
+// updates each column with classes
+function updateColumn(classes, startTerm, column) {
+  for (let i=0; i < classes.length; i++) {
+    var start = findDropdown(startTerm, classes[i].term, column);
+    addOption(start, classes[i].name, classes[i].color);
+  }
+}
+
+// returns the correct drop down menu level
+function findDropdown(startTerm, varTerm, column) {
+  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine"];
+  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine"];
+  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine"];
+
+  var foundTerm = 0;
+  // checks Fall -> Spring -> Summer
+  if (startTerm == 1) {
+    if (varTerm == "Fall 15") {
+      foundTerm = 0;
+    } else if (varTerm == "Fall 1") {
+      foundTerm = 1;
+    } else if (varTerm == "Fall 2") {
+      foundTerm = 2;
+    } else if (varTerm == "Spring 15") {
+      foundTerm = 3;
+    } else if (varTerm == "Spring 1") {
+      foundTerm = 4;
+    } else if (varTerm == "Spring 2") {
+      foundTerm = 5;
+    } else if (varTerm == "Summer 15") {
+      foundTerm = 6;
+    } else if (varTerm == "Summer 1") {
+      foundTerm = 7;
+    } else if (varTerm == "Summer 2") {
+      foundTerm = 8;
+    } 
+  } else if (startTerm == 2) {
+    if (varTerm == "Spring 15") {
+      foundTerm = 0;
+    } else if (varTerm == "Spring 1") {
+      foundTerm = 1;
+    } else if (varTerm == "Spring 2") {
+      foundTerm = 2;
+    } else if (varTerm == "Summer 15") {
+      foundTerm = 3;
+    } else if (varTerm == "Summer 1") {
+      foundTerm = 4;
+    } else if (varTerm == "Summer 2") {
+      foundTerm = 5;
+    } else if (varTerm == "Fall 15") {
+      foundTerm = 6;
+    } else if (varTerm == "Fall 1") {
+      foundTerm = 7;
+    } else if (varTerm == "Fall 2") {
+      foundTerm = 8;
+    }
+  } else if (startTerm == 3) {
+    if (varTerm == "Summer 15") {
+      foundTerm = 0;
+    } else if (varTerm == "Summer 1") {
+      foundTerm = 1;
+    } else if (varTerm == "Summer 2") {
+      foundTerm = 2;
+    } else if (varTerm == "Fall 15") {
+      foundTerm = 3;
+    } else if (varTerm == "Fall 1") {
+      foundTerm = 4;
+    } else if (varTerm == "Fall 2") {
+      foundTerm = 5;
+    } else if (varTerm == "Spring 15") {
+      foundTerm = 6;
+    } else if (varTerm == "Spring 1") {
+      foundTerm = 7;
+    } else if (varTerm == "Spring 2") {
+      foundTerm = 8;
+    }
+  } 
+   if (column == 1) {
+     return yearOne[foundTerm];
+   } else if (column == 2) {
+     return yearTwo[foundTerm];
+   } else if (column == 3) {
+     return yearThree[foundTerm];
+   }
 }
