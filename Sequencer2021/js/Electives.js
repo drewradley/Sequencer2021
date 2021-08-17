@@ -23,9 +23,17 @@ var PHW250B = {
     type: "HPM Epidemiology and Infectious Diseases"
 };
 
-var PHW252C = {
+var fallPHW252C = {
     name: "Interventional Trial Design",
-    term: "Fall 15 and Spring 15",
+    term: "Fall 15",
+    units: 4,
+    color: "Purple",
+    type: "HPM Epidemiology and Infectious Diseases"
+};
+
+var springPHW252C = {
+    name: "Interventional Trial Design",
+    term: "Spring 15",
     units: 4,
     color: "Purple",
     type: "HPM Epidemiology and Infectious Diseases"
@@ -71,7 +79,7 @@ var PHW260 = {
     type: "HPM Epidemiology and Infectious Diseases"
   };
 
-var infectiousDiseaseHpmElectives = [PH251, PH290, PHW250B, PHW252C, PHW241R, PHW253, PHW257, PHW236A, PHW260];
+var infectiousDiseaseHpmElectives = [PH251, PH290, PHW250B, fallPHW252C, springPHW252C, PHW241R, PHW253, PHW257, PHW236A, PHW260];
 
 // Infectious Diseases Courses (For EpiBio)
 var PHW260 = {
