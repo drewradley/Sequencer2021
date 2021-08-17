@@ -9,6 +9,52 @@
   <title>OOMPH Sequencer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <style>
+ {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+/* Style the header */
+.header {
+  background-color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #003262;
+}
+.button {
+  background-color: #003262;
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+option:hover{
+    background-color: #003262;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <!-- Javascript File -->
@@ -23,6 +69,10 @@
   <!-- don't need this picture right now -->
   <!-- <img src="images/OOMPHHeader.png"> -->
   <hr>
+  <div class="header">
+  <h1>OOMPH Sequencer</h1>
+  </div>
+
   <div class="container">
     <!-- Content here -->
     <div class="row">
@@ -54,7 +104,7 @@
             </select>
           <br><br>
 
-          <button class= "btn btn-success" id="btn0" onclick="updatePage()">Update</button>
+          <button class= "button" id="btn0" onclick="updatePage()">Update</button>
           <br><br>
         </div>
       </div>
@@ -330,6 +380,8 @@
               </div>
             </div>
           </div>
+          <br><br>
+          <br><br>
 
           <!-- Year 3 -->
           <div class="col">

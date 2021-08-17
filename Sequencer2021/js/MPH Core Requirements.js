@@ -25,7 +25,7 @@ var PHW200F= {
 };
 
 var PHW142 = {
-  name: "Introduction to Probability and Statistics",
+  name: "Intro to Probability and Statistics",
   term: "Spring 2",
   units: 4,
   color: "Grey",

@@ -167,7 +167,7 @@ function addListCond(initial, other, cond) {
   for(let i=0; i < other.length; i++) {
     if (other[i].term == cond) {
       initial.push(other[i]);
-    } 
+    }
   }
 }
 
@@ -294,7 +294,7 @@ function findDropdown(startTerm, varTerm, column) {
       foundTerm = 7;
     } else if (varTerm == "Summer 2") {
       foundTerm = 8;
-    } 
+    }
   } else if (startTerm == 2) {
     if (varTerm == "Spring 15") {
       foundTerm = 0;
@@ -335,7 +335,7 @@ function findDropdown(startTerm, varTerm, column) {
     } else if (varTerm == "Spring 2") {
       foundTerm = 8;
     }
-  } 
+  }
    if (column == 1) {
      return yearOne[foundTerm];
    } else if (column == 2) {

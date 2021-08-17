@@ -8,7 +8,7 @@ var PH251 = {
 };
 
 var PH290 = {
-    name: "Introduction to Data Management and Programming in SAS for Public Health",
+    name: "Intro to Data Management and Programming in SAS for Public Health",
     term: "Spring 15",
     units: 2,
     color: "Purple",
@@ -145,7 +145,7 @@ var PHW218 = {
 };
 
 var PHW219 = {
-    name: "Social and Behavioral Research: Introduction to Survey Methods",
+    name: "Social and Behavioral Research: Intro to Survey Methods",
     term: "Spring 1",
     units: 3,
     color: "Yellow",

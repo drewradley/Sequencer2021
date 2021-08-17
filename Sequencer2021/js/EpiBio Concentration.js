@@ -27,7 +27,7 @@ var PH251 = {
 };
 
 var PH290 = {
-  name: "Introduction to Data Management and Programming in SAS for Public Health",
+  name: "Intro to Data Management and Programming in SAS for Public Health",
   term: "Spring 15",
   units: 2,
   color: "Green",
@@ -36,7 +36,7 @@ var PH290 = {
 
 // Additional Courses in Epidemiology & Biostatistics (Select at least 2 courses 5-7 units)
 var PHW219 = {
-  name: "Introduction to Survey Methods",
+  name: "Intro to Survey Methods",
   term: "Spring 1",
   units: 3,
   color: "Green",
