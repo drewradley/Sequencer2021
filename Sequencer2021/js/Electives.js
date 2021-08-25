@@ -8,7 +8,7 @@ var PH251 = {
 };
 
 var PH290 = {
-    name: "Intro to Data Management and Programming in SAS for Public Health",
+    name: "Intro to Data Management & Programming in SAS for Public Health",
     term: "Spring 15",
     units: 2,
     color: "Purple",
@@ -56,7 +56,7 @@ var PHW253 = {
 };
 
 var PHW257 = {
-    name: "Public Health Preparedness and Emergency Response",
+    name: "Public Health Preparedness & Emergency Response",
     term: "Summer 1",
     units: 3,
     color: "Purple",
@@ -64,7 +64,7 @@ var PHW257 = {
 };
 
 var PHW236A = {
-    name: "Regulatory Science, Drug Development, and Public Health",
+    name: "Regulatory Science, Drug Development, & Public Health",
     term: "Fall 2",
     units: 3,
     color: "Purple",
@@ -99,7 +99,7 @@ var PHW253 = {
 };
 
 var PHW257 = {
-    name: "Public Health Preparedness and Emergency Response",
+    name: "Public Health Preparedness & Emergency Response",
     term: "Summer 1",
     units: 3,
     color: "Purple",
@@ -118,7 +118,7 @@ var PHW209 = {
 };
 
 var PHW236A = {
-    name: "Regulatory Science, Drug Discovery and Public Health",
+    name: "Regulatory Science, Drug Discovery & Public Health",
     term: "Fall 2",
     units: 3,
     color: "Orange",
