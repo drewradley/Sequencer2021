@@ -1,7 +1,7 @@
 // MPH Degree Course Requirements
 
 var PHW200G = {
-  name: "Health and Social Behavior",
+  name: "PHW200G: Health and Social Behavior",
   term: "Fall 1",
   units: 3,
   color: "Grey",
@@ -9,7 +9,7 @@ var PHW200G = {
 };
 
 var PHW250 = {
-  name: "Epidemiologic Methods",
+  name: "PHW250: Epidemiologic Methods",
   term: "Fall 2",
   units: 3,
   color: "Grey",
@@ -17,7 +17,7 @@ var PHW250 = {
 };
 
 var PHW200F= {
-  name: "Intro to Environmental Health Science",
+  name: "PHW200F: Intro to Environmental Health Science",
   term: "Spring 1",
   units: 3,
   color: "Grey",
@@ -25,7 +25,7 @@ var PHW200F= {
 };
 
 var PHW142 = {
-  name: "Intro to Probability and Statistics",
+  name: "PHW142: Intro to Probability and Statistics",
   term: "Spring 2",
   units: 4,
   color: "Grey",
@@ -33,7 +33,7 @@ var PHW142 = {
 };
 
 var PHW200E= {
-  name: "Health Policy and Management",
+  name: "PHW200E: Health Policy and Management",
   term: "Summer 1",
   units: 3,
   color: "Grey",
@@ -41,7 +41,7 @@ var PHW200E= {
 };
 
 var PHW289 = {
-  name: "Interdisciplinary Seminar",
+  name: "PHW289: Interdisciplinary Seminar",
   term: "Summer 1",
   units: 3,
   color: "Grey",

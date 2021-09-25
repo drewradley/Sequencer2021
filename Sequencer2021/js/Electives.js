@@ -1,6 +1,6 @@
 // Epidemiology and Infectious Diseases Courses (For HPM)
 var PH251 = {
-    name: "R for Public Health",
+    name: "PH251: R for Public Health",
     term: "Fall 15",
     units: 2,
     color: "Purple",
@@ -8,7 +8,7 @@ var PH251 = {
 };
 
 var PH290 = {
-    name: "Intro to Data Management & Programming in SAS for Public Health",
+    name: "PH290: Intro to Data Management & Programming in SAS for Public Health",
     term: "Spring 15",
     units: 2,
     color: "Purple",
@@ -16,7 +16,7 @@ var PH290 = {
 };
 
 var PHW250B = {
-    name: "Epidemiologic Methods II",
+    name: "PHW250B: Epidemiologic Methods II",
     term: "Fall 15",
     units: 4,
     color: "Purple",
@@ -24,7 +24,7 @@ var PHW250B = {
 };
 
 var fallPHW252C = {
-    name: "Interventional Trial Design",
+    name: "PHW252C: Interventional Trial Design",
     term: "Fall 15",
     units: 4,
     color: "Purple",
@@ -32,7 +32,7 @@ var fallPHW252C = {
 };
 
 var springPHW252C = {
-    name: "Interventional Trial Design",
+    name: "PHW252C: Interventional Trial Design",
     term: "Spring 15",
     units: 4,
     color: "Purple",
@@ -40,7 +40,7 @@ var springPHW252C = {
 };
 
 var PHW241R = {
-    name: "Statistical Analysis of Categorical Data",
+    name: "PHW241R: Statistical Analysis of Categorical Data",
     term: "Spring 15",
     units: 4,
     color: "Purple",
@@ -48,7 +48,7 @@ var PHW241R = {
 };
 
 var PHW253 = {
-    name: "Outbreak Investigations",
+    name: "PHW253: Outbreak Investigations",
     term: "Fall 2",
     units: 3,
     color: "Purple",
@@ -56,7 +56,7 @@ var PHW253 = {
 };
 
 var PHW257 = {
-    name: "Public Health Preparedness & Emergency Response",
+    name: "PHW257: Public Health Preparedness & Emergency Response",
     term: "Summer 1",
     units: 3,
     color: "Purple",
@@ -64,7 +64,7 @@ var PHW257 = {
 };
 
 var PHW236A = {
-    name: "Regulatory Science, Drug Development, & Public Health",
+    name: "PHW236A: Regulatory Science, Drug Development, & Public Health",
     term: "Fall 2",
     units: 3,
     color: "Purple",
@@ -72,7 +72,7 @@ var PHW236A = {
 };
 
 var PHW260 = {
-    name: "Infectious Disease",
+    name: "PHW260: Infectious Disease",
     term: "Fall 1",
     units: 3,
     color: "Purple",
@@ -83,7 +83,7 @@ var infectiousDiseaseHpmElectives = [PH251, PH290, PHW250B, fallPHW252C, springP
 
 // Infectious Diseases Courses (For EpiBio)
 var PHW260 = {
-    name: "Infectious Disease",
+    name: "PHW260: Infectious Disease",
     term: "Fall 1",
     units: 3,
     color: "Purple",
@@ -91,7 +91,7 @@ var PHW260 = {
 };
 
 var PHW253 = {
-    name: "Outbreak Investigations",
+    name: "PHW253: Outbreak Investigations",
     term: "Fall 2",
     units: 3,
     color: "Purple",
@@ -99,7 +99,7 @@ var PHW253 = {
 };
 
 var PHW257 = {
-    name: "Public Health Preparedness & Emergency Response",
+    name: "PHW257: Public Health Preparedness & Emergency Response",
     term: "Summer 1",
     units: 3,
     color: "Purple",
@@ -110,7 +110,7 @@ var infectiousDiseaseEpiBioElectives = [PHW260, PHW253, PHW257];
 
 // Regulatory Science Courses (For Both)
 var PHW209 = {
-    name: "Comparative Health Systems",
+    name: "PHW209: Comparative Health Systems",
     term: "Spring 1",
     units: 3,
     color: "Orange",
@@ -118,7 +118,7 @@ var PHW209 = {
 };
 
 var PHW236A = {
-    name: "Regulatory Science, Drug Discovery & Public Health",
+    name: "PHW236A: Regulatory Science, Drug Discovery & Public Health",
     term: "Fall 2",
     units: 3,
     color: "Orange",
@@ -126,7 +126,7 @@ var PHW236A = {
 };
 
 var PHW226F = {
-    name: "Cost-Effectiveness Analysis",
+    name: "PHW226F: Cost-Effectiveness Analysis",
     term: "Spring 1",
     units: 1,
     color: "Orange",
@@ -137,7 +137,7 @@ var regulatoryScienceElectives = [PHW209, PHW236A, PHW226F];
 
 // Community Health Sciences Courses (For Both)
 var PHW205 = {
-    name: "Program Planning",
+    name: "PHW205: Program Planning",
     term: "Summer 2",
     units: 3,
     color: "Yellow",
@@ -145,7 +145,7 @@ var PHW205 = {
 };
 
 var PHW218 = {
-    name: "Evaluation of Health & Social Programs",
+    name: "PHW218: Evaluation of Health & Social Programs",
     term: "Spring 2",
     units: 3,
     color: "Yellow",
@@ -153,7 +153,7 @@ var PHW218 = {
 };
 
 var PHW219 = {
-    name: "Social and Behavioral Research: Intro to Survey Methods",
+    name: "PHW219: Social and Behavioral Research: Intro to Survey Methods",
     term: "Spring 1",
     units: 3,
     color: "Yellow",
@@ -164,7 +164,7 @@ var communityHealthElectives = [PHW205, PHW218, PHW219];
 
 // Special Data Science for Public Health Courses
 var PHW272A = {
-    name: "Intro to GIS for Public Health",
+    name: "PHW272A: Intro to GIS for Public Health",
     term: "Spring 1",
     units: 3,
     color: "Pink",
@@ -172,7 +172,7 @@ var PHW272A = {
 };
 
 var PHW277 = {
-    name: "GIS for Public Health Practice",
+    name: "PHW277: GIS for Public Health Practice",
     term: "Spring 2",
     units: 3,
     color: "Pink",
@@ -180,7 +180,7 @@ var PHW277 = {
 };
 
 var PHW272C = {
-    name: "Applied Spatial Data for Public Health",
+    name: "PHW272C: Applied Spatial Data for Public Health",
     term: "Spring 2",
     units: 3,
     color: "Pink",
@@ -191,7 +191,7 @@ var spacialDataScienceElectives = [PHW272A, PHW277, PHW272C];
 
 // Global Health Courses
 var PHW212 = {
-    name: "Foundations of Global Health",
+    name: "PHW212: Foundations of Global Health",
     term: "Fall 1",
     units: 3,
     color: "Tan",
@@ -199,7 +199,7 @@ var PHW212 = {
 };
 
 var PHW209 = {
-    name: "Comparative Health Systems",
+    name: "PHW209: Comparative Health Systems",
     term: "Spring 1",
     units: 3,
     color: "Tan",
@@ -207,7 +207,7 @@ var PHW209 = {
 };
 
 var PHW213 = {
-    name: "Global Health Ethics",
+    name: "PHW213: Global Health Ethics",
     term: "Fall 2",
     units: 3,
     color: "Tan",

@@ -2,7 +2,7 @@
 
 // Required Courses
 var PHW241R = {
-  name: "Statistical Analysis of Categorical Data",
+  name: "PHW241R: Statistical Analysis of Categorical Data",
   term: "Spring 15",
   units: 4,
   color: "Green",
@@ -10,7 +10,7 @@ var PHW241R = {
 };
 
 var PHW250B = {
-  name: "Epidemiologic Methods II",
+  name: "PHW250B: Epidemiologic Methods II",
   term: "Fall 15",
   units: 4,
   color: "Green",
@@ -19,7 +19,7 @@ var PHW250B = {
 
 // Required Competency in Data Management (Select ONE)
 var PH251 = {
-  name: "R for Public Health",
+  name: "PH251: R for Public Health",
   term: "Fall 15",
   units: 2,
   color: "Green",
@@ -27,7 +27,7 @@ var PH251 = {
 };
 
 var PH290 = {
-  name: "Intro to Data Management & Programming in SAS for Public Health",
+  name: "PH290: Intro to Data Management & Programming in SAS for Public Health",
   term: "Spring 15",
   units: 2,
   color: "Green",
@@ -36,7 +36,7 @@ var PH290 = {
 
 // Additional Courses in Epidemiology & Biostatistics (Select at least 2 courses 5-7 units)
 var PHW219 = {
-  name: "Intro to Survey Methods",
+  name: "PHW219: Intro to Survey Methods",
   term: "Spring 1",
   units: 3,
   color: "Green",
@@ -45,7 +45,7 @@ var PHW219 = {
 
 // PHW250B and PHW241R are pre-requisites for this class
 var PH252 = {
-  name: "Epidemiological Analysis",
+  name: "PH252: Epidemiological Analysis",
   term: "Fall 15",
   units: 4,
   color: "Green",
@@ -53,7 +53,7 @@ var PH252 = {
 };
 
 var PHW272C = {
-  name: "Applied Spatial Data Analysis for Public Health",
+  name: "PHW272C: Applied Spatial Data Analysis for Public Health",
   term: "Spring 2",
   units: 3,
   color: "Green",

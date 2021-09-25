@@ -2,7 +2,7 @@
 
 // Required Courses
 var PHW224 = {
-  name: "Organizational Behavior & Management in Healthcare",
+  name: "PHW224: Organizational Behavior & Management in Healthcare",
   term: "Fall 1",
   units: 3,
   color: "Red",
@@ -10,7 +10,7 @@ var PHW224 = {
 };
 
 var PHW220M = {
-  name: "Health Policy Methods",
+  name: "PHW220M: Health Policy Methods",
   term: "Fall 2",
   units: 3,
   color: "Red",
@@ -18,7 +18,7 @@ var PHW220M = {
 };
 
 var PHW227A = {
-  name: "Healthcare Finance",
+  name: "PHW227A: Healthcare Finance",
   term: "Spring 2",
   units: 3,
   color: "Red",
@@ -26,7 +26,7 @@ var PHW227A = {
 };
 
 var PHW223 = {
-  name: "Strategic Management & the Health Sector",
+  name: "PHW223: Strategic Management & the Health Sector",
   term: "Summer 2",
   units: 3,
   color: "Red",
@@ -35,7 +35,7 @@ var PHW223 = {
 
 // Economics Requirement (Choose ONE)
 var PHW226A = {
-  name: "Health Economics",
+  name: "PHW226A: Health Economics",
   term: "Fall 2",
   units: 3,
   color: "Red",
@@ -43,7 +43,7 @@ var PHW226A = {
 };
 
 var PHW226C = {
-  name: "Economics of Population Health",
+  name: "PHW226C: Economics of Population Health",
   term: "Spring 1",
   units: 3,
   color: "Red",
