@@ -19,7 +19,7 @@ var PHW250 = {
 var PHW200F= {
   name: "PHW200F: Intro to Environmental Health Science",
   term: "Spring 1",
-  units: 3,
+  units: 2,
   color: "Grey",
   type: "Core"
 };
