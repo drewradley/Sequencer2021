@@ -34,51 +34,43 @@ function updatePage() {
 
 // Changes the semesters on the page
 function changeTerms(choice) {
-  const yearOne = ["nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine"];
-  const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine"];
-  const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine"];
-  const terms = ["Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 1", "Summer 2"];
-  const start = (choice - 1) * 3;
+  const yearOne = ["nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine", "nameOneTen", "nameOneEleven", "nameOneTwelve"];
+  const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine", "nameTwoTen", "nameTwoEleven", "nameTwoTwelve"];
+  const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine", "nameThreeTen", "nameThreeEleven", "nameThreeTwelve"];
+  const terms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2"];
+  const start = (choice - 1) * 4;
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 12; i++) {
     var changeTerm = document.getElementById(yearOne[i]);
-    changeTerm.innerHTML = terms[(start + i) % 9];
+    changeTerm.innerHTML = terms[(start + i) % 12];
   }
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 12; i++) {
     var changeTerm = document.getElementById(yearTwo[i]);
-    changeTerm.innerHTML = terms[(start + i) % 9];
+    changeTerm.innerHTML = terms[(start + i) % 12];
   }
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 12; i++) {
     var changeTerm = document.getElementById(yearThree[i]);
-    changeTerm.innerHTML = terms[(start + i) % 9];
+    changeTerm.innerHTML = terms[(start + i) % 12];
   }
 }
 
 // Changes the dates by the semesters on the page
 function changeDates(term, year) {
-  // const fall = ["8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21", "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22"];
-  // const spring = ["1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22", "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23"];
-  // const summer = ["5/9/22 - 6/26/22", "6/27/22 - 8/14/22", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"];
-
   // order goes fall, spring, summer and then repeat
   const dates =
   [
-    "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21",
-    "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22",
-    "5/9/22 - 8/14/22", "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
-    "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
-    "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23",
-    "5/8/23 - 8/13/23", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
+    "8/3/21 - 12/19/21", "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21",
+    "1/11/22 - 5/1/22", "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22",
+    "5/9/22 - 8/14/22", "5/9/22 - 8/14/22", "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
+    "8/22/22 - 12/18/22", "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
+    "1/10/23 - 4/29/23", "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23",
+    "5/8/23 - 8/13/23", "5/8/23 - 8/13/23", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
   ];
-  // const yearOne = ["dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine"];
-  // const yearTwo = ["dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine"];
-  // const yearThree = ["dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"];
-
   const years =
   [
-  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine",
-  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine",
-  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"
+  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", "dateOneTen", "dateOneEleven", "dateOneTwelve",
+  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen", "dateTwoEleven", "dateTwoTwelve",
+  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen", "dateThreeEleven", "dateThreeTwelve"
   ];
   var start = 0;
 
@@ -90,45 +82,27 @@ function changeDates(term, year) {
   } else if (year == 2) {
     // 2022 spring -> summer -> fall
     if (term == 2) {
-      start = 3;
-    } else if (term == 3) {
-      start = 6;
+      start = 4;
     } else if (term == 1) {
-      start = 9;
+      start = 12;
     }
   } else if (year == 3) {
     // 2023 spring -> summer -> fall
     if (term == 2) {
-      start = 12;
-    } else if (term == 3) {
-      start = 15;
+      start = 16;
     } else if (term == 1) {
-      start = 18;
+      start = 20;
     }
   }
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 36; i++) {
     var changeTerm = document.getElementById(years[i]);
-    if (start + i > 17) {
+    if (start + i > 23) {
       changeTerm.innerHTML = "TBD";
     } else {
       changeTerm.innerHTML = dates[start + i];
     }
   }
-  for (let i = 9; i < 18; i++) {
-    var changeTerm = document.getElementById(years[i]);
-    if (start + i > 17) {
-      changeTerm.innerHTML = "TBD";
-    } else {
-      changeTerm.innerHTML = dates[start + i];
-    }  }
-  for (let i = 18; i < 27; i++) {
-    var changeTerm = document.getElementById(years[i]);
-    if (start + i > 17) {
-      changeTerm.innerHTML = "TBD";
-    } else {
-      changeTerm.innerHTML = dates[start + i];
-    }  }
 }
 
 // Deletes the drop down menu options
@@ -153,16 +127,16 @@ function addOption(parentId, content, color) {
 function clearAll() {
   const menu =
     [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine"
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"
     ];
   for (const id of menu) {
     deleteOption(id);
   }
 }
 
-// combines two lists together bsed on cond
+// combines two lists together based on cond
 function addListCond(initial, other, cond) {
   for(let i=0; i < other.length; i++) {
     if (other[i].term == cond) {
@@ -178,162 +152,155 @@ function addList(initial, other) {
   }
 }
 
+// adds the other class option
+function addOther() {
+  var other = {
+    name: "Other Class",
+    term: "all",
+    units: 0,
+    color: "None",
+    type: "Other"
+  }
+  var none = {
+    name: "No Class",
+    term: "all",
+    units: 0,
+    color: "None",
+    type: "Other"
+  }
+  const menu =
+  [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"
+  ];
+  for(const id of menu) {
+    addOption(id, other.name, other.color);
+    addOption(id, none.name, none.color);
+  }
+}
+
 // updates all the menus with classes
 function changeMenus(concentration, startTerm) {
-  var hpm = [];
+  coreRequirements
+  hpmConcentration
+  epiBioConcentration
+  interConcentration
+  phnConcentration
+
   var hpmSummerFifteen = [];
   var hpmSummerTwo = [];
-  var epiBio = [];
   var epiBioSummerFifteen = [];
   var epiBioSummerTwo = [];
-  // MPH Core Requirements (Grey)
-  coreRequirements
-  // EpiBio required concentration classes (Green)
-  epiBioConcentration
-  addListCond(epiBioSummerFifteen, epiBioConcentration, "Summer 15");
-  addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
-  addList(epiBio, epiBioConcentration);
-  // HPM required concentration classes (Red)
-  hpmConcentration
+  var interSummerFifteen = [];
+  var interSummerTwo = [];
+  var phnSummerFifteen = [];
+  var phnSummerTwo = [];
+
+  // choosing the summer classes for column one
   addListCond(hpmSummerFifteen, hpmConcentration, "Summer 15");
   addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
-  addList(hpm, hpmConcentration);
-  // Epidemiology and Infectious Diseases Elective Courses for HPM (Purple)
-  infectiousDiseaseHpmElectives
-  addListCond(hpmSummerFifteen, infectiousDiseaseHpmElectives, "Summer 15");
-  addListCond(hpmSummerTwo, infectiousDiseaseHpmElectives, "Summer 2");
-  addList(hpm, infectiousDiseaseHpmElectives);
-  // Epidemiology and Infectious Diseases Elective Courses for EpiBio (Purple)
-  infectiousDiseaseEpiBioElectives
-  addListCond(epiBioSummerFifteen, infectiousDiseaseEpiBioElectives, "Summer 15");
-  addListCond(epiBioSummerTwo, infectiousDiseaseEpiBioElectives, "Summer 2");
-  addList(epiBio, infectiousDiseaseEpiBioElectives);
-  // Regulatory Science Elective Courses (Orange)
-  regulatoryScienceElectives
-  addListCond(hpmSummerFifteen, regulatoryScienceElectives, "Summer 15");
-  addListCond(hpmSummerTwo, regulatoryScienceElectives, "Summer 2");
-  addList(hpm, regulatoryScienceElectives);
-  addListCond(epiBioSummerFifteen, regulatoryScienceElectives, "Summer 15");
-  addListCond(epiBioSummerTwo, regulatoryScienceElectives, "Summer 2");
-  addList(epiBio, regulatoryScienceElectives);
-  // Community Health Science Elective Courses (Yellow)
-  communityHealthElectives
-  addListCond(hpmSummerFifteen, communityHealthElectives, "Summer 15");
-  addListCond(hpmSummerTwo, communityHealthElectives, "Summer 2");
-  addList(hpm, communityHealthElectives);
-  addListCond(epiBioSummerFifteen, communityHealthElectives, "Summer 15");
-  addListCond(epiBioSummerTwo, communityHealthElectives, "Summer 2");
-  addList(epiBio, communityHealthElectives);
-  // Special Data Science for Public Health Elective Courses (Pink)
-  spacialDataScienceElectives
-  addListCond(hpmSummerFifteen, spacialDataScienceElectives, "Summer 15");
-  addListCond(hpmSummerTwo, spacialDataScienceElectives, "Summer 2");
-  addList(hpm, spacialDataScienceElectives);
-  addListCond(epiBioSummerFifteen, spacialDataScienceElectives, "Summer 15");
-  addListCond(epiBioSummerTwo, spacialDataScienceElectives, "Summer 2");
-  addList(epiBio, spacialDataScienceElectives);
-  // Global Health Elective Courses (Tan)
-  globalHealthElectives
-  addListCond(hpmSummerFifteen, globalHealthElectives, "Summer 15");
-  addListCond(hpmSummerTwo, globalHealthElectives, "Summer 2");
-  addList(hpm, globalHealthElectives);
-  addListCond(epiBioSummerFifteen, globalHealthElectives, "Summer 15");
-  addListCond(epiBioSummerTwo, globalHealthElectives, "Summer 2");
-  addList(epiBio, globalHealthElectives);
+  addListCond(epiBioSummerFifteen, epiBioConcentration, "Summer 15");
+  addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
+  addListCond(interSummerFifteen, interConcentration, "Summer 15");
+  addListCond(interSummerTwo, interConcentration, "Summer 2");
+
 
   clearAll();
+  addOther();
   updateColumn(coreRequirements, startTerm, 1);
+
   // HPM -> EpiBio -> Interdisciplinary
   if (concentration == 1) {
     updateColumn(hpmSummerFifteen, startTerm, 1);
     updateColumn(hpmSummerTwo, startTerm, 1);
-    updateColumn(hpm, startTerm, 2);
-    updateColumn(hpm, startTerm, 3);
+    updateColumn(hpmConcentration, startTerm, 2);
+    updateColumn(hpmConcentration, startTerm, 3);
   } else if (concentration == 2) {
     updateColumn(epiBioSummerFifteen, startTerm, 1);
     updateColumn(epiBioSummerTwo, startTerm, 1);
-    updateColumn(epiBio, startTerm, 2);
-    updateColumn(epiBio, startTerm, 3);
+    updateColumn(epiBioConcentration, startTerm, 2);
+    updateColumn(epiBioConcentration, startTerm, 3);
   } else if (concentration == 3) {
-
+    updateColumn(interSummerFifteen, startTerm, 1);
+    updateColumn(interSummerTwo, startTerm, 1);
+    updateColumn(interConcentration, startTerm, 2);
+    updateColumn(interConcentration, startTerm, 3);
   }
 }
 
 // updates each column with classes
 function updateColumn(classes, startTerm, column) {
+  var start = "";
   for (let i=0; i < classes.length; i++) {
-    var start = findDropdown(startTerm, classes[i].term, column);
+    start = findDropdown(startTerm, classes[i].term, column, 0);
     addOption(start, classes[i].name, classes[i].color);
+    if (classes[i].term == "Fall 15" || classes[i].term == "Spring 15" || classes[i].term == "Summer 15") {
+      start = findDropdown(startTerm, classes[i].term, column, 1);
+      addOption(start, classes[i].name, classes[i].color);
+    }
   }
 }
 
 // returns the correct drop down menu level
-function findDropdown(startTerm, varTerm, column) {
-  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine"];
-  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine"];
-  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine"];
+function findDropdown(startTerm, varTerm, column, second) {
+  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"];
+  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"];
+  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"];
 
   var foundTerm = 0;
   // checks Fall -> Spring -> Summer
   if (startTerm == 1) {
-    if (varTerm == "Fall 15") {
+    if (varTerm == "Fall 15" && second == 0) {
       foundTerm = 0;
-    } else if (varTerm == "Fall 1") {
+    } else if (varTerm == "Fall 15" && second == 1) {
       foundTerm = 1;
-    } else if (varTerm == "Fall 2") {
+    } else if (varTerm == "Fall 1") {
       foundTerm = 2;
-    } else if (varTerm == "Spring 15") {
+    } else if (varTerm == "Fall 2") {
       foundTerm = 3;
-    } else if (varTerm == "Spring 1") {
+    } else if (varTerm == "Spring 15" && second == 0) {
       foundTerm = 4;
-    } else if (varTerm == "Spring 2") {
+    } else if (varTerm == "Spring 15" && second == 1) {
       foundTerm = 5;
-    } else if (varTerm == "Summer 15") {
+    } else if (varTerm == "Spring 1") {
       foundTerm = 6;
-    } else if (varTerm == "Summer 1") {
+    } else if (varTerm == "Spring 2") {
       foundTerm = 7;
-    } else if (varTerm == "Summer 2") {
+    } else if (varTerm == "Summer 15" && second == 0) {
       foundTerm = 8;
+    } else if (varTerm == "Summer 15" && second == 1) {
+      foundTerm = 9;
+    } else if (varTerm == "Summer 1") {
+      foundTerm = 10;
+    } else if (varTerm == "Summer 2") {
+      foundTerm = 11;
     }
   } else if (startTerm == 2) {
-    if (varTerm == "Spring 15") {
+    if (varTerm == "Spring 15" && second == 0) {
       foundTerm = 0;
-    } else if (varTerm == "Spring 1") {
+    } else if (varTerm == "Spring 15" && second == 1) {
       foundTerm = 1;
-    } else if (varTerm == "Spring 2") {
-      foundTerm = 2;
-    } else if (varTerm == "Summer 15") {
-      foundTerm = 3;
-    } else if (varTerm == "Summer 1") {
-      foundTerm = 4;
-    } else if (varTerm == "Summer 2") {
-      foundTerm = 5;
-    } else if (varTerm == "Fall 15") {
-      foundTerm = 6;
-    } else if (varTerm == "Fall 1") {
-      foundTerm = 7;
-    } else if (varTerm == "Fall 2") {
-      foundTerm = 8;
-    }
-  } else if (startTerm == 3) {
-    if (varTerm == "Summer 15") {
-      foundTerm = 0;
-    } else if (varTerm == "Summer 1") {
-      foundTerm = 1;
-    } else if (varTerm == "Summer 2") {
-      foundTerm = 2;
-    } else if (varTerm == "Fall 15") {
-      foundTerm = 3;
-    } else if (varTerm == "Fall 1") {
-      foundTerm = 4;
-    } else if (varTerm == "Fall 2") {
-      foundTerm = 5;
-    } else if (varTerm == "Spring 15") {
-      foundTerm = 6;
     } else if (varTerm == "Spring 1") {
-      foundTerm = 7;
+      foundTerm = 2;
     } else if (varTerm == "Spring 2") {
+      foundTerm = 3;
+    } else if (varTerm == "Summer 15" && second == 0) {
+      foundTerm = 4;
+    } else if (varTerm == "Summer 15" && second == 1) {
+      foundTerm = 5;
+    } else if (varTerm == "Summer 1") {
+      foundTerm = 6;
+    } else if (varTerm == "Summer 2") {
+      foundTerm = 7;
+    } else if (varTerm == "Fall 15"  && second == 0) {
       foundTerm = 8;
+    } else if (varTerm == "Fall 15"  && second == 1) {
+      foundTerm = 9;
+    }else if (varTerm == "Fall 1") {
+      foundTerm = 10;
+    } else if (varTerm == "Fall 2") {
+      foundTerm = 11;
     }
   }
    if (column == 1) {
