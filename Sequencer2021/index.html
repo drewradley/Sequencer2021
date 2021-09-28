@@ -9,211 +9,606 @@
   <title>OOMPH Sequencer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <style>
 
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  body {
+    margin: 0;
+  }
+  /* Style the header */
+  .header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+  }
+  /* Style the top navigation bar */
+  .topnav {
+    overflow: hidden;
+    background-color: #003262;
+  }
+  .button {
+    background-color: #003262;
+    border: none;
+    color: white;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+  }
+  /* The color key. */
+  .legend { list-style: none; }
+  .legend li { float: left; margin-right: 10px; }
+  .legend span { border: 1px solid #ccc; float: left; width: 16px; height: 16px; margin: 3px; }
 
+  /* Colors */
+  .legend .core { background-color: grey; }
+  .legend .hpm { background-color: red; }
+  .legend .epiBios { background-color: green; }
+  .legend .inter { background-color: yellow; }
+  .legend .phn { background-color: blue; }
+  .legend .recommended { background-color: orange; }
+  .legend .electives { background-color: tan; }
+
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    column-count: 3;
+    width: 33%;
+    padding: 5px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  /* Changes colors for selected option. */
+  select option {
+    background: #3B7EA1;
+    color: #fff;
+}
+  </style>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Javascript File -->
+  <script src="js/script.js"></script>
+  <script src="js/MPH Core Requirements.js"></script>
+  <script src="js/EpiBio Concentration.js"></script>
+  <script src="js/HPM Concentration.js"></script>
+  <script src="js/Interdisciplinary Concentration.js"></script>
+  <script src="js/PHN Concentration.js"></script>
 </head>
 
 <body>
   <!-- don't need this picture right now -->
   <!-- <img src="images/OOMPHHeader.png"> -->
+  <div class="header">
+  <h1>OOMPH Sequencer</h1>
+  </div>
   <hr>
-    <div class="container">
 
+  <div class="container">
     <!-- Content here -->
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col">
+        <br>
+        <h5>Course Color Key</h5>
+        <ul class="legend">
+          <li><span class="core"></span> Core Requirements </li>
+          <br>
+          <li><span class="hpm"></span> Health Policy and Management </li>
+          <br>
+          <li><span class="epiBios"></span> Epidemiology & Biostatistics </li>
+          <br>
+          <li><span class="inter"></span> Interdisciplinary </li>
+          <br>
+          <li><span class="phn"></span> Public Health Nutrition </li>
+          <br>
+          <li><span class="recommended"></span> Recommended </li>
+          <br>
+          <li><span class="electives"></span> Electives </li>
+          <br>
+          <br>
+        </ul>
+      </div>
+
+      <div class="col">
+        <br>
+        <!-- User Input -->
         <div id="hide">
-        <label  for="startingTerm">Choose starting term:</label>
-          <select name="startingTerm" id="startingTerm">
-            <option value=1>Fall 1</option>
-            <option value=2>Fall 2</option>
-            <option value=4>Spring 1</option>
-            <option value=5>Spring 2</option>
-            <option value=7>Summer 1</option>
-            <option value=8>Summer 2</option>
-
-          </select>
+          <label  for="startingTerm">Choose starting term:</label>
+            <select name="startingTerm" id="startingTerm">
+              <option value=1>Fall 1</option>
+              <option value=2>Spring 1</option>
+            </select>
           <br><br>
+
           <label for="startingYear">Choose starting year:</label>
-          <select name="startingYear" id="startingYear">
-            <option value=1>2017</option>
-            <option value=2>2018</option>
-            <option value=3>2019</option>
-            <option value=4>2020</option>
-            <option value=5>2021</option>
-            <option value=6>2022</option>
-          </select>
+            <select name="startingYear" id="startingYear">
+              <option value=1>2021</option>
+              <option value=2>2022</option>
+              <option value=3>2023</option>
+            </select>
           <br><br>
 
-        <label for="concentration">Choose Concentration:</label>
-        <select name="concentration" id="concentration">
-          <option value=1>Healthy Policy & Management</option>
-          <option value=2>Epidemiology & Biostatistics</option>
-          <option value=3>Interdisciplinary</option>
-        </select>
-        <br><br>
+          <label for="concentration">Choose Concentration:</label>
+            <select name="concentration" id="concentration">
+              <option value=1>Health Policy & Management</option>
+              <option value=2>Epidemiology & Biostatistics</option>
+              <option value=3>Interdisciplinary</option>
+            </select>
+          <br><br>
 
-          <button class= "btn btn-success" id="btn0">Update</button>
+          <button class= "button" id="btn0" onclick="updatePage()">Update</button>
           <br><br>
         </div>
       </div>
+
+      <div>
+        For class descriptions, click <a href="https://onlinemph.berkeley.edu/academic-planning/online-curriculum/" target="_blank" rel="noopener noreferrer">here</a>
+      </div>
+
+      <br><br>
+      <div id="error">
+        <!-- Error message goes here -->
+      </div>
+      <hr>
+      <br><br>
+
       <div class="container">
         <div class="row align-items-start">
+          <!-- Year 1 -->
           <div class="col">
-            Year 1
-            <div id="Selects0">
+            <br>
+            <br>
+            <h3>Year 1</h3>
+            <br>
+            <div class="groupOne">
+              <div id="classOne">
+                <b><label id="nameOneOne">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneOne">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectOne" id="selectOneOne"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTwo">
+                <b><label id="nameOneTwo">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneTwo">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTwo" id="selectOneTwo"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classThree">
+                <b><label id="nameOneThree">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneThree">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectThree" id="selectOneThree"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classFour">
+                <b><label id="nameOneFour">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneFour">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFour" id="selectOneFour"></select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="groupTwo">
+              <div id="classFive">
+                <b><label id="nameOneFive">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneFive">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFive" id="selectOneFive"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSix">
+                <b><label id="nameOneSix">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneSix">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSix" id="selectOneSix"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSeven">
+                <b><label id="nameOneSeven">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneSeven">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSeven" id="selectOneSeven"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classEight">
+                <b><label id="nameOneEight">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneEight">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectEight" id="selectOneEight"></select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="groupThree">
+              <div id="classNine">
+                <b><label id="nameOneNine">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneNine">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectNine" id="selectOneNine"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTen">
+                <b><label id="nameOneTen">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateOneTen">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTen" id="selectOneTen"></select>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Year 2 -->
           <div class="col">
-            Year 2
-            <div id="Selects1">
+            <br>
+            <br>
+            <h3>Year 2</h3>
+            <br>
+            <div class="groupOne">
+              <div id="classOne">
+                <b><label id="nameTwoOne">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoOne">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectOne" id="selectTwoOne"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTwo">
+                <b><label id="nameTwoTwo">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoTwo">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTwo" id="selectTwoTwo"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classThree">
+                <b><label id="nameTwoThree">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoThree">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectThree" id="selectTwoThree"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classFour">
+                <b><label id="nameTwoFour">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoFour">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFour" id="selectTwoFour"></select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="groupTwo">
+              <div id="classFive">
+                <b><label id="nameTwoFive">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoFive">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFive" id="selectTwoFive"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSix">
+                <b><label id="nameTwoSix">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoSix">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSix" id="selectTwoSix"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSeven">
+                <b><label id="nameTwoSeven">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoSeven">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSeven" id="selectTwoSeven"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classEight">
+                <b><label id="nameTwoEight">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoEight">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectEight" id="selectTwoEight"></select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="groupThree">
+              <div id="classNine">
+                <b><label id="nameTwoNine">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoNine">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectNine" id="selectTwoNine"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTen">
+                <b><label id="nameTwoTen">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateTwoTen">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTen" id="selectTwoTen"></select>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Year 3 -->
           <div class="col">
-            Year 3
-            <div id="Selects2">
+            <br>
+            <br>
+            <h3>Year 3</h3>
+            <br>
+            <div class="groupOne">
+              <div id="classOne">
+                <b><label id="nameThreeOne">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeOne">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectOne" id="selectThreeOne"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTwo">
+                <b><label id="nameThreeTwo">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeTwo">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTwo" id="selectThreeTwo"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classThree">
+                <b><label id="nameThreeThree">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeThree">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectThree" id="selectThreeThree"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classFour">
+                <b><label id="nameThreeFour">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeFour">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFour" id="selectThreeFour"></select>
+                </div>
+              </div>
             </div>
+
+            <br>
+
+            <div class="groupTwo">
+              <div id="classFive">
+                <b><label id="nameThreeFive">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeFive">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectFive" id="selectThreeFive"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSix">
+                <b><label id="nameThreeSix">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeSix">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSix" id="selectThreeSix"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classSeven">
+                <b><label id="nameThreeSeven">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeSeven">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectSeven" id="selectThreeSeven"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classEight">
+                <b><label id="nameThreeEight">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeEight">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectEight" id="selectThreeEight"></select>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="groupThree">
+              <div id="classNine">
+                <b><label id="nameThreeNine">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeNine">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectNine" id="selectThreeNine"></select>
+                </div>
+              </div>
+              <br>
+              <div id="classTen">
+                <b><label id="nameThreeTen">
+                  <!-- Semester will go here -->
+                </label></b>
+                <br>
+                <i><label id="dateThreeTen">
+                  <!-- Date will go here -->
+                </label></i>
+                <div>
+                  <select name="selectTen" id="selectThreeTen"></select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
           </div>
+
         </div>
       </div>
     </div>
-  <script>
-  //variables
-  let courses =[];
-  var myParent0 = document.getElementById("Selects0");
-  var myParent1 = document.getElementById("Selects1");
-  var myParent2 = document.getElementById("Selects2");
-
-  var terms =['Fall 15','Fall 1','Fall 2','Spring 15','Spring 1','Spring 2','Summer 15','Summer 1 ','Summer 2',]
-
-// Dont think this "start function" is useful at all
-//'Start' function
-  $(document).ready(function(){
-
-  });
-
-  ////////////////////////GARBAGE///////////////////////////
-function CourseListing(arr) {
-  courses=arr;
-  //Creates first year of sequencer
-    for (let xX=0;xX<terms.length;xX++) {
-      //Create array of options to be added
-      var courseOfferings = [];
-      for(let iI=0; iI<courses.length;iI++) {
-        if(courses[iI].term===xX || courses[iI].term===-1){
-          var nameTitle=courses[iI].name+": "+courses[iI].title;
-          courseOfferings.push(nameTitle);
-        }
-      }
-      if(courseOfferings.length>1){
-        //Create and append select list
-        var selectList = document.createElement("select");
-        selectList.id = "mySelect"+xX.toString();
-
-        hr = document.createElement("hr");
-        linebreak = document.createElement("br");
-        label=document.createElement("p");
-        label.textContent=terms[xX];
-        myParent0.appendChild(hr);
-        myParent0.appendChild(linebreak);
-
-        myParent0.appendChild(label);
-        myParent0.appendChild(selectList);
-
-        //Create and append the options
-        for (var i = 0; i < courseOfferings.length; i++) {
-            var option = document.createElement("option");
-            option.style.width = "100px";
-            option.value = courseOfferings[i];
-            option.text = courseOfferings[i];
-            selectList.appendChild(option);
-        }
-      }
-    }
-    //Creates second year of sequencer
-    for (let xX=0;xX<terms.length;xX++) {
-      //Create array of options to be added
-      var courseOfferings = [];
-      for(let iI=0; iI<courses.length;iI++) {
-        if(courses[iI].term===xX || courses[iI].term===-1){
-          var nameTitle=courses[iI].name+": "+courses[iI].title;
-          courseOfferings.push(nameTitle);
-        }
-      }
-      if(courseOfferings.length>1){
-        //Create and append select list
-        var selectList = document.createElement("select");
-        selectList.id = "mySelect"+xX.toString();
-
-        hr = document.createElement("hr");
-        linebreak = document.createElement("br");
-        label=document.createElement("p");
-        label.textContent=terms[xX];
-        myParent1.appendChild(hr);
-        myParent1.appendChild(linebreak);
-
-        myParent1.appendChild(label);
-        myParent1.appendChild(selectList);
-
-        //Create and append the options
-        for (var i = 0; i < courseOfferings.length; i++) {
-            var option = document.createElement("option");
-            option.style.width = "100px";
-            option.value = courseOfferings[i];
-            option.text = courseOfferings[i];
-            selectList.appendChild(option);
-
-        }
-      }
-    }
-    // Creates third year of sequencer
-    for (let xX=0;xX<terms.length;xX++) {
-      //Create array of options to be added
-      var courseOfferings = [];
-      for(let iI=0; iI<courses.length;iI++) {
-        if(courses[iI].term===xX || courses[iI].term===-1){
-          var nameTitle=courses[iI].name+": "+courses[iI].title;
-          courseOfferings.push(nameTitle);
-        }
-      }
-      if(courseOfferings.length>1){
-        //Create and append select list
-        var selectList = document.createElement("select");
-        selectList.id = "mySelect"+xX.toString();
-
-        hr = document.createElement("hr");
-        linebreak = document.createElement("br");
-        label=document.createElement("p");
-        label.textContent=terms[xX];
-        myParent2.appendChild(hr);
-        myParent2.appendChild(linebreak);
-
-        myParent2.appendChild(label);
-        myParent2.appendChild(selectList);
-
-        //Create and append the options
-        for (var i = 0; i < courseOfferings.length; i++) {
-            var option = document.createElement("option");
-            option.style.width = "100px";
-            option.value = courseOfferings[i];
-            option.text = courseOfferings[i];
-            selectList.appendChild(option);
-        }
-      }
-    }
-  }
-  </script>
-
-  <script src="./js/courses.js"></script>
-  
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   </div>
-  <!-- don't need this picture right now  -->
-  <!-- <img src="images/OOMPHFooter.png"> -->
+<!-- don't need this picture right now   -->
+<!-- <img src="images/OOMPHFooter.png">  -->
 </body>
 </html>

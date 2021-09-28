@@ -18,11 +18,15 @@ function getConcentration() {
 
 // Updates the page based on user input
 function updatePage() {
-  if (getStartingTerm() >= 2 && getStartingYear() == 1) {
+  // checker to see if input is a valid starting date
+  if (getStartingTerm() == 2 && getStartingYear() == 1) {
     var changeTerm = document.getElementById("error");
     changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
+    changeTerm.value = 1;
+    clearDates();
+    clearOptions();
   } else {
-    if (document.getElementById("error").value != null) {
+    if (document.getElementById("error").value == 1) {
       var changeTerm = document.getElementById("error");
       changeTerm.innerHTML = "";
     }
@@ -34,23 +38,23 @@ function updatePage() {
 
 // Changes the semesters on the page
 function changeTerms(choice) {
-  const yearOne = ["nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine", "nameOneTen", "nameOneEleven", "nameOneTwelve"];
-  const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine", "nameTwoTen", "nameTwoEleven", "nameTwoTwelve"];
-  const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine", "nameThreeTen", "nameThreeEleven", "nameThreeTwelve"];
-  const terms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2"];
+  const yearOne = ["nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine", "nameOneTen"];
+  const yearTwo = ["nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine", "nameTwoTen"];
+  const yearThree = ["nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine", "nameThreeTen"];
+  const terms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 1", "Summer 2"];
   const start = (choice - 1) * 4;
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     var changeTerm = document.getElementById(yearOne[i]);
-    changeTerm.innerHTML = terms[(start + i) % 12];
+    changeTerm.innerHTML = terms[(start + i) % 10];
   }
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     var changeTerm = document.getElementById(yearTwo[i]);
-    changeTerm.innerHTML = terms[(start + i) % 12];
+    changeTerm.innerHTML = terms[(start + i) % 10];
   }
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     var changeTerm = document.getElementById(yearThree[i]);
-    changeTerm.innerHTML = terms[(start + i) % 12];
+    changeTerm.innerHTML = terms[(start + i) % 10];
   }
 }
 
@@ -61,19 +65,20 @@ function changeDates(term, year) {
   [
     "8/3/21 - 12/19/21", "8/3/21 - 12/19/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21",
     "1/11/22 - 5/1/22", "1/11/22 - 5/1/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22",
-    "5/9/22 - 8/14/22", "5/9/22 - 8/14/22", "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
+    "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
     "8/22/22 - 12/18/22", "8/22/22 - 12/18/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
     "1/10/23 - 4/29/23", "1/10/23 - 4/29/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/29/23",
-    "5/8/23 - 8/13/23", "5/8/23 - 8/13/23", "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
+    "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
   ];
   const years =
   [
-  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", "dateOneTen", "dateOneEleven", "dateOneTwelve",
-  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen", "dateTwoEleven", "dateTwoTwelve",
-  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen", "dateThreeEleven", "dateThreeTwelve"
+  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", "dateOneTen",
+  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen",
+  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen",
   ];
   var start = 0;
 
+  // checks which year and then which term to determine which date is the correct one to start with
   if (year == 1) {
     // 2021 fall
     if (term == 1) {
@@ -84,20 +89,21 @@ function changeDates(term, year) {
     if (term == 2) {
       start = 4;
     } else if (term == 1) {
-      start = 12;
+      start = 10;
     }
   } else if (year == 3) {
     // 2023 spring -> summer -> fall
     if (term == 2) {
-      start = 16;
+      start = 14;
     } else if (term == 1) {
       start = 20;
     }
   }
 
-  for (let i = 0; i < 36; i++) {
+  // updates the dates using the chosen starting point, if the date isn't in the menu then it displays "TBD"
+  for (let i = 0; i < 30; i++) {
     var changeTerm = document.getElementById(years[i]);
-    if (start + i > 23) {
+    if (start + i >= 20) {
       changeTerm.innerHTML = "TBD";
     } else {
       changeTerm.innerHTML = dates[start + i];
@@ -124,15 +130,35 @@ function addOption(parentId, content, color) {
 }
 
 // Clears all the drop down menus
-function clearAll() {
+function clearOptions() {
   const menu =
     [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
     ];
   for (const id of menu) {
     deleteOption(id);
+  }
+}
+
+// Clears all the dates
+function clearDates() {
+  const years =
+  [
+  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", "dateOneTen",
+  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen",
+  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen"
+  ];
+  const terms = 
+  [
+  "nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine", "nameOneTen",
+  "nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine", "nameTwoTen",
+  "nameThreeOne", "nameThreeTwo", "nameThreeThree", "nameThreeFour", "nameThreeFive", "nameThreeSix", "nameThreeSeven", "nameThreeEight", "nameThreeNine", "nameThreeTen"
+  ]
+  for (let i = 0; i < years.length; i++) {
+    document.getElementById(years[i]).innerHTML = "";
+    document.getElementById(terms[i]).innerHTML = "";
   }
 }
 
@@ -152,7 +178,7 @@ function addList(initial, other) {
   }
 }
 
-// adds the other class option
+// adds the other class option and no class option
 function addOther() {
   var other = {
     name: "Other Class",
@@ -170,9 +196,9 @@ function addOther() {
   }
   const menu =
   [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
   ];
   for(const id of menu) {
     addOption(id, other.name, other.color);
@@ -188,41 +214,31 @@ function changeMenus(concentration, startTerm) {
   interConcentration
   phnConcentration
 
-  var hpmSummerFifteen = [];
   var hpmSummerTwo = [];
-  var epiBioSummerFifteen = [];
   var epiBioSummerTwo = [];
-  var interSummerFifteen = [];
   var interSummerTwo = [];
-  var phnSummerFifteen = [];
   var phnSummerTwo = [];
 
   // choosing the summer classes for column one
-  addListCond(hpmSummerFifteen, hpmConcentration, "Summer 15");
   addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
-  addListCond(epiBioSummerFifteen, epiBioConcentration, "Summer 15");
   addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
-  addListCond(interSummerFifteen, interConcentration, "Summer 15");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
 
 
-  clearAll();
+  clearOptions();
   addOther();
   updateColumn(coreRequirements, startTerm, 1);
 
-  // HPM -> EpiBio -> Interdisciplinary
+  // updates from HPM -> EpiBio -> Interdisciplinary -> PHN
   if (concentration == 1) {
-    updateColumn(hpmSummerFifteen, startTerm, 1);
     updateColumn(hpmSummerTwo, startTerm, 1);
     updateColumn(hpmConcentration, startTerm, 2);
     updateColumn(hpmConcentration, startTerm, 3);
   } else if (concentration == 2) {
-    updateColumn(epiBioSummerFifteen, startTerm, 1);
     updateColumn(epiBioSummerTwo, startTerm, 1);
     updateColumn(epiBioConcentration, startTerm, 2);
     updateColumn(epiBioConcentration, startTerm, 3);
   } else if (concentration == 3) {
-    updateColumn(interSummerFifteen, startTerm, 1);
     updateColumn(interSummerTwo, startTerm, 1);
     updateColumn(interConcentration, startTerm, 2);
     updateColumn(interConcentration, startTerm, 3);
@@ -233,9 +249,14 @@ function changeMenus(concentration, startTerm) {
 function updateColumn(classes, startTerm, column) {
   var start = "";
   for (let i=0; i < classes.length; i++) {
+    // adds core class to second year Summer 1 but not third year Summer 1
+    if ((classes[i] == PHW200E || classes[i] == PHW289) && column == 3) {
+      continue;
+    }
     start = findDropdown(startTerm, classes[i].term, column, 0);
     addOption(start, classes[i].name, classes[i].color);
-    if (classes[i].term == "Fall 15" || classes[i].term == "Spring 15" || classes[i].term == "Summer 15") {
+    // adds classes to both Fall 15 and/or Sring 15 dropdown menus
+    if (classes[i].term == "Fall 15" || classes[i].term == "Spring 15") {
       start = findDropdown(startTerm, classes[i].term, column, 1);
       addOption(start, classes[i].name, classes[i].color);
     }
@@ -244,12 +265,13 @@ function updateColumn(classes, startTerm, column) {
 
 // returns the correct drop down menu level
 function findDropdown(startTerm, varTerm, column, second) {
-  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"];
-  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"];
-  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen" , "selectThreeEleven" , "selectThreeTwelve"];
+  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen"];
+  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen"];
+  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"];
 
   var foundTerm = 0;
   // checks Fall -> Spring -> Summer
+  // returns where in the list the dropdown menu for the semester is at
   if (startTerm == 1) {
     if (varTerm == "Fall 15" && second == 0) {
       foundTerm = 0;
@@ -267,14 +289,10 @@ function findDropdown(startTerm, varTerm, column, second) {
       foundTerm = 6;
     } else if (varTerm == "Spring 2") {
       foundTerm = 7;
-    } else if (varTerm == "Summer 15" && second == 0) {
-      foundTerm = 8;
-    } else if (varTerm == "Summer 15" && second == 1) {
-      foundTerm = 9;
     } else if (varTerm == "Summer 1") {
-      foundTerm = 10;
+      foundTerm = 8;
     } else if (varTerm == "Summer 2") {
-      foundTerm = 11;
+      foundTerm = 9;
     }
   } else if (startTerm == 2) {
     if (varTerm == "Spring 15" && second == 0) {
@@ -285,24 +303,21 @@ function findDropdown(startTerm, varTerm, column, second) {
       foundTerm = 2;
     } else if (varTerm == "Spring 2") {
       foundTerm = 3;
-    } else if (varTerm == "Summer 15" && second == 0) {
-      foundTerm = 4;
-    } else if (varTerm == "Summer 15" && second == 1) {
-      foundTerm = 5;
     } else if (varTerm == "Summer 1") {
-      foundTerm = 6;
+      foundTerm = 4;
     } else if (varTerm == "Summer 2") {
-      foundTerm = 7;
+      foundTerm = 5;
     } else if (varTerm == "Fall 15"  && second == 0) {
-      foundTerm = 8;
+      foundTerm = 6;
     } else if (varTerm == "Fall 15"  && second == 1) {
-      foundTerm = 9;
+      foundTerm = 7;
     }else if (varTerm == "Fall 1") {
-      foundTerm = 10;
+      foundTerm = 8;
     } else if (varTerm == "Fall 2") {
-      foundTerm = 11;
+      foundTerm = 9;
     }
   }
+  // returns the correct dropdown menu based on the column input
    if (column == 1) {
      return yearOne[foundTerm];
    } else if (column == 2) {

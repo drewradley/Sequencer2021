@@ -12,7 +12,7 @@ var PHW218 = {
   name: "PHW218: Evaluation of Health & Social Programs",
   term: "Spring 2",
   units: 3,
-  color: "Yellow",
+  color: "Orange",
   type: "Interdisciplinary Concentration"
 };
 
@@ -253,5 +253,5 @@ var PHW223 = {
   type: "Elective"
 };
 
-var interConcentration = [PHW219, PHW218, PHW251, PHW241R, PHW250B, PH252, PHW212, PHW220M, PHW224, PHW260, PHW260B, PHW213, PHW226A, PHW236A,
+var interConcentration = [PHW200E, PHW289, PHW219, PHW218, PHW251, PHW241R, PHW250B, PH252, PHW212, PHW220M, PHW224, PHW260, PHW260B, PHW213, PHW226A, PHW236A,
 PHW253, PH252C, PH290, PH2900, PHW206A, PHW222A, PHW226C, PHW226F, PHW272A, PHW227A, PHW272C, PHW277, PHW257, PHW204, PHW205, PHW206, PHW223];
