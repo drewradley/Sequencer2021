@@ -150,7 +150,7 @@ function clearDates() {
   "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen",
   "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen"
   ];
-  const terms = 
+  const terms =
   [
   "nameOneOne", "nameOneTwo", "nameOneThree", "nameOneFour", "nameOneFive", "nameOneSix", "nameOneSeven", "nameOneEight", "nameOneNine", "nameOneTen",
   "nameTwoOne", "nameTwoTwo", "nameTwoThree", "nameTwoFour", "nameTwoFive", "nameTwoSix", "nameTwoSeven", "nameTwoEight", "nameTwoNine", "nameTwoTen",
@@ -178,34 +178,6 @@ function addList(initial, other) {
   }
 }
 
-// adds the other class option and no class option
-function addOther() {
-  var other = {
-    name: "Other Class",
-    term: "all",
-    units: 0,
-    color: "None",
-    type: "Other"
-  }
-  var none = {
-    name: "No Class",
-    term: "all",
-    units: 0,
-    color: "None",
-    type: "Other"
-  }
-  const menu =
-  [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
-  ];
-  for(const id of menu) {
-    addOption(id, other.name, other.color);
-    addOption(id, none.name, none.color);
-  }
-}
-
 // updates all the menus with classes
 function changeMenus(concentration, startTerm) {
   coreRequirements
@@ -226,7 +198,7 @@ function changeMenus(concentration, startTerm) {
 
 
   clearOptions();
-  addOther();
+  ;
   updateColumn(coreRequirements, startTerm, 1);
 
   // updates from HPM -> EpiBio -> Interdisciplinary -> PHN
