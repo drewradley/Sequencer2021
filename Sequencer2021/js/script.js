@@ -195,7 +195,7 @@ function changeMenus(concentration, startTerm) {
   addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
   addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
-
+  addListCond(phnSummerTwo, phnConcentration, "Summer 2")
 
   clearOptions();
   ;
@@ -214,6 +214,10 @@ function changeMenus(concentration, startTerm) {
     updateColumn(interSummerTwo, startTerm, 1);
     updateColumn(interConcentration, startTerm, 2);
     updateColumn(interConcentration, startTerm, 3);
+  } else if (concentration == 4) {
+    updateColumn(phnSummerTwo, startTerm, 1);
+    updateColumn(phnConcentration, startTerm, 2);
+    updateColumn(phnConcentration, startTerm, 3);
   }
 }
 

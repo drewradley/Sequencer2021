@@ -67,9 +67,9 @@ var PHW272C = {
 var epiBioRequirements = [PHW251, PHW241R, PHW250B, PH252, PH252C, PH290, PHW219, PHW272C];
 
 
-// 
+//
 // ----------------------------ELECTIVES-------------------------------------------
-// 
+//
 
 
 var PHW212 = {
@@ -209,7 +209,7 @@ var PHW227A = {
 };
 
 var PHW277 = {
-  name: "PHW277: Applied GIS for Public Health Practice",
+  name: "PHW277: GIS for Public Health",
   term: "Spring 2",
   units: 3,
   color: "Tan",
@@ -233,7 +233,7 @@ var PHW204 = {
 };
 
 var PHW205 = {
-  name: "PHW205: Program Planning and Development",
+  name: "PHW205: Program Planning",
   term: "Summer 2",
   units: 3,
   color: "Tan",
@@ -256,7 +256,7 @@ var PHW223 = {
   type: "Elective"
 };
 
-var epiBioElectives = [PHW212, PHW220M, PHW224, PHW260, PHW260B, PHW213, PHW226A, PHW236A, PHW253, PH2900, 
+var epiBioElectives = [PHW212, PHW220M, PHW224, PHW260, PHW260B, PHW213, PHW226A, PHW236A, PHW253, PH2900,
 PHW206A, PHW222A, PHW226C, PHW226F, PHW272A, PHW218, PHW227A, PHW277, PHW257, PHW204, PHW205, PHW206, PHW223];
 
 var epiBioConcentration = [PHW200E, PHW289, PHW251, PHW241R, PHW250B, PH252, PH252C, PH290, PHW219, PHW272C, PHW212, PHW220M, PHW224, PHW260, PHW260B, PHW213,

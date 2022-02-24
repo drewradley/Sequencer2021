@@ -68,9 +68,9 @@ var PHW223 = {
 
 var hpmRequirements = [PHW224, PHW227A, PHW220M, PHW222A, PHW226A, PHW226C, PHW226F, PHW223];
 
-// 
+//
 // ----------------------------ELECTIVES-------------------------------------------
-// 
+//
 
 
 var PHW251 = {
@@ -219,7 +219,7 @@ var PHW272C = {
 };
 
 var PHW277 = {
-  name: "PHW277: Applied GIS for Public Health Practice",
+  name: "PHW277: GIS for Public Health",
   term: "Spring 2",
   units: 3,
   color: "Tan",
@@ -243,7 +243,7 @@ var PHW204 = {
 };
 
 var PHW205 = {
-  name: "PHW205: Program Planning and Development",
+  name: "PHW205: Program Planning",
   term: "Summer 2",
   units: 3,
   color: "Tan",
@@ -251,7 +251,7 @@ var PHW205 = {
 };
 
 var PHW206 = {
-  name: "PHW206: Maternal and Child Health Nutrition",
+  name: "PHW206: MCH Nutrition",
   term: "Summer 2",
   units: 3,
   color: "Tan",
