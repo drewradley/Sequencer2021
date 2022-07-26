@@ -130,6 +130,15 @@ function addOption(parentId, content, color) {
   document.getElementById(parentId).appendChild(element);
 }
 
+// BRIAN'S ADDITION Adds and sets a drop down option to the menu
+function setOption(parentId, content, color) {
+  var element = document.createElement("option");
+  element.innerHTML = content;
+  element.style = "background-color:" + color;
+  document.getElementById(parentId).appendChild(element);
+  document.getElementById(parentId).value = content;
+}
+
 // Clears all the drop down menus
 function clearOptions() {
   const menu =
@@ -194,6 +203,7 @@ function changeMenus(concentration, startTerm) {
 
   // choosing the summer classes for column one
   addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
+  addListCond(hpmSummerTwo, hpmElectives, "Summer 2");
   addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
   addListCond(phnSummerTwo, phnConcentration, "Summer 2")
@@ -205,8 +215,12 @@ function changeMenus(concentration, startTerm) {
   // updates from HPM -> EpiBio -> Interdisciplinary -> PHN
   if (concentration == 1) {
     updateColumn(hpmSummerTwo, startTerm, 1);
+    updateColumn(hpmSummerTwo, startTerm, 2);
+    updateColumn(hpmSummerTwo, startTerm, 3);
     updateColumn(hpmConcentration, startTerm, 2);
+    updateColumn(hpmElectives, startTerm, 2);
     updateColumn(hpmConcentration, startTerm, 3);
+    updateColumn(hpmElectives, startTerm, 3);
   } else if (concentration == 2) {
     updateColumn(epiBioSummerTwo, startTerm, 1);
     updateColumn(epiBioConcentration, startTerm, 2);
@@ -235,7 +249,11 @@ function updateColumn(classes, startTerm, column) {
     // adds classes to both Fall 15 and/or Sring 15 dropdown menus
     if (classes[i].term == "Fall 15" || classes[i].term == "Spring 15") {
       start = findDropdown(startTerm, classes[i].term, column, 1);
-      addOption(start, classes[i].name, classes[i].color);
+      setOption(start, classes[i].name, classes[i].color);
+    }
+    // sets second Summer 1 to PHW289
+    if (classes[i].name == "PHW289: Interdisciplinary Seminar" && column == 2) {
+      setOption(start, classes[i].name, classes[i].color);
     }
   }
 }
