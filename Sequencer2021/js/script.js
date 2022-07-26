@@ -130,7 +130,7 @@ function addOption(parentId, content, color) {
   document.getElementById(parentId).appendChild(element);
 }
 
-// BRIAN'S ADDITION Adds and sets a drop down option to the menu
+// Adds and sets a drop down option to the menu
 function setOption(parentId, content, color) {
   var element = document.createElement("option");
   element.innerHTML = content;
