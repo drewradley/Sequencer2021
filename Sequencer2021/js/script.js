@@ -130,7 +130,7 @@ function addOption(parentId, content, color) {
   document.getElementById(parentId).appendChild(element);
 }
 
-// Adds and sets a drop down option to the menu
+// BRIAN'S ADDITION Adds and sets a drop down option to the menu
 function setOption(parentId, content, color) {
   var element = document.createElement("option");
   element.innerHTML = content;
@@ -215,8 +215,6 @@ function changeMenus(concentration, startTerm) {
   // updates from HPM -> EpiBio -> Interdisciplinary -> PHN
   if (concentration == 1) {
     updateColumn(hpmSummerTwo, startTerm, 1);
-    updateColumn(hpmSummerTwo, startTerm, 2);
-    updateColumn(hpmSummerTwo, startTerm, 3);
     updateColumn(hpmConcentration, startTerm, 2);
     updateColumn(hpmElectives, startTerm, 2);
     updateColumn(hpmConcentration, startTerm, 3);
@@ -253,7 +251,7 @@ function updateColumn(classes, startTerm, column) {
     }
     // sets second Summer 1 to PHW289
     if (classes[i].name == "PHW289: Interdisciplinary Seminar" && column == 2) {
-      setOption(start, classes[i].name, classes[i].color);
+      document.getElementById(start).value = classes[i].name;
     }
   }
 }
@@ -291,25 +289,25 @@ function findDropdown(startTerm, varTerm, column, second) {
     }
   } else if (startTerm == 2) {
     if (varTerm == "Spring 15" && second == 0) {
-      foundTerm = 0;
+      foundTerm = 6;
     } else if (varTerm == "Spring 15" && second == 1) {
-      foundTerm = 1;
+      foundTerm = 7;
     } else if (varTerm == "Spring 1") {
-      foundTerm = 2;
+      foundTerm = 8;
     } else if (varTerm == "Spring 2") {
-      foundTerm = 3;
+      foundTerm = 9;
     } else if (varTerm == "Summer 1") {
       foundTerm = 4;
     } else if (varTerm == "Summer 2") {
       foundTerm = 5;
     } else if (varTerm == "Fall 15"  && second == 0) {
-      foundTerm = 6;
+      foundTerm = 0;
     } else if (varTerm == "Fall 15"  && second == 1) {
-      foundTerm = 7;
+      foundTerm = 1;
     }else if (varTerm == "Fall 1") {
-      foundTerm = 8;
+      foundTerm = 2;
     } else if (varTerm == "Fall 2") {
-      foundTerm = 9;
+      foundTerm = 3;
     }
   }
   // returns the correct dropdown menu based on the column input
