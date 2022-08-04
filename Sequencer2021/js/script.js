@@ -139,6 +139,20 @@ function setOption(parentId, content, color) {
   document.getElementById(parentId).value = content;
 }
 
+function addBlanks() {
+  const menu =
+    [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
+    ];
+  for (const id of menu) {
+    var element = document.createElement("option");
+    element.innerHTML = "";
+    document.getElementById(id).prepend(element);
+  }
+}
+
 // Clears all the drop down menus
 function clearOptions() {
   const menu =
@@ -219,6 +233,7 @@ function changeMenus(concentration, startTerm) {
     updateColumn(hpmElectives, startTerm, 2);
     updateColumn(hpmConcentration, startTerm, 3);
     updateColumn(hpmElectives, startTerm, 3);
+    recommendClasses(startTerm, hpmRecommendation);
   } else if (concentration == 2) {
     updateColumn(epiBioSummerTwo, startTerm, 1);
     updateColumn(epiBioConcentration, startTerm, 2);
@@ -232,6 +247,7 @@ function changeMenus(concentration, startTerm) {
     updateColumn(phnConcentration, startTerm, 2);
     updateColumn(phnConcentration, startTerm, 3);
   }
+  addBlanks();
 }
 
 // updates each column with classes
@@ -254,6 +270,69 @@ function updateColumn(classes, startTerm, column) {
       document.getElementById(start).value = classes[i].name;
     }
   }
+}
+
+// recommends classes with given schedule
+function recommendClasses(startTerm, classes) {
+  const fallStartTerms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 1", "Summer 2"];
+  const springStartTerms = ["Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 1", "Summer 2", "Fall 15", "Fall 15", "Fall 1", "Fall 2"];
+  const menu =
+    [
+    ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen"],
+    ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen"],
+    ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"]
+    ];
+  const fallAndSpringTerms = [fallStartTerms, springStartTerms];
+  const terms = fallAndSpringTerms[startTerm-1];
+  var start = "";
+  var prevClass = "";
+  var separatedClasses = splitClasses(classes, 6);
+  var prevTempIndex = null;
+  for (let col=1; col < separatedClasses.length+1; col++) {
+    var classesGivenYear = separatedClasses[col-1];
+    var prevTermIndex = 0;
+    var termsCopy = terms.slice();
+    for (let i=0; i < classesGivenYear.length; i++) {
+      var recClass = classesGivenYear[i];
+      if (prevClass.term == recClass.term) {
+        second = 1;
+      } else {
+        second = 0;
+      }
+      start = findDropdown(startTerm, recClass.term, col, second);
+      var termIndex = termsCopy.indexOf(recClass.term);
+      termsCopy.splice(termIndex, 1);
+      prevTermIndex = termIndex;
+      var recClassName = recClass.name;
+      if (recClassName == "PHW289: Interdisciplinary Seminar" && col == 1) {
+        continue;
+      }
+      document.getElementById(start).value = recClass.name;
+      prevClass = recClass;
+    }
+    for (const term of termsCopy) {
+      var tempIndex = terms.indexOf(term);
+      var menuSelect = null;
+      var menuCol = menu[col-1]
+      if (tempIndex == prevTempIndex) {
+        menuSelect = menuCol[tempIndex+1];
+      } else {
+        menuSelect = menuCol[tempIndex];
+        prevTempIndex = tempIndex;
+      }
+      document.getElementById(menuSelect).value = "";
+    }
+  }
+
+}
+
+// splits a recommended schedule into years
+function splitClasses(classes, size) {
+  var separatedClasses = [];
+  for (let i=0; i < classes.length; i+= size) {
+    separatedClasses.push(classes.slice(i, i + size));
+  }
+  return separatedClasses;
 }
 
 // returns the correct drop down menu level

@@ -27,7 +27,7 @@ var PHW227A = {
 // choose between PHW220M and PHW222A
 var PHW220M = {
   name: "PHW220M: Health Policy Methods",
-  term: "Fall 1",
+  term: "Summer 2",
   units: 3,
   color: "Red",
   type: "HPM Concentration"
@@ -58,24 +58,7 @@ var PHW226C = {
   type: "HPM Concentration"
 };
 
-// choose between PHW200M or PHW222A
-var PHW220M = {
-  name: "PHW220M: Health Policy Methods",
-  term: "Fall 2",
-  units: 3,
-  color: "Red",
-  type: "HPM Concentration"
-};
-
-var PHW222A = {
-  name: "PHW222A: Biomedical Innovation Policy",
-  term: "Spring 1",
-  units: 3,
-  color: "Red",
-  type: "HPM Concentration"
-};
-
-var hpmRequirements = [PHW223, PHW224, PHW227A, PHW226A, PHW220M];
+var hpmRequirements = [PHW220M, PHW223, PHW224, PHW227A, PHW226A];
 
 //
 // ----------------------------ELECTIVES-------------------------------------------
@@ -278,4 +261,6 @@ var PHW209 = {
 var hpmElectives = [PHW209, PHW236A, PHW226F, PHW251, PH271K, PHW250B, PH252C, PHW241R, PHW253, PHW257, PHW260,
 PHW205, PHW206, PHW206A, PHW218, PHW219, PHW272A, PHW277, PHW272C, PHW212, PHW213];
 
-var hpmConcentration = [PHW289, PHW223, PHW224, PHW227A, PHW226A, PHW226C, PHW220M, PHW222A];
+var hpmConcentration = [PHW289, PHW220M, PHW223, PHW224, PHW227A, PHW226A, PHW226C, PHW222A];
+
+var hpmRecommendation = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW220M, PHW224, PHW226A, PHW222A, PHW227A, PHW289, PHW223];
