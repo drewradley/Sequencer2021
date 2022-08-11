@@ -130,7 +130,7 @@ function addOption(parentId, content, color) {
   document.getElementById(parentId).appendChild(element);
 }
 
-// BRIAN'S ADDITION Adds and sets a drop down option to the menu
+// Adds and sets a drop down option to the menu
 function setOption(parentId, content, color) {
   var element = document.createElement("option");
   element.innerHTML = content;
@@ -139,6 +139,7 @@ function setOption(parentId, content, color) {
   document.getElementById(parentId).value = content;
 }
 
+// Adds the blank option to all drop down menus
 function addBlanks() {
   const menu =
     [
@@ -222,6 +223,7 @@ function changeMenus(concentration, startTerm) {
   addListCond(epiBioSummerTwo, epiBioElectives, "Summer 2");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
   addListCond(phnSummerTwo, phnConcentration, "Summer 2")
+  addListCond(phnSummerTwo, phnElectives, "Summer 2");
 
   clearOptions();
   ;
@@ -249,9 +251,13 @@ function changeMenus(concentration, startTerm) {
   } else if (concentration == 4) {
     updateColumn(phnSummerTwo, startTerm, 1);
     updateColumn(phnConcentration, startTerm, 2);
+    updateColumn(phnElectives, startTerm, 2);
     updateColumn(phnConcentration, startTerm, 3);
+    updateColumn(phnElectives, startTerm, 3);
+    recommendClasses(startTerm, phnRecommendation);
   }
   addBlanks();
+  countUnits();
 }
 
 // updates each column with classes
@@ -338,6 +344,46 @@ function splitClasses(classes, size) {
   }
   return separatedClasses;
 }
+
+// Counts the units with the selected classes
+function countUnits() {
+  const menu =
+    [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
+    ];
+  var unitCount = 0;
+  var selectedClasses = [];
+  for (const id of menu) {
+    var classSelection = document.getElementById(id);
+    var className = classSelection.value;
+    selectedClasses.push(className);
+  }
+  var concentration = getConcentration();
+  // Find the class object given the className
+  if (concentration == 1) {
+    var allHpmClasses = hpmConcentration.concat(hpmElectives).concat(coreRequirements);
+    for (const className of selectedClasses) {
+      var classObject = allHpmClasses.find(obj => obj.name === className);
+      if (classObject == null) {
+        continue;
+      } else {
+        unitCount += classObject.units;
+      }
+    }
+  } else if (concentration == 2) {
+
+  } else if (concentration == 3) {
+
+  } else if (concentration == 4) {
+
+  }
+  // Get the class object's unit count and add it to our current unitCount
+  
+}
+
+
 
 // returns the correct drop down menu level
 function findDropdown(startTerm, varTerm, column, second) {
