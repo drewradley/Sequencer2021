@@ -69,7 +69,11 @@ function changeDates(term, year) {
 
     "8/22/22 - 12/18/22", "8/22/22 - 12/11/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
     "1/17/23 - 4/30/23", "1/17/23 - 5/7/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/30/23",
-    "5/8/23 - 6/25/23", "6/26/23 - 8/13/23"
+    "5/8/23 - 6/25/23", "6/26/23 - 8/13/23",
+
+    "8/21/23 - 12/10/23", "8/21/23 - 12/03/23", "8/21/23 - 10/15/23", "10/23/23 - 12/17/23",
+    "1/16/24 - 5/5/24", "1/16/24 - 5/13/24", "1/09/24 - 3/3/24", "3/4/24 - 4/28/24",
+    "5/13/24 - 6/30/24", "7/8/24 - 8/25/24"
   ];
   const years =
   [
@@ -104,11 +108,13 @@ function changeDates(term, year) {
   // updates the dates using the chosen starting point, if the date isn't in the menu then it displays "TBD"
   for (let i = 0; i < 30; i++) {
     var changeTerm = document.getElementById(years[i]);
-    if (start + i >= 20) {
-      changeTerm.innerHTML = "TBD";
-    } else {
-      changeTerm.innerHTML = dates[start + i];
-    }
+    //if (start + i >= 20) {
+    //  changeTerm.innerHTML = "TBD";
+    //} else {
+    //  changeTerm.innerHTML = dates[start + i];
+    //}
+    changeTerm.innerHTML = dates[start + i];
+
   }
 }
 
@@ -247,7 +253,10 @@ function changeMenus(concentration, startTerm) {
   } else if (concentration == 3) {
     updateColumn(interSummerTwo, startTerm, 1);
     updateColumn(interConcentration, startTerm, 2);
+    updateColumn(interElectives, startTerm, 2);
     updateColumn(interConcentration, startTerm, 3);
+    updateColumn(interElectives, startTerm, 3);
+    recommendClasses(startTerm, interRecommendation);
   } else if (concentration == 4) {
     updateColumn(phnSummerTwo, startTerm, 1);
     updateColumn(phnConcentration, startTerm, 2);
@@ -302,6 +311,9 @@ function recommendClasses(startTerm, classes) {
     var classesGivenYear = separatedClasses[col-1];
     var prevTermIndex = 0;
     var termsCopy = terms.slice();
+    var thisColTerm = []
+    classesGivenYear.forEach(function(obj) {thisColTerm.push(obj.term)});
+    const termCounts = countTermOccurences(thisColTerm);
     for (let i=0; i < classesGivenYear.length; i++) {
       var recClass = classesGivenYear[i];
       if (prevClass.term == recClass.term) {
@@ -321,16 +333,30 @@ function recommendClasses(startTerm, classes) {
       prevClass = recClass;
     }
     for (const term of termsCopy) {
-      var tempIndex = terms.indexOf(term);
-      var menuSelect = null;
-      var menuCol = menu[col-1]
-      if (tempIndex == prevTempIndex) {
+      if ((term === "Fall 15" || term === "Spring 15") && termCounts[term] == 1) {
+        var tempIndex = terms.indexOf(term);
+        var menuSelect = null;
+        var menuCol = menu[col-1]
+        if (tempIndex == prevTempIndex) {
         menuSelect = menuCol[tempIndex+1];
+        } else {
+          menuSelect = menuCol[tempIndex + 1];
+          prevTempIndex = tempIndex;
+        }
+
+        document.getElementById(menuSelect).value = "";
       } else {
-        menuSelect = menuCol[tempIndex];
-        prevTempIndex = tempIndex;
+          var tempIndex = terms.indexOf(term);
+          var menuSelect = null;
+          var menuCol = menu[col-1]
+          if (tempIndex == prevTempIndex) {
+          menuSelect = menuCol[tempIndex+1];
+          } else {
+            menuSelect = menuCol[tempIndex];
+            prevTempIndex = tempIndex;
+          }
+          document.getElementById(menuSelect).value = "";
       }
-      document.getElementById(menuSelect).value = "";
     }
   }
 
@@ -343,6 +369,20 @@ function splitClasses(classes, size) {
     separatedClasses.push(classes.slice(i, i + size));
   }
   return separatedClasses;
+}
+
+// counts occurences of term elements in term array
+function countTermOccurences(termsArray) {
+  const count = {};
+
+  for (const element of termsArray) {
+    if (count[element]) {
+      count[element] += 1;
+    } else {
+      count[element] = 1;
+    }
+  }
+  return count;
 }
 
 // Counts the units with the selected classes
@@ -364,23 +404,48 @@ function countUnits() {
   // Find the class object given the className
   if (concentration == 1) {
     var allHpmClasses = hpmConcentration.concat(hpmElectives).concat(coreRequirements);
-    for (const className of selectedClasses) {
-      var classObject = allHpmClasses.find(obj => obj.name === className);
-      if (classObject == null) {
-        continue;
-      } else {
-        unitCount += classObject.units;
-      }
-    }
+    unitCount = getObjectByName(allHpmClasses, selectedClasses, unitCount);
   } else if (concentration == 2) {
-
+    var allEpiBioClasses = epiBioConcentration.concat(epiBioElectives).concat(coreRequirements);
+    unitCount = getObjectByName(allEpiBioClasses, selectedClasses, unitCount);
   } else if (concentration == 3) {
-
+    var allInterClasses = interConcentration.concat(interElectives).concat(coreRequirements);
+    unitCount = getObjectByName(allInterClasses, selectedClasses, unitCount);
   } else if (concentration == 4) {
-
+    var allPhnClasses = phnConcentration.concat(phnElectives).concat(coreRequirements);
+    unitCount = getObjectByName(allPhnClasses, selectedClasses, unitCount);
   }
-  // Get the class object's unit count and add it to our current unitCount
-  
+  console.log(unitCount);
+}
+
+// Gets the class's object unit count and adds it to our current unitCount
+function getObjectByName(allClasses, selectedClasses, unitCount) {
+  var receivedCompExamDate = false;
+  for (const className of selectedClasses) {
+    var classObject = allClasses.find(obj => obj.name === className);
+    if (classObject == null) {
+      continue;
+    } else {
+      unitCount += classObject.units / 1;
+    }
+
+    if (unitCount >= 42 && receivedCompExamDate == false) {
+      getCompExamDate(className, selectedClasses);
+      receivedCompExamDate = true;
+    }
+  }
+  return unitCount;
+}
+
+// Fills out when the Comp Exam should be taken. 
+function getCompExamDate(className, selectedClasses) {
+  var indexOfClassName = selectedClasses.indexOf(className);
+  console.log(className);
+  if (indexOfClassName < 24) {
+    setOption("selectThreeFive", "Comprehensive Exam", null);
+  } else if (indexOfClassName < 28) {
+    setOption("selectThreeNine", "Comprehensive Exam", null);
+  }
 }
 
 
