@@ -158,7 +158,14 @@
             </select>
           <br><br>
 
-          <button class= "button" id="btn0" onclick="updatePage()">Update</button>
+          <label for="unitCount"><b>Unit Count:</b></label>
+          <label id="countOfUnits">
+            <!-- Unit Count will go here -->
+            </label>
+          <br><br>
+
+          <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Classes</button>
+          <button class= "button" id="btn0" onclick="updatePageButton()">Update</button>
           <br><br>
         </div>
       </div>
@@ -621,6 +628,27 @@
             <br>
           </div>
 
+          <!-- Practicum and Comp Exam Dates -->
+          <div class="col"> 
+            <br>
+            <br>
+            <h3 style="color: #003262"> Practicum and Comprehensive Exam Dates </h3>
+            <hr style="width:70%; text-align:left; margin:auto;">
+            <br>
+            <p style="text-align:center; margin:auto;"> <b> Complete Practicum by </b> </p>
+            <p style="color: #003262; font-size: 18px; font-weight:bold;">
+              <label id="practicumDate">
+              <!-- Practicum Date will go here -->
+              </label>
+            </p>
+            <br>
+            <p style="text-align:center; margin:auto;"> <b> Comp Exam will take place in </b> </p>
+            <p style="color: #003262; font-size: 18px; font-weight:bold;">
+              <label id="compExamDate">
+              <!-- Comp Exam Date will go here -->
+              </label>
+            </p>
+          </div>
         </div>
       </div>
     </div>

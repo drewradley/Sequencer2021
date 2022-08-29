@@ -114,7 +114,6 @@ function changeDates(term, year) {
     //  changeTerm.innerHTML = dates[start + i];
     //}
     changeTerm.innerHTML = dates[start + i];
-
   }
 }
 
@@ -242,28 +241,24 @@ function changeMenus(concentration, startTerm) {
     updateColumn(hpmElectives, startTerm, 2);
     updateColumn(hpmConcentration, startTerm, 3);
     updateColumn(hpmElectives, startTerm, 3);
-    recommendClasses(startTerm, hpmRecommendation);
   } else if (concentration == 2) {
     updateColumn(epiBioSummerTwo, startTerm, 1);
     updateColumn(epiBioConcentration, startTerm, 2);
     updateColumn(epiBioElectives, startTerm, 2);
     updateColumn(epiBioConcentration, startTerm, 3);
     updateColumn(epiBioElectives, startTerm, 3);
-    recommendClasses(startTerm, epiBioRecommendation);
   } else if (concentration == 3) {
     updateColumn(interSummerTwo, startTerm, 1);
     updateColumn(interConcentration, startTerm, 2);
     updateColumn(interElectives, startTerm, 2);
     updateColumn(interConcentration, startTerm, 3);
     updateColumn(interElectives, startTerm, 3);
-    recommendClasses(startTerm, interRecommendation);
   } else if (concentration == 4) {
     updateColumn(phnSummerTwo, startTerm, 1);
     updateColumn(phnConcentration, startTerm, 2);
     updateColumn(phnElectives, startTerm, 2);
     updateColumn(phnConcentration, startTerm, 3);
     updateColumn(phnElectives, startTerm, 3);
-    recommendClasses(startTerm, phnRecommendation);
   }
   addBlanks();
   countUnits();
@@ -385,6 +380,35 @@ function countTermOccurences(termsArray) {
   return count;
 }
 
+function getClassRecommendation() {
+  const startTerm = getStartingTerm();
+  const startYear = getStartingYear();
+  const concentration = getConcentration();
+
+  var preCheck = document.getElementById("countOfUnits");
+  var inHTML = preCheck.innerHTML;
+  if (preCheck.innerHMTL != 0) {
+    updatePage();
+  }
+
+  if (concentration == 1) {
+    recommendClasses(startTerm, hpmRecommendation);
+  } else if (concentration == 2) {
+    recommendClasses(startTerm, epiBioRecommendation);
+  } else if (concentration == 3) {
+    recommendClasses(startTerm, interRecommendation);
+  } else if (concentration == 4) {
+    recommendClasses(startTerm, phnRecommendation);
+  }
+
+  countUnits();
+}
+
+function updatePageButton() {
+  countUnits();
+  getPracAndCompExamDate();
+}
+
 // Counts the units with the selected classes
 function countUnits() {
   const menu =
@@ -393,6 +417,7 @@ function countUnits() {
     "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
     "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
     ];
+  var countOfUnits = document.getElementById("countOfUnits");
   var unitCount = 0;
   var selectedClasses = [];
   for (const id of menu) {
@@ -416,11 +441,14 @@ function countUnits() {
     unitCount = getObjectByName(allPhnClasses, selectedClasses, unitCount);
   }
   console.log(unitCount);
+  countOfUnits.innerHTML = unitCount;
 }
 
 // Gets the class's object unit count and adds it to our current unitCount
 function getObjectByName(allClasses, selectedClasses, unitCount) {
   var receivedCompExamDate = false;
+  var compExamElement = document.getElementById("compExamDate");
+  var practicumElement = document.getElementById("practicumDate");
   for (const className of selectedClasses) {
     var classObject = allClasses.find(obj => obj.name === className);
     if (classObject == null) {
@@ -430,21 +458,29 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
     }
 
     if (unitCount >= 42 && receivedCompExamDate == false) {
-      getCompExamDate(className, selectedClasses);
+      getPracAndCompExamDate(className, selectedClasses);
       receivedCompExamDate = true;
+    } else if (unitCount < 42) {
+      receivedCompExamDate = false;
+      compExamElement.innerHTML = "";
+      practicumElement.innerHTML = "";
     }
   }
   return unitCount;
 }
 
-// Fills out when the Comp Exam should be taken. 
-function getCompExamDate(className, selectedClasses) {
+// Fills out when the Practicum and Comp Exam are.
+function getPracAndCompExamDate(className, selectedClasses) {
   var indexOfClassName = selectedClasses.indexOf(className);
+  var compExamElement = document.getElementById("compExamDate");
+  var practicumElement = document.getElementById("practicumDate");
   console.log(className);
   if (indexOfClassName < 24) {
-    setOption("selectThreeFive", "Comprehensive Exam", null);
+    practicumElement.innerHTML = "Fall of Year 3";
+    compExamElement.innerHTML = "Spring of Year 3";
   } else if (indexOfClassName < 28) {
-    setOption("selectThreeNine", "Comprehensive Exam", null);
+    practicumElement.innerHTML = "Summer of Year 3";
+    compExamElement.innerHTML = "Fall of Year 3";
   }
 }
 
