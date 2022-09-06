@@ -130,16 +130,18 @@ function deleteOption(id) {
 // Adds a drop down option to the menu
 function addOption(parentId, content, color) {
   var element = document.createElement("option");
+  var select = document.getElementById(parentId);
+  var elementStyleColor = element.style.color;
   element.innerHTML = content;
-  element.style = "background-color:" + color;
-  document.getElementById(parentId).appendChild(element);
+  elementStyleColor = color;
+  select.appendChild(element);
 }
 
 // Adds and sets a drop down option to the menu
 function setOption(parentId, content, color) {
   var element = document.createElement("option");
   element.innerHTML = content;
-  element.style = "background-color:" + color;
+  element.style.backgroundColor = color;
   document.getElementById(parentId).appendChild(element);
   document.getElementById(parentId).value = content;
 }
@@ -261,7 +263,6 @@ function changeMenus(concentration, startTerm) {
     updateColumn(phnElectives, startTerm, 3);
   }
   addBlanks();
-  countUnits();
 }
 
 // updates each column with classes

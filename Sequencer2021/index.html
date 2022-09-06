@@ -40,7 +40,15 @@
     font-size: 16px;
     margin: 2px 2px;
     cursor: pointer;
+    border-radius: 20px;
   }
+
+  .dropdown {
+    border-radius: 5px;
+    transition: all .5s ease;
+    color: black;
+  }
+
   .col {
     background-color: #e6ebef;
     border-radius: 15px;
@@ -133,7 +141,7 @@
         <div id="hide">
           <label  for="startingTerm"><b>Starting Term:</b></label>
           <br>
-            <select name="startingTerm" id="startingTerm">
+            <select name="startingTerm" id="startingTerm" class="dropdown">
               <option value=1>Fall 1</option>
               <option value=2>Spring 1</option>
             </select>
@@ -141,7 +149,7 @@
 
           <label for="startingYear"><b>Starting Year:</b></label>
           <br>
-            <select name="startingYear" id="startingYear">
+            <select name="startingYear" id="startingYear" class="dropdown">
               <option value=1>2021</option>
               <option value=2>2022</option>
               <option value=3>2023</option>
@@ -150,7 +158,7 @@
 
           <label for="concentration"><b>Concentration:</b></label>
           <br>
-            <select name="concentration" id="concentration">
+            <select name="concentration" id="concentration" class="dropdown">
               <option value=1>Health Policy & Management</option>
               <option value=2>Epidemiology & Biostatistics</option>
               <option value=3>Interdisciplinary</option>
@@ -165,7 +173,6 @@
           <br><br>
 
           <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Classes</button>
-          <button class= "button" id="btn0" onclick="updatePageButton()">Update</button>
           <br><br>
         </div>
       </div>
@@ -198,7 +205,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectOne" id="selectOneOne"></select>
+                  <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -211,7 +218,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTwo" id="selectOneTwo"></select>
+                  <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -224,7 +231,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectThree" id="selectOneThree"></select>
+                  <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -237,7 +244,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFour" id="selectOneFour"></select>
+                  <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -254,7 +261,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFive" id="selectOneFive"></select>
+                  <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -267,7 +274,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSix" id="selectOneSix"></select>
+                  <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -280,7 +287,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSeven" id="selectOneSeven"></select>
+                  <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -293,7 +300,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectEight" id="selectOneEight"></select>
+                  <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -310,7 +317,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectNine" id="selectOneNine"></select>
+                  <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -323,7 +330,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTen" id="selectOneTen"></select>
+                  <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -346,7 +353,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectOne" id="selectTwoOne"></select>
+                  <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -359,7 +366,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTwo" id="selectTwoTwo"></select>
+                  <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -372,7 +379,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectThree" id="selectTwoThree"></select>
+                  <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -385,7 +392,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFour" id="selectTwoFour"></select>
+                  <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -402,7 +409,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFive" id="selectTwoFive"></select>
+                  <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -415,7 +422,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSix" id="selectTwoSix"></select>
+                  <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -428,7 +435,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSeven" id="selectTwoSeven"></select>
+                  <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -441,7 +448,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectEight" id="selectTwoEight"></select>
+                  <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -458,7 +465,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectNine" id="selectTwoNine"></select>
+                  <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -471,7 +478,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTen" id="selectTwoTen"></select>
+                  <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -496,7 +503,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectOne" id="selectThreeOne"></select>
+                  <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -509,7 +516,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTwo" id="selectThreeTwo"></select>
+                  <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -522,7 +529,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectThree" id="selectThreeThree"></select>
+                  <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -535,7 +542,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFour" id="selectThreeFour"></select>
+                  <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -552,7 +559,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectFive" id="selectThreeFive"></select>
+                  <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -565,7 +572,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSix" id="selectThreeSix"></select>
+                  <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -578,7 +585,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectSeven" id="selectThreeSeven"></select>
+                  <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -591,7 +598,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectEight" id="selectThreeEight"></select>
+                  <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -608,7 +615,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectNine" id="selectThreeNine"></select>
+                  <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
               <br>
@@ -621,7 +628,7 @@
                   <!-- Date will go here -->
                 </label></i>
                 <div>
-                  <select name="selectTen" id="selectThreeTen"></select>
+                  <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
                 </div>
               </div>
             </div>
@@ -632,17 +639,18 @@
           <div class="col"> 
             <br>
             <br>
-            <h3 style="color: #003262"> Practicum and Comprehensive Exam Dates </h3>
+            <p style="color: #003262; font-size: 18px; font-weight:bold"> Practicum and Comprehensive Exam Dates </p>
+            <p style="font-size: 14px"> (Requires 42 units) </p>
             <hr style="width:70%; text-align:left; margin:auto;">
             <br>
-            <p style="text-align:center; margin:auto;"> <b> Complete Practicum by </b> </p>
+            <p style="text-align:center; margin:auto; font-size: 14px"> <b> Complete Practicum by </b> </p>
             <p style="color: #003262; font-size: 18px; font-weight:bold;">
               <label id="practicumDate">
               <!-- Practicum Date will go here -->
               </label>
             </p>
             <br>
-            <p style="text-align:center; margin:auto;"> <b> Comp Exam will take place in </b> </p>
+            <p style="text-align:center; margin:auto; font-size: 14px"> <b> Comp Exam will take place in </b> </p>
             <p style="color: #003262; font-size: 18px; font-weight:bold;">
               <label id="compExamDate">
               <!-- Comp Exam Date will go here -->
@@ -652,6 +660,7 @@
         </div>
       </div>
     </div>
+    <br><br>
   </div>
 </body>
 </html>
