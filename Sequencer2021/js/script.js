@@ -6,7 +6,7 @@ function getStartingSemester() {
   var startingSemester = document.getElementById("startingSemester");
   if (startingSemester.value == 1) {
     globalStartYear = 2;
-  } else if (startingSemester.value < 3) {
+  } else if (startingSemester.value <= 3) {
     globalStartYear = 3;
   } else {
     globalStartYear = 4;
@@ -26,7 +26,7 @@ function getStartingTerm() {
 
 // Returns what the user selected for the starting year
 function getStartingYear() {
-  var startingYear = document.getElementById("startingYear");
+  //var startingYear = document.getElementById("startingYear");
   return globalStartYear;
 }
 
@@ -52,6 +52,7 @@ function updatePage() {
     //changeTerms(getStartingTerm());
     //changeDates(getStartingTerm(), getStartingYear());
     changeMenus(getConcentration(), getStartingTerm());
+    changeSemesters();
 }
 
 // Changes the semesters on the page
@@ -568,4 +569,28 @@ function findDropdown(startTerm, varTerm, column, second) {
    } else if (column == 3) {
      return yearThree[foundTerm];
    }
+}
+
+// Changes all the semesters based on user input
+function changeSemesters() {
+  const semestersArr = ["sem1", "sem2", "sem3", "sem4", "sem5", "sem6", "sem7", "sem8", "sem9"];
+  const years = [2022, 2023, 2024, 2025, 2026];
+  const termsFromFall = ["Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer"];
+  const termsFromSpring = ["Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall"];
+  var termsFrom = [];
+  var yearIndex = globalStartYear-2;
+  if (globalStartTerm == 2) {
+    termsFrom = termsFromSpring;
+  } else {
+    termsFrom = termsFromFall;
+  }
+  for (let i = 0; i < semestersArr.length; i++) {
+
+    var selectedSem = document.getElementById(semestersArr[i]);
+    
+    selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
+    if (termsFrom[i] == "Fall") {
+      yearIndex += 1;
+    }
+  }
 }
