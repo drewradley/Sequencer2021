@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="header">
+        <h1 style="font-family: Arial">Plan Your Schedule.</h1>
+        </div>
+    <title>Document</title>
+    <!-- Styles -->
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+        }
+        .header {
+            background-color: #003262;
+            color: white;
+            padding: 30px;
+            text-align: left;
+        }
+        .container {
+            padding: 30px;
+        }
+        .scrollable-div {
+            float: left;
+            overflow-y: scroll;
+            width: 70%;
+            height: 90vh;
+        }
+
+        .row-container {
+            background-color: #eeeeee;
+            border-radius: 20px;
+            border: none;
+            text-align: left;
+            padding: 40px;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Arial";
+            width: 90%;
+            margin: 10px;
+        }
+
+        .button {
+            background-color: #003262;
+            border: none;
+            color: white;
+            padding: 20px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        #row {
+            min-height: 40vh;
+        }
+
+        .menu-div {
+            float: right;
+            width: 480px;
+            margin: 0px 0px 10px 10px;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            }
+
+        /* Stops the float property from affecting content after the columns */
+        .columns:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+
+        #terms {
+            color: #003262;
+
+            
+        }
+        select {
+            width: 285px;
+            border: 1px solid #d2d2d2;
+            height: 30px;
+            margin: 10px;
+            padding: 5px;
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            border-radius: 20px;
+            transition: all .5s ease;
+            color: black;
+        }
+
+        .textbox {
+            width: 170px;
+            background-color: white;
+            border: 1px solid #d2d2d2;
+            border-radius: 20px;
+            height: 20px;
+            margin: 5px 5px;
+            padding: 15px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+    </style>
+    <!-- Javascript File -->
+    <script src="js/script.js"></script>
+    <script src="js/MPH Core Requirements.js"></script>
+    <script src="js/EpiBio Concentration.js"></script>
+    <script src="js/HPM Concentration.js"></script>
+    <script src="js/Interdisciplinary Concentration.js"></script>
+    <script src="js/PHN Concentration.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="scrollable-div">
+            <div class="row-container" id="row">
+                <h2>Year 1</h2>
+                <div class="column">
+                    <h3 id="terms">Fall 2022</h3>
+                    <h4>15 Week Courses</h4>
+                    <div>
+                        <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <h4>8 Week Courses</h4>
+                    <div>
+                        <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Spring 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <br>
+                    <div style="margin-top: 42.5px;">
+                        <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Summer 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row-container" id="row">
+                <h2>Year 2</h2>
+                <div class="column">
+                    <h3 id="terms">Fall 2022</h3>
+                    <h4>15 Week Courses</h4>
+                    <div>
+                        <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <h4>8 Week Courses</h4>
+                    <div>
+                        <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Spring 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <br>
+                    <div style="margin-top: 42.5px;">
+                        <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Summer 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row-container" id="row">
+                <h2>Year 3</h2>
+                <div class="column">
+                    <h3 id="terms">Fall 2022</h3>
+                    <h4>15 Week Courses</h4>
+                    <div>
+                        <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <h4>8 Week Courses</h4>
+                    <div>
+                        <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Spring 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <br>
+                    <div style="margin-top: 42.5px;">
+                        <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3 id="terms">Summer 2023</h3>
+                    <div style="margin-top: 61px;">
+                        <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                    <div>
+                        <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-div">
+            <div class="row-container" id="top" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr 1fr;">
+                <div style="grid-column: 1/3; grid-row: 1;">
+                    <h2>Term and Concentration</h2>
+                </div>
+                    <div class="termAndCon" style="grid-column: 1; grid-row: 2;">
+                        <label for="startingTerm"><h3>Starting term:</h3></label>
+                    </div>
+                    <div class="termAndCon" style="grid-column: 1; grid-row: 3;">
+                        <label for="concentration"><h3>Concentration:</h3></label>
+                    </div>
+
+                    <div class="selections" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                        <select name="startingSemester" id="startingSemester" class="dropdown">
+                            <option value=1>Fall 2022</option>
+                            <option value=2>Spring 2023</option>
+                            <option value=3>Fall 2023</option>
+                            <option value=4>Spring 2024</option>
+                        </select>
+                    </div>
+                    <div class="selections" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
+                        <select name="concentration" id="concentration" class="dropdown">
+                            <option value=1>Health Policy & Management</option>
+                            <option value=2>Epidemiology & Biostatistics</option>
+                            <option value=3>Interdisciplinary</option>
+                            <option value=4>Public Health Nutrition</option>
+                        </select>
+                    </div>
+                    <div style="grid-column: 1 / 4; grid-row: 4; align-self: center; justify-self:center; ">
+                        <button class= "button" id="btn1" onclick="getClassRecommendation()">Generate Schedule</button>
+                    </div>
+            </div>
+            <div class="row-container" id="mid" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr;">
+                <div style="grid-column: 1/3; grid-row: 1;">
+                    <h2>Important Dates</h2>
+                </div>
+                <div class="practiucm" style="grid-column: 1; grid-row: 2;">
+                    <h3>Practicum:</h3>
+                </div>
+                <div class="selections" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                    <div class="textbox" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
+                        <label id="practicumDate">
+                            <!-- Practicum Date will go here -->
+                        </label>
+                    </div>
+                    
+                </div>
+                <div class="compExam" style="grid-column: 1 / 3; grid-row: 3;">
+                    <h3>Comprehensive Exam:</h3>
+                </div>
+                <div class="textbox" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
+                    <label id="compExamDate">
+                    <!-- Comp Exam Date will go here -->
+                </label>
+                </div>
+
+            </div>
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 30px 30px;">
+                    <h2>Unit Count</h2>
+                    <div class="unitCount" style="grid-column: 1; grid-row: 2;">
+                        <h3>Total Units:</h3>
+                    </div>
+                    <div class=textbox style="grid-column: 2; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                        <label id="countOfUnits">
+                        <!-- Unit Count will go here -->
+                        </label>
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+    <div id="error">
+        <!-- Error message goes here -->
+      <br>
+</body>
+</html>

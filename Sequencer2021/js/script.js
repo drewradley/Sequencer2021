@@ -1,13 +1,33 @@
+var globalStartTerm;
+var globalStartYear;
+
+// Returns what the user selected for the starting semester
+function getStartingSemester() {
+  var startingSemester = document.getElementById("startingSemester");
+  if (startingSemester.value == 1) {
+    globalStartYear = 2;
+  } else if (startingSemester.value < 3) {
+    globalStartYear = 3;
+  } else {
+    globalStartYear = 4;
+  }
+  if (startingSemester.value % 2 == 0) {
+    globalStartTerm = 2;
+  } else {
+    globalStartTerm = 1;
+  }
+}
+
 // Returns what the user selected for starting term
 function getStartingTerm() {
-  var startingTerm = document.getElementById("startingTerm");
-  return startingTerm.value;
+  //var startingTerm = document.getElementById("startingTerm");
+  return globalStartTerm;
 }
 
 // Returns what the user selected for the starting year
 function getStartingYear() {
   var startingYear = document.getElementById("startingYear");
-  return startingYear.value;
+  return globalStartYear;
 }
 
 // Returns what the user selected for the concentration
@@ -19,21 +39,19 @@ function getConcentration() {
 // Updates the page based on user input
 function updatePage() {
   // checker to see if input is a valid starting date
-  if (getStartingTerm() == 2 && getStartingYear() == 1) {
-    var changeTerm = document.getElementById("error");
-    changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
-    changeTerm.value = 1;
-    clearDates();
-    clearOptions();
-  } else {
+  // if (getStartingTerm() == 2 && getStartingYear() == 1) {
+  //   var changeTerm = document.getElementById("error");
+  //   changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
+  //   changeTerm.value = 1;
+  //   clearDates();
+  //   clearOptions();
     if (document.getElementById("error").value == 1) {
       var changeTerm = document.getElementById("error");
       changeTerm.innerHTML = "";
     }
-    changeTerms(getStartingTerm());
-    changeDates(getStartingTerm(), getStartingYear());
+    //changeTerms(getStartingTerm());
+    //changeDates(getStartingTerm(), getStartingYear());
     changeMenus(getConcentration(), getStartingTerm());
-  }
 }
 
 // Changes the semesters on the page
@@ -382,6 +400,7 @@ function countTermOccurences(termsArray) {
 }
 
 function getClassRecommendation() {
+  getStartingSemester();
   const startTerm = getStartingTerm();
   const startYear = getStartingYear();
   const concentration = getConcentration();
