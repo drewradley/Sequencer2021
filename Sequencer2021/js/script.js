@@ -656,10 +656,16 @@ function changeSemesters() {
   for (let i = 0; i < semestersArr.length; i++) {
 
     var selectedSem = document.getElementById(semestersArr[i]);
-    
-    selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
-    if (termsFrom[i] == "Fall") {
-      yearIndex += 1;
+    if (globalStartTerm == 1) {
+      selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
+      if (termsFrom[i] == "Fall") {
+        yearIndex += 1;
+      }
+    } else {
+      if (termsFrom[i] == "Fall") {
+        yearIndex += 1;
+      }
+      selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
     }
   }
 }
