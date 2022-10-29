@@ -4,14 +4,14 @@ var globalStartYear;
 // Returns what the user selected for the starting semester
 function getStartingSemester() {
   var startingSemester = document.getElementById("startingSemester");
-  if (startingSemester.value == 1) {
-    globalStartYear = 2;
-  } else if (startingSemester.value <= 3) {
-    globalStartYear = 3;
+  if (startingSemester.value == 0) {
+    globalStartYear = 0;
+  } else if (startingSemester.value <= 2) {
+    globalStartYear = 1;
   } else {
-    globalStartYear = 4;
+    globalStartYear = 2;
   }
-  if (startingSemester.value % 2 == 0) {
+  if (!(startingSemester.value % 2 == 0)) {
     globalStartTerm = 2;
   } else {
     globalStartTerm = 1;
@@ -147,31 +147,35 @@ function deleteOption(id) {
 }
 
 // Adds a drop down option to the menu
-function addOption(parentId, content, color) {
-  var element = document.createElement("option");
-  var select = document.getElementById(parentId);
-  var elementStyleColor = element.style.color;
-  element.innerHTML = content;
-  elementStyleColor = color;
-  select.appendChild(element);
+function addOption(parentIds, content, color) {
+  for (id of parentIds) {
+    var element = document.createElement("option");
+    var select = document.getElementById(id);
+    var elementStyleColor = element.style.color;
+    element.innerHTML = content;
+    elementStyleColor = color;
+    select.appendChild(element);
+  }
 }
 
 // Adds and sets a drop down option to the menu
-function setOption(parentId, content, color) {
-  var element = document.createElement("option");
-  element.innerHTML = content;
-  element.style.backgroundColor = color;
-  document.getElementById(parentId).appendChild(element);
-  document.getElementById(parentId).value = content;
+function setOption(parentIds, content, color) {
+  for (id of parentIds) {
+    var element = document.createElement("option");
+    element.innerHTML = content;
+    element.style.backgroundColor = color;
+    document.getElementById(id).appendChild(element);
+    document.getElementById(id).value = content;
+  }
 }
 
 // Adds the blank option to all drop down menus
 function addBlanks() {
   const menu =
-    [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
+  [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
     ];
   for (const id of menu) {
     var element = document.createElement("option");
@@ -184,9 +188,9 @@ function addBlanks() {
 function clearOptions() {
   const menu =
     [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
     ];
   for (const id of menu) {
     deleteOption(id);
@@ -286,40 +290,61 @@ function changeMenus(concentration, startTerm) {
 
 // updates each column with classes
 function updateColumn(classes, startTerm, column) {
-  var start = "";
+  var starts = [];
   for (let i=0; i < classes.length; i++) {
     // adds core class to second year Summer 1 but not third year Summer 1
     if ((classes[i] == PHW200E || classes[i] == PHW289) && column == 3) {
       continue;
     }
-    start = findDropdown(startTerm, classes[i].term, column, 0);
-    addOption(start, classes[i].name, classes[i].color);
-    // adds classes to both Fall 15 and/or Sring 15 dropdown menus
-    if (classes[i].term == "Fall 15" || classes[i].term == "Spring 15") {
-      start = findDropdown(startTerm, classes[i].term, column, 1);
-      setOption(start, classes[i].name, classes[i].color);
+    starts = findDropdown(startTerm, classes[i].term, column, 0);
+    addOption(starts, classes[i].name, classes[i].color);
+    // adds classes to both Fall 15 and/or Spring 15 dropdown menus
+    if (classes[i].term.includes("Fall 15") || classes[i].term.includes("Spring 15")) {
+      starts = findDropdown(startTerm, classes[i].term, column, 1);
+      setOption(starts, classes[i].name, classes[i].color);
     }
     // sets second Summer 1 to PHW289
     if (classes[i].name == "PHW289: Interdisciplinary Seminar" && column == 2) {
+      var start = starts[0];
       document.getElementById(start).value = classes[i].name;
     }
   }
 }
 
+// gets the classes dictionary
+function getClassesMap(startTerm) {
+  const concentration = getConcentration();
+  if (concentration == 1) {
+    if (startTerm == 1) {
+      return hpmRecommendationFallMap;
+    } else if (startTerm == 2) {
+      console.log(hpmRecommendationSpringMap);
+      return hpmRecommendationSpringMap;
+    }
+  } else if (concentration == 2) {
+    updateColumn(epiBioSummerTwo, startTerm, 1);
+  } else if (concentration == 3) {
+    updateColumn(interSummerTwo, startTerm, 1);
+  } else if (concentration == 4) {
+    updateColumn(phnSummerTwo, startTerm, 1);
+  }
+}
+
 // recommends classes with given schedule
 function recommendClasses(startTerm, classes) {
-  const fallStartTerms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 1", "Summer 2"];
-  const springStartTerms = ["Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 1", "Summer 2", "Fall 15", "Fall 15", "Fall 1", "Fall 2"];
+  const fallStartTerms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2"];
+  const springStartTerms = ["Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2", "Fall 15", "Fall 15", "Fall 1", "Fall 2"];
   const menu =
     [
-    ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen"],
-    ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen"],
-    ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"]
+    ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"],
+    ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"],
+    ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"]
     ];
   const fallAndSpringTerms = [fallStartTerms, springStartTerms];
   const terms = fallAndSpringTerms[startTerm-1];
-  var start = "";
-  var prevClass = "";
+  var classesMap = getClassesMap(startTerm);
+  var starts = [];
+  var prevClassTerm = "";
   var separatedClasses = splitClasses(classes, 6);
   var prevTempIndex = null;
   for (let col=1; col < separatedClasses.length+1; col++) {
@@ -331,21 +356,27 @@ function recommendClasses(startTerm, classes) {
     const termCounts = countTermOccurences(thisColTerm);
     for (let i=0; i < classesGivenYear.length; i++) {
       var recClass = classesGivenYear[i];
-      if (prevClass.term == recClass.term) {
+      var recClassTerm = classesMap.get(recClass)[0];
+      
+      if (prevClassTerm == recClassTerm) {
         second = 1;
       } else {
         second = 0;
       }
-      start = findDropdown(startTerm, recClass.term, col, second);
-      var termIndex = termsCopy.indexOf(recClass.term);
+      var thetermiwant = classesMap.get(recClass);
+      starts = findDropdown(startTerm, classesMap.get(recClass), col, second);
+      var termIndex = termsCopy.indexOf(classesMap.get(recClass)[0]);
       termsCopy.splice(termIndex, 1);
       prevTermIndex = termIndex;
       var recClassName = recClass.name;
       if (recClassName == "PHW289: Interdisciplinary Seminar" && col == 1) {
         continue;
       }
-      document.getElementById(start).value = recClass.name;
-      prevClass = recClass;
+      for (start of starts) {
+        var poop = start;
+        document.getElementById(start).value = recClass.name;
+      }
+      prevClassTerm = recClassTerm;
     }
     for (const term of termsCopy) {
       if ((term === "Fall 15" || term === "Spring 15") && termCounts[term] == 1) {
@@ -413,7 +444,11 @@ function getClassRecommendation() {
   }
 
   if (concentration == 1) {
-    recommendClasses(startTerm, hpmRecommendation);
+    if (startTerm == 1) {
+      recommendClasses(startTerm, hpmRecommendationFall)
+    } else {
+      recommendClasses(startTerm, hpmRecommendationSpring)
+    }
   } else if (concentration == 2) {
     recommendClasses(startTerm, epiBioRecommendation);
   } else if (concentration == 3) {
@@ -433,10 +468,10 @@ function updatePageButton() {
 // Counts the units with the selected classes
 function countUnits() {
   const menu =
-    [
-    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen",
-    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen",
-    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"
+  [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
     ];
   var countOfUnits = document.getElementById("countOfUnits");
   var unitCount = 0;
@@ -495,13 +530,12 @@ function getPracAndCompExamDate(className, selectedClasses) {
   var indexOfClassName = selectedClasses.indexOf(className);
   var compExamElement = document.getElementById("compExamDate");
   var practicumElement = document.getElementById("practicumDate");
-  console.log(className);
-  if (indexOfClassName < 24) {
-    practicumElement.innerHTML = "Fall of Year 3";
-    compExamElement.innerHTML = "Spring of Year 3";
+  if (indexOfClassName < 23) {
+    practicumElement.innerHTML = "By Spring of Year 2";
+    compExamElement.innerHTML = "During Fall of Year 3";
   } else if (indexOfClassName < 28) {
-    practicumElement.innerHTML = "Summer of Year 3";
-    compExamElement.innerHTML = "Fall of Year 3";
+    practicumElement.innerHTML = "By Summer of Year 2";
+    compExamElement.innerHTML = "During Fall of Year 3";
   }
 }
 
@@ -509,65 +543,100 @@ function getPracAndCompExamDate(className, selectedClasses) {
 
 // returns the correct drop down menu level
 function findDropdown(startTerm, varTerm, column, second) {
-  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen"];
-  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen"];
-  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen"];
+  const yearOne = ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"];
+  const yearTwo = ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"];
+  const yearThree = ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"];
 
   var foundTerm = 0;
+  var foundTerms = [];
   // checks Fall -> Spring -> Summer
   // returns where in the list the dropdown menu for the semester is at
   if (startTerm == 1) {
-    if (varTerm == "Fall 15" && second == 0) {
-      foundTerm = 0;
-    } else if (varTerm == "Fall 15" && second == 1) {
-      foundTerm = 1;
-    } else if (varTerm == "Fall 1") {
-      foundTerm = 2;
-    } else if (varTerm == "Fall 2") {
-      foundTerm = 3;
-    } else if (varTerm == "Spring 15" && second == 0) {
-      foundTerm = 4;
-    } else if (varTerm == "Spring 15" && second == 1) {
-      foundTerm = 5;
-    } else if (varTerm == "Spring 1") {
-      foundTerm = 6;
-    } else if (varTerm == "Spring 2") {
-      foundTerm = 7;
-    } else if (varTerm == "Summer 1") {
-      foundTerm = 8;
-    } else if (varTerm == "Summer 2") {
-      foundTerm = 9;
+    for (term of varTerm) {
+      if (term.includes("Fall")) {
+        if (term.includes("Fall 15") && second == 0) {
+          foundTerm = 0;
+        } else if (term.includes("Fall 15") && second == 1) {
+          foundTerm = 1;
+        } else if (term.includes("Fall 1")) {
+          foundTerm = 2;
+        } else if (term.includes("Fall 2")) {
+          foundTerm = 3;
+        }
+        foundTerms.push(foundTerm)
+      }
+      if (term.includes("Spring")) {
+        if (varTerm.includes("Spring 15") && second == 0) {
+          foundTerm = 4;
+        } else if (term.includes("Spring 15") && second == 1) {
+          foundTerm = 5;
+        } else if (term.includes("Spring 1")) {
+          foundTerm = 6;
+        } else if (term.includes("Spring 2")) {
+          foundTerm = 7;
+        }
+        foundTerms.push(foundTerm)
+      }
+      if (term.includes("Summer")) {
+        if (term.includes("Summer 1")) {
+          foundTerm = 10;
+        }
+        if (term.includes("Summer 2")) {
+          foundTerm = 11;
+        }
+        foundTerms.push(foundTerm)
+      }
     }
+    
+    
   } else if (startTerm == 2) {
-    if (varTerm == "Spring 15" && second == 0) {
-      foundTerm = 6;
-    } else if (varTerm == "Spring 15" && second == 1) {
-      foundTerm = 7;
-    } else if (varTerm == "Spring 1") {
-      foundTerm = 8;
-    } else if (varTerm == "Spring 2") {
-      foundTerm = 9;
-    } else if (varTerm == "Summer 1") {
-      foundTerm = 4;
-    } else if (varTerm == "Summer 2") {
-      foundTerm = 5;
-    } else if (varTerm == "Fall 15"  && second == 0) {
-      foundTerm = 0;
-    } else if (varTerm == "Fall 15"  && second == 1) {
-      foundTerm = 1;
-    }else if (varTerm == "Fall 1") {
-      foundTerm = 2;
-    } else if (varTerm == "Fall 2") {
-      foundTerm = 3;
+    for (term of varTerm) {
+      if (term.includes("Fall")) {
+        if (term.includes("Fall 15") && second == 0) {
+          foundTerm = 8;
+        } else if (term.includes("Fall 15") && second == 1) {
+          foundTerm = 9;
+        } else if (term.includes("Fall 1")) {
+          foundTerm = 10;
+        } else if (term.includes("Fall 2")) {
+          foundTerm = 11;
+        }
+        foundTerms.push(foundTerm)
+      }
+      if (term.includes("Spring")) {
+        if (varTerm.includes("Spring 15") && second == 0) {
+          foundTerm = 0;
+        } else if (term.includes("Spring 15") && second == 1) {
+          foundTerm = 1;
+        } else if (term.includes("Spring 1")) {
+          foundTerm = 2;
+        } else if (term.includes("Spring 2")) {
+          foundTerm = 3;
+        }
+        foundTerms.push(foundTerm)
+      }
+      if (term.includes("Summer")) {
+        if (term.includes("Summer 1")) {
+          foundTerm = 6;
+        }
+        if (term.includes("Summer 2")) {
+          foundTerm = 7;
+        }
+        foundTerms.push(foundTerm)
+      }
     }
   }
   // returns the correct dropdown menu based on the column input
+  var menus = []
    if (column == 1) {
-     return yearOne[foundTerm];
+    foundTerms.forEach(i => menus.push(yearOne[i]))
+    return menus
    } else if (column == 2) {
-     return yearTwo[foundTerm];
+    foundTerms.forEach(i => menus.push(yearTwo[i]))
+    return menus
    } else if (column == 3) {
-     return yearThree[foundTerm];
+    foundTerms.forEach(i => menus.push(yearThree[i]))
+    return menus
    }
 }
 
@@ -578,7 +647,7 @@ function changeSemesters() {
   const termsFromFall = ["Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer"];
   const termsFromSpring = ["Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall"];
   var termsFrom = [];
-  var yearIndex = globalStartYear-2;
+  var yearIndex = globalStartYear;
   if (globalStartTerm == 2) {
     termsFrom = termsFromSpring;
   } else {
