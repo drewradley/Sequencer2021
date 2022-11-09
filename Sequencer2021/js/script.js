@@ -220,7 +220,7 @@ function clearDates() {
 // combines two lists together based on cond
 function addListCond(initial, other, cond) {
   for(let i=0; i < other.length; i++) {
-    if (other[i].term == cond) {
+    if (other[i].term.includes(cond)) {
       initial.push(other[i]);
     }
   }
@@ -252,6 +252,7 @@ function changeMenus(concentration, startTerm) {
   addListCond(epiBioSummerTwo, epiBioConcentration, "Summer 2");
   addListCond(epiBioSummerTwo, epiBioElectives, "Summer 2");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
+  addListCond(interSummerTwo, interElectives, "Summer 2");
   addListCond(phnSummerTwo, phnConcentration, "Summer 2")
   addListCond(phnSummerTwo, phnElectives, "Summer 2");
 
@@ -318,15 +319,26 @@ function getClassesMap(startTerm) {
     if (startTerm == 1) {
       return hpmRecommendationFallMap;
     } else if (startTerm == 2) {
-      console.log(hpmRecommendationSpringMap);
       return hpmRecommendationSpringMap;
     }
   } else if (concentration == 2) {
-    updateColumn(epiBioSummerTwo, startTerm, 1);
+    if (startTerm == 1) {
+      return epiBioRecommendationFallMap;
+    } else if (startTerm == 2) {
+      return epiBioRecommendationSpringMap;
+    }
   } else if (concentration == 3) {
-    updateColumn(interSummerTwo, startTerm, 1);
+    if (startTerm == 1) {
+      return interRecommendationFallMap;
+    } else if (startTerm == 2) {
+      return interRecommendationSpringMap;
+    }
   } else if (concentration == 4) {
-    updateColumn(phnSummerTwo, startTerm, 1);
+    if (startTerm == 1) {
+      return phnRecommendationFallMap;
+    } else if (startTerm == 2) {
+      return phnRecommendationSpringMap;
+    }
   }
 }
 
@@ -373,7 +385,6 @@ function recommendClasses(startTerm, classes) {
         continue;
       }
       for (start of starts) {
-        var poop = start;
         document.getElementById(start).value = recClass.name;
       }
       prevClassTerm = recClassTerm;
@@ -450,11 +461,23 @@ function getClassRecommendation() {
       recommendClasses(startTerm, hpmRecommendationSpring)
     }
   } else if (concentration == 2) {
-    recommendClasses(startTerm, epiBioRecommendation);
+    if (startTerm == 1) {
+      recommendClasses(startTerm, epiBioRecommendationFall)
+    } else {
+      recommendClasses(startTerm, epiBioRecommendationSpring)
+    }
   } else if (concentration == 3) {
-    recommendClasses(startTerm, interRecommendation);
+    if (startTerm == 1) {
+      recommendClasses(startTerm, interRecommendationFall)
+    } else {
+      recommendClasses(startTerm, interRecommendationSpring)
+    }
   } else if (concentration == 4) {
-    recommendClasses(startTerm, phnRecommendation);
+    if (startTerm == 1) {
+      recommendClasses(startTerm, phnRecommendationFall)
+    } else {
+      recommendClasses(startTerm, phnRecommendationSpring)
+    }
   }
 
   countUnits();
@@ -656,16 +679,9 @@ function changeSemesters() {
   for (let i = 0; i < semestersArr.length; i++) {
 
     var selectedSem = document.getElementById(semestersArr[i]);
-    if (globalStartTerm == 1) {
-      selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
+    selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
       if (termsFrom[i] == "Fall") {
         yearIndex += 1;
       }
-    } else {
-      if (termsFrom[i] == "Fall") {
-        yearIndex += 1;
-      }
-      selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
-    }
   }
 }
