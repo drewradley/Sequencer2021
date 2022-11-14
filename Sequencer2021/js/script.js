@@ -45,6 +45,8 @@ function updatePage() {
   //   changeTerm.value = 1;
   //   clearDates();
   //   clearOptions();
+  newClearDates();
+  newChangeDates();
     if (document.getElementById("error").value == 1) {
       var changeTerm = document.getElementById("error");
       changeTerm.innerHTML = "";
@@ -133,6 +135,119 @@ function changeDates(term, year) {
     //  changeTerm.innerHTML = dates[start + i];
     //}
     changeTerm.innerHTML = dates[start + i];
+  }
+}
+
+function newClearDates() {
+  const dateLabels = 
+  [
+    "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine",
+    "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", 
+    "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"
+  ];
+  for (label of dateLabels) {
+    var labelElement = document.getElementById(label);
+    labelElement.innerHTML = "";
+  }
+}
+
+function newChangeDates() {
+  newClearDates();
+  const dateLabels = 
+  [
+    "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine",
+    "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", 
+    "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine"
+  ];
+  const dates = 
+  [
+    // Fall -> Spring -> Summer -> Repeat
+    // Fall 2022 Start
+    "8/22/22 - 12/11/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
+    "1/17/23 - 5/7/23", "1/10/23 - 3/5/23", "3/6/23 - 4/30/23",
+    "5/8/23 - 6/25/23", "6/27/23 - 8/13/23",
+    // Fall 2023 Start
+    "8/21/23 - 12/10/23", "8/21/23 - 10/15/23", "10/23/23 - 12/17/23",
+    "1/16/24 - 5/5/24", "1/9/24 - 3/3/24", "3/4/24 - 4/28/24",
+    "5/13/24 - 6/30/24", "7/8/24 - 8/25/24",
+  ];
+  var startYear = globalStartYear;
+  var startTerm = globalStartTerm;
+  var dateCounter = 0;
+  var startChange = false;
+
+  for (label of dateLabels) {
+    var labelElement = document.getElementById(label);
+    if (startYear == 0) {
+      // 2022
+      if (dateCounter >= dates.length) {
+        labelElement.innerHTML = "TBD";
+        continue;
+      }
+      if (label == "dateOneSeven" || label == "dateTwoSeven") {
+        continue;
+      } else {
+        labelElement.innerHTML = dates[dateCounter];
+        dateCounter += 1;
+      }
+    } else if (startYear == 1) {
+      // 2023
+      
+      if (startTerm == 2) {
+        // Spring 2023 Start
+        if (!startChange) {
+          dateCounter = 3;
+          startChange = true;
+        }
+        if (dateCounter >= dates.length) {
+          labelElement.innerHTML = "TBD";
+          continue;
+        } else {
+          if (label == "dateOneFour" || label == "dateTwoFour") {
+            continue;
+          } else {
+            labelElement.innerHTML = dates[dateCounter];
+            dateCounter += 1;
+          }
+        }
+      } else {
+        // Fall 2023 Start
+        if (!startChange) {
+          dateCounter = 8;
+          startChange = true;
+        }
+        if (dateCounter >= dates.length) {
+          labelElement.innerHTML = "TBD";
+          continue;
+        }
+        if (label == "dateOneSeven" || label == "dateTwoSeven") {
+          continue;
+        } else {
+          labelElement.innerHTML = dates[dateCounter];
+          dateCounter += 1;
+        }
+      }
+    } else if (startYear == 2) {
+      // 2024
+      if (startTerm == 2) {
+        // Spring 2024 Start
+        if (!startChange) {
+          dateCounter = 11;
+          startChange = true;
+        }
+        if (dateCounter >= dates.length) {
+          labelElement.innerHTML = "TBD";
+          continue;
+        } else {
+          if (label == "dateOneFour" || label == "dateTwoFour") {
+            continue;
+          } else {
+            labelElement.innerHTML = dates[dateCounter];
+            dateCounter += 1;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -679,7 +794,7 @@ function changeSemesters() {
   for (let i = 0; i < semestersArr.length; i++) {
 
     var selectedSem = document.getElementById(semestersArr[i]);
-    selectedSem.innerHTML = termsFrom[i] + " of " + years[yearIndex];
+    selectedSem.innerHTML = termsFrom[i] + " " + years[yearIndex];
       if (termsFrom[i] == "Fall") {
         yearIndex += 1;
       }

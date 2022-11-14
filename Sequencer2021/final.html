@@ -22,6 +22,7 @@
         }
         .container {
             padding: 30px;
+            margin: 15px;
         }
         .scrollable-div {
             float: left;
@@ -32,7 +33,7 @@
 
         .row-container {
             background-color: #eeeeee;
-            border-radius: 20px;
+            border-radius: 15px;
             border: none;
             text-align: left;
             padding: 30px 40px;
@@ -54,7 +55,7 @@
             font-size: 16px;
             margin: 2px 2px;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 15px;
         }
 
         #row {
@@ -64,7 +65,7 @@
         .menu-div {
             position: relative;
             float: right;
-            width: 500px;
+            width: 30%;
             margin: 0px 0px 10px 10px;
             left: -50px;
         }
@@ -73,6 +74,7 @@
             float: left;
             width: 33.33%;
             }
+
 
         /* Stops the float property from affecting content after the columns */
         .columns:after {
@@ -97,7 +99,7 @@
         }
 
         .dropdown {
-            border-radius: 20px;
+            border-radius: 15px;
             transition: all .5s ease;
             color: black;
         }
@@ -106,12 +108,17 @@
             width: 170px;
             background-color: white;
             border: 1px solid #d2d2d2;
-            border-radius: 20px;
+            border-radius: 15px;
             height: 20px;
             margin: 5px 5px;
             padding: 15px;
             font-size: 16px;
             text-align: left;
+        }
+
+        .dates {
+            font-style: italic;
+            color: #6e6e6e;
         }
 
     </style>
@@ -126,169 +133,273 @@
 <body>
     <div class="container">
         <div class="scrollable-div">
-            <div class="row-container" id="row">
-                <h2>Year 1</h2>
-                <div class="column">
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 1</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
                     <h3><label class=terms id="sem1"></label></h3>
-                    <h4>15 Week Courses</h4>
-                    <div>
-                        <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <h4>8 Week Courses</h4>
-                    <div>
-                        <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 1; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateOneOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateOneTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateOneThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem2"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateOneFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateOneFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateOneSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem3"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectEleven" id="selectOneEleven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwelve" id="selectOneTwelve" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateOneSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateOneEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectOneEleven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateOneNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectOneTwelve" onchange="countUnits()" class="dropdown"></select>
+                </div>
             </div>
-            <div class="row-container" id="row">
-                <h2>Year 2</h2>
-                <div class="column">
+
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 2</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
                     <h3><label class=terms id="sem4"></label></h3>
-                    <h4>15 Week Courses</h4>
-                    <div>
-                        <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <h4>8 Week Courses</h4>
-                    <div>
-                        <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 1; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateTwoOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateTwoTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateTwoThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem5"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateTwoFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateTwoFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateTwoSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem6"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectEleven" id="selectTwoEleven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwelve" id="selectTwoTwelve" onchange="countUnits()" class="dropdown"></select>
-                    </div>
+                </div>
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateTwoSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateTwoEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectTwoEleven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateTwoNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectTwoTwelve" onchange="countUnits()" class="dropdown"></select>
                 </div>
             </div>
-            <div class="row-container" id="row">
-                <h2>Year 3</h2>
-                <div class="column">
+
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 3</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
                     <h3><label class=terms id="sem7"></label></h3>
+                </div>
+                <div style="grid-column: 1; grid-row: 3;">
                     <h4>15 Week Courses</h4>
-                    <div>
-                        <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
-                    </div>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateThreeOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
                     <h4>8 Week Courses</h4>
-                    <div>
-                        <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateThreeTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateThreeThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem8"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
-                    </div>
                 </div>
-                <div class="column">
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateThreeFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateThreeFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateThreeSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem9"></label></h3>
-                    <div style="margin-top: 61px;">
-                        <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <br>
-                    <div style="margin-top: 42.5px;">
-                        <select name="selectEleven" id="selectThreeEleven" onchange="countUnits()" class="dropdown"></select>
-                    </div>
-                    <div>
-                        <select name="selectTwelve" id="selectThreeTwelve" onchange="countUnits()" class="dropdown"></select>
-                    </div>
+                </div>
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateThreeSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateThreeEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectThreeEleven" onchange="countUnits()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateThreeNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectThreeTwelve" onchange="countUnits()" class="dropdown"></select>
                 </div>
             </div>
+        
+        </div>
         </div>
         <div class="menu-div">
             <div class="row-container" id="top" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
-                <div style="grid-column: 1/3; grid-row: 1;">
+                <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Term and Concentration</h2>
+                    
                 </div>
+                
                 <div class="termAndCon" style="grid-column: 1; grid-row: 2;">
                     <label for="startingTerm"><h3>Starting term:</h3></label>
                 </div>
@@ -317,8 +428,9 @@
                 </div>
             </div>
             <div class="row-container" id="mid" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr;">
-                <div style="grid-column: 1/3; grid-row: 1;">
+                <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Important Dates</h2>
+                    
                 </div>
                 <div class="practiucm" style="grid-column: 1; grid-row: 2;">
                     <h3>Practicum:</h3>
@@ -342,7 +454,9 @@
 
             </div>
             <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 30px 30px;">
-                    <h2>Unit Count</h2>
+                    <div style="grid-column: 1/4; grid-row: 1;">
+                        <h2>Unit Count</h2>
+                    </div>
                     <div class="unitCount" style="grid-column: 1; grid-row: 2;">
                         <h3>Total Units:</h3>
                     </div>
