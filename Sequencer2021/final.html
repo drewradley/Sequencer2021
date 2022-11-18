@@ -26,9 +26,12 @@
         }
         .scrollable-div {
             float: left;
+            display: fixed;
             overflow-y: scroll;
-            width: 65%;
-            height: 85vh;
+            overflow-x: scroll;
+            min-width: 65%;
+            max-width: 65%;
+            height: 95vh;
         }
 
         .row-container {
@@ -63,17 +66,12 @@
         }
 
         .menu-div {
+            display: fixed;
             position: relative;
             float: right;
-            width: 30%;
-            margin: 0px 0px 10px 10px;
+            max-width: 30%;
             left: -50px;
         }
-
-        .column {
-            float: left;
-            width: 33.33%;
-            }
 
 
         /* Stops the float property from affecting content after the columns */
@@ -88,14 +86,20 @@
 
             
         }
+        
         select {
-            width: 285px;
+            display: block;
+            width: 80%;
             border: 1px solid #d2d2d2;
-            height: 30px;
-            margin: 10px -3px;
-            padding: 5px;
-            height: 50px;
+            margin: 10px 0px;
+            padding: 10px 40px 10px 10px;
+            line-height: 200%;
             font-size: 16px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
         }
 
         .dropdown {
@@ -105,20 +109,35 @@
         }
 
         .textbox {
-            width: 170px;
+            display: block;
+            min-width: 80%;
+            width: 100%;
+            max-width: 100%;
             background-color: white;
             border: 1px solid #d2d2d2;
             border-radius: 15px;
-            height: 20px;
-            margin: 5px 5px;
-            padding: 15px;
-            font-size: 16px;
+            height: 40%;
+            padding: 10px 40px 10px 10px;
+            font-size: 0.9vw;
             text-align: left;
+            text-overflow: clip;
+            white-space: nowrap;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            vertical-align: center;
+            line-height: 30px;
         }
 
         .dates {
             font-style: italic;
+            font-size: 15px;
             color: #6e6e6e;
+        }
+
+        #concentration {
+            min-width: fit-content;
+            width: 100%;
+            max-width: 100%;
         }
 
     </style>
@@ -133,7 +152,7 @@
 <body>
     <div class="container">
         <div class="scrollable-div">
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px; align-items: center;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 1</h2>
                 </div>
@@ -392,9 +411,8 @@
             </div>
         
         </div>
-        </div>
         <div class="menu-div">
-            <div class="row-container" id="top" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
+            <div class="row-container" id="top" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Term and Concentration</h2>
                     
@@ -407,15 +425,15 @@
                     <label for="concentration"><h3>Concentration:</h3></label>
                 </div>
 
-                <div class="selections" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
-                    <select name="startingSemester" id="startingSemester" class="dropdown">
+                <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 2; justify-self: stretch;">
+                    <select name="startingSemester" id="startingSemester" class="dropdown" style="width: 100%;">
                         <option value=0>Fall 2022</option>
                         <option value=1>Spring 2023</option>
                         <option value=2>Fall 2023</option>
                         <option value=3>Spring 2024</option>
                     </select>
                 </div>
-                <div class="selections" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
+                <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 3; justify-self: stretch;">
                     <select name="concentration" id="concentration" class="dropdown">
                         <option value=1>Health Policy & Management</option>
                         <option value=2>Epidemiology & Biostatistics</option>
@@ -423,11 +441,11 @@
                         <option value=4>Public Health Nutrition</option>
                     </select>
                 </div>
-                <div style="grid-column: 1 / 4; grid-row: 5; align-self: center; justify-self:center; ">
+                <div style="grid-column: 1 / 6; grid-row: 5; align-self: center; justify-self:center; ">
                     <button class= "button" id="btn1" onclick="getClassRecommendation()">Generate Schedule</button>
                 </div>
             </div>
-            <div class="row-container" id="mid" style="display: grid; grid-template-columns: 1fr 150px 150px; grid-template-rows: 1fr 1fr 1fr;">
+            <div class="row-container" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Important Dates</h2>
                     
@@ -435,32 +453,29 @@
                 <div class="practiucm" style="grid-column: 1; grid-row: 2;">
                     <h3>Practicum:</h3>
                 </div>
-                <div class="selections" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
-                    <div class="textbox" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
-                        <label id="practicumDate">
-                            <!-- Practicum Date will go here -->
-                        </label>
-                    </div>
-                    
+                <div class="textbox" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                    <label class="menudates" id="practicumDate">
+                        <!-- Practicum Date will go here -->
+                    </label>
                 </div>
-                <div class="compExam" style="grid-column: 1 / 3; grid-row: 3;">
+                <div class="compExam" style="grid-column: 1/2; grid-row: 3;">
                     <h3>Comprehensive Exam:</h3>
                 </div>
                 <div class="textbox" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
-                    <label id="compExamDate">
+                    <label class="menudates" id="compExamDate">
                     <!-- Comp Exam Date will go here -->
                 </label>
                 </div>
 
             </div>
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 30px 30px;">
+            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
                     <div style="grid-column: 1/4; grid-row: 1;">
                         <h2>Unit Count</h2>
                     </div>
                     <div class="unitCount" style="grid-column: 1; grid-row: 2;">
                         <h3>Total Units:</h3>
                     </div>
-                    <div class=textbox style="grid-column: 2; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                    <div class="textbox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
                         <label id="countOfUnits">
                         <!-- Unit Count will go here -->
                         </label>

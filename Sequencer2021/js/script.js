@@ -457,6 +457,26 @@ function getClassesMap(startTerm) {
   }
 }
 
+// updates the page, including other dropdown menus when a change is made
+function updateAll(selectedID) {
+  countUnits();
+  const menu =
+    [
+    ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"],
+    ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"],
+    ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"]
+    ];
+  var selectedElement = document.getElementById(selectedID);
+  var selectedClassName = selectedElement.innerHTML;
+  for (selectID of menu) {
+    var selectIDElement = document.getElementById(selectID);
+    var selectElementClassName = selectIDElement.innerHTML;
+    if (selectedClassName == selectElementClassName) {
+      selectIDElement.innerHTML.style = "text-decoration: line-through"
+    }
+  }
+}
+
 // recommends classes with given schedule
 function recommendClasses(startTerm, classes) {
   const fallStartTerms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2"];
