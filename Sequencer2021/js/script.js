@@ -664,23 +664,36 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
   var receivedCompExamDate = false;
   var compExamElement = document.getElementById("compExamDate");
   var practicumElement = document.getElementById("practicumDate");
+  var lastClassName;
   for (const className of selectedClasses) {
     var classObject = allClasses.find(obj => obj.name === className);
     if (classObject == null) {
       continue;
     } else {
+      lastClassName = className;
       unitCount += classObject.units / 1;
     }
-
-    if (unitCount >= 42 && receivedCompExamDate == false) {
-      getPracAndCompExamDate(className, selectedClasses);
-      receivedCompExamDate = true;
-    } else if (unitCount < 42) {
-      receivedCompExamDate = false;
-      compExamElement.innerHTML = "";
-      practicumElement.innerHTML = "";
-    }
   }
+  if (unitCount >= 42 && receivedCompExamDate == false) {
+    // getPracAndCompExamDate(className, selectedClasses);
+    newGetPracAndCompExamDate(lastClassName, selectedClasses)
+    receivedCompExamDate = true;
+  } else if (unitCount < 42) {
+    receivedCompExamDate = false;
+    compExamElement.innerHTML = "";
+    practicumElement.innerHTML = "";
+  }
+
+  //   if (unitCount >= 42 && receivedCompExamDate == false) {
+  //     // getPracAndCompExamDate(className, selectedClasses);
+  //     newGetPracAndCompExamDate(className, selectedClasses)
+  //     receivedCompExamDate = true;
+  //   } else if (unitCount < 42) {
+  //     receivedCompExamDate = false;
+  //     compExamElement.innerHTML = "";
+  //     practicumElement.innerHTML = "";
+  //   }
+  // }
   return unitCount;
 }
 
@@ -698,6 +711,57 @@ function getPracAndCompExamDate(className, selectedClasses) {
   }
 }
 
+function newGetPracAndCompExamDate(className, selectedClasses) {
+  var indexOfClassName = selectedClasses.lastIndexOf(className);
+  var compExamElement = document.getElementById("compExamDate");
+  var practicumElement = document.getElementById("practicumDate");
+  var separatedMenus = [];
+  const semestersArr = ["sem1", "sem2", "sem3", "sem4", "sem5", "sem6", "sem7", "sem8", "sem9"];
+  const years = [2022, 2023, 2024, 2025, 2026];
+  const termsFromFall = ["Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer"];
+  const termsFromSpring = ["Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall"];
+  const menu =
+  [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
+    ];
+  var selectOfLastClass = menu[indexOfClassName];
+  
+  var size = 4;
+  for (var i=0; i<menu.length; i+=size) {
+     separatedMenus.push(menu.slice(i,i+size));
+  }
+  
+  var semesterOfLastClass = NaN;
+  for (let i = 0; i < separatedMenus.length; i++) {
+    var separatedMenu = separatedMenus[i]
+    if (separatedMenu.includes(selectOfLastClass)) {
+      semesterOfLastClass = i;
+      break;
+    }
+  }
+
+  var termsFrom = [];
+  var yearIndex = globalStartYear;
+  if (globalStartTerm == 2) {
+    termsFrom = termsFromSpring;
+  } else {
+    termsFrom = termsFromFall;
+  }
+
+  var allSemestersWithYear = []
+  for (let i = 0; i < semestersArr.length; i++) {
+    var selectedSem = document.getElementById(semestersArr[i]);
+    allSemestersWithYear.push(termsFrom[i] + " " + years[yearIndex]);
+      if (termsFrom[i] == "Fall") {
+        yearIndex += 1;
+      }
+  }
+  practicumElement.innerHTML = allSemestersWithYear[semesterOfLastClass-1]
+  compExamElement.innerHTML = allSemestersWithYear[semesterOfLastClass]
+
+}
 
 
 // returns the correct drop down menu level
