@@ -266,9 +266,7 @@ function addOption(parentIds, content, color) {
   for (id of parentIds) {
     var element = document.createElement("option");
     var select = document.getElementById(id);
-    var elementStyleColor = element.style.color;
     element.innerHTML = content;
-    elementStyleColor = color;
     select.appendChild(element);
   }
 }
@@ -278,7 +276,6 @@ function setOption(parentIds, content, color) {
   for (id of parentIds) {
     var element = document.createElement("option");
     element.innerHTML = content;
-    element.style.backgroundColor = color;
     document.getElementById(id).appendChild(element);
     document.getElementById(id).value = content;
   }
@@ -472,7 +469,11 @@ function updateAll(selectedID) {
     var selectIDElement = document.getElementById(selectID);
     var selectElementClassName = selectIDElement.innerHTML;
     if (selectedClassName == selectElementClassName) {
-      selectIDElement.innerHTML.style = "text-decoration: line-through"
+      if (selectIDElement.style.getPropertyValue("text-decoration") == "line-through") {
+        selectIDElement.style.setProperty("text-decoration", "none")
+      } else {
+        selectIDElement.style.setProperty("text-decoration", "line-through")
+      }
     }
   }
 }
