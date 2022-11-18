@@ -38,23 +38,14 @@ function getConcentration() {
 
 // Updates the page based on user input
 function updatePage() {
-  // checker to see if input is a valid starting date
-  // if (getStartingTerm() == 2 && getStartingYear() == 1) {
-  //   var changeTerm = document.getElementById("error");
-  //   changeTerm.innerHTML = "Please select an option for the upcoming or future semesters.";
-  //   changeTerm.value = 1;
-  //   clearDates();
-  //   clearOptions();
   newClearDates();
   newChangeDates();
-    if (document.getElementById("error").value == 1) {
-      var changeTerm = document.getElementById("error");
-      changeTerm.innerHTML = "";
-    }
-    //changeTerms(getStartingTerm());
-    //changeDates(getStartingTerm(), getStartingYear());
-    changeMenus(getConcentration(), getStartingTerm());
-    changeSemesters();
+  if (document.getElementById("error").value == 1) {
+    var changeTerm = document.getElementById("error");
+    changeTerm.innerHTML = "";
+  }
+  changeMenus(getConcentration(), getStartingTerm());
+  changeSemesters();
 }
 
 // Changes the semesters on the page
@@ -76,65 +67,6 @@ function changeTerms(choice) {
   for (let i = 0; i < 10; i++) {
     var changeTerm = document.getElementById(yearThree[i]);
     changeTerm.innerHTML = terms[(start + i) % 10];
-  }
-}
-
-// Changes the dates by the semesters on the page
-function changeDates(term, year) {
-  // order goes fall, spring, summer and then repeat
-  const dates =
-  [
-    "8/23/21 - 12/19/21", "8/23/21 - 12/12/21", "8/23/21 - 10/17/21", "10/25/21 - 12/19/21",
-    "1/18/22 - 5/1/22", "1/18/22 - 5/8/22", "1/11/22 - 3/6/22", "3/7/22 - 5/1/22",
-    "5/9/22 - 6/26/22", "6/27/22 - 8/14/22",
-
-    "8/22/22 - 12/18/22", "8/22/22 - 12/11/22", "8/22/22 - 10/16/22", "10/24/22 - 12/18/22",
-    "1/17/23 - 4/30/23", "1/17/23 - 5/7/23", "1/10/23 - 3/5/23",  "3/6/23 - 4/30/23",
-    "5/8/23 - 6/25/23", "6/26/23 - 8/13/23",
-
-    "8/21/23 - 12/10/23", "8/21/23 - 12/03/23", "8/21/23 - 10/15/23", "10/23/23 - 12/17/23",
-    "1/16/24 - 5/5/24", "1/16/24 - 5/13/24", "1/09/24 - 3/3/24", "3/4/24 - 4/28/24",
-    "5/13/24 - 6/30/24", "7/8/24 - 8/25/24"
-  ];
-  const years =
-  [
-  "dateOneOne", "dateOneTwo", "dateOneThree", "dateOneFour", "dateOneFive", "dateOneSix", "dateOneSeven", "dateOneEight", "dateOneNine", "dateOneTen",
-  "dateTwoOne", "dateTwoTwo", "dateTwoThree", "dateTwoFour", "dateTwoFive", "dateTwoSix", "dateTwoSeven", "dateTwoEight", "dateTwoNine", "dateTwoTen",
-  "dateThreeOne", "dateThreeTwo", "dateThreeThree", "dateThreeFour", "dateThreeFive", "dateThreeSix", "dateThreeSeven", "dateThreeEight", "dateThreeNine", "dateThreeTen",
-  ];
-  var start = 0;
-
-  // checks which year and then which term to determine which date is the correct one to start with
-  if (year == 1) {
-    // 2021 fall
-    if (term == 1) {
-      start = 0;
-    }
-  } else if (year == 2) {
-    // 2022 spring -> summer -> fall
-    if (term == 2) {
-      start = 4;
-    } else if (term == 1) {
-      start = 10;
-    }
-  } else if (year == 3) {
-    // 2023 spring -> summer -> fall
-    if (term == 2) {
-      start = 14;
-    } else if (term == 1) {
-      start = 20;
-    }
-  }
-
-  // updates the dates using the chosen starting point, if the date isn't in the menu then it displays "TBD"
-  for (let i = 0; i < 30; i++) {
-    var changeTerm = document.getElementById(years[i]);
-    //if (start + i >= 20) {
-    //  changeTerm.innerHTML = "TBD";
-    //} else {
-    //  changeTerm.innerHTML = dates[start + i];
-    //}
-    changeTerm.innerHTML = dates[start + i];
   }
 }
 
@@ -457,29 +389,66 @@ function getClassesMap(startTerm) {
 // updates the page, including other dropdown menus when a change is made
 function updateAll(selectedID) {
   countUnits();
+  checkConflicts(selectedID);
+}
+
+function checkConflicts() {
   const menu =
-    [
-    ["selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve"],
-    ["selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve"],
-    ["selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"]
-    ];
-  var selectedElement = document.getElementById(selectedID);
-  var selectedClassName = selectedElement.innerHTML;
-  for (selectID of menu) {
-    var selectIDElement = document.getElementById(selectID);
-    var selectElementClassName = selectIDElement.innerHTML;
-    if (selectedClassName == selectElementClassName) {
-      if (selectIDElement.style.getPropertyValue("text-decoration") == "line-through") {
-        selectIDElement.style.setProperty("text-decoration", "none")
-      } else {
-        selectIDElement.style.setProperty("text-decoration", "line-through")
+  [
+  "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+  "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+  "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
+  ];
+  for (selectID1 of menu) {
+    var match = false;
+    var selectID1element = document.getElementById(selectID1);
+    var selectID1ClassName = selectID1element.value;
+    if (selectID1ClassName == "") {
+      selectID1element.style.borderColor = "#d2d2d2";
+      selectID1element.style.backgroundColor = "white";
+    }
+    if (!match) {
+      selectID1element.style.borderColor = "#d2d2d2";
+      selectID1element.style.backgroundColor = "white";
+    }
+    for (selectID2 of menu) {
+      var selectID2element = document.getElementById(selectID2);
+      var selectID2ClassName = selectID2element.value;
+      if (selectID1 == selectID2) {
+        continue;
+      }
+      if (selectID2ClassName == "") {
+        selectID2element.style.borderColor = "#d2d2d2";
+        selectID2element.style.backgroundColor = "white";
+      }
+      if (selectID1ClassName == selectID2ClassName && selectID1ClassName != "") {
+        selectID1element.style.borderColor = "red";
+        selectID1element.style.backgroundColor = "#ffcccb";
+        selectID2element.style.borderColor = "red";
+        selectID2element.style.backgroundColor = "#ffcccb";
+        match = true;
       }
     }
   }
 }
 
+function resetColors() {
+  const menu =
+    [
+    "selectOneOne", "selectOneTwo", "selectOneThree", "selectOneFour", "selectOneFive", "selectOneSix", "selectOneSeven", "selectOneEight", "selectOneNine", "selectOneTen", "selectOneEleven", "selectOneTwelve",
+    "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
+    "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
+    ];
+  for (selectID of menu) {
+    var elm = document.getElementById(selectID)
+    elm.style.borderColor = "#d2d2d2";
+    elm.style.backgroundColor = "white";
+  }
+}
+
 // recommends classes with given schedule
 function recommendClasses(startTerm, classes) {
+  resetColors();
   const fallStartTerms = ["Fall 15", "Fall 15", "Fall 1", "Fall 2", "Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2"];
   const springStartTerms = ["Spring 15", "Spring 15", "Spring 1", "Spring 2", "Summer 15", "Summer 15", "Summer 1", "Summer 2", "Fall 15", "Fall 15", "Fall 1", "Fall 2"];
   const menu =
@@ -675,8 +644,7 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
     }
   }
   if (unitCount >= 42 && receivedCompExamDate == false) {
-    // getPracAndCompExamDate(className, selectedClasses);
-    newGetPracAndCompExamDate(lastClassName, selectedClasses)
+    getPracAndCompExamDate(lastClassName, selectedClasses)
     receivedCompExamDate = true;
   } else if (unitCount < 42) {
     receivedCompExamDate = false;
@@ -684,34 +652,11 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
     practicumElement.innerHTML = "";
   }
 
-  //   if (unitCount >= 42 && receivedCompExamDate == false) {
-  //     // getPracAndCompExamDate(className, selectedClasses);
-  //     newGetPracAndCompExamDate(className, selectedClasses)
-  //     receivedCompExamDate = true;
-  //   } else if (unitCount < 42) {
-  //     receivedCompExamDate = false;
-  //     compExamElement.innerHTML = "";
-  //     practicumElement.innerHTML = "";
-  //   }
-  // }
   return unitCount;
 }
 
-// Fills out when the Practicum and Comp Exam are.
+// gets the practicum and comp exam date
 function getPracAndCompExamDate(className, selectedClasses) {
-  var indexOfClassName = selectedClasses.indexOf(className);
-  var compExamElement = document.getElementById("compExamDate");
-  var practicumElement = document.getElementById("practicumDate");
-  if (indexOfClassName < 23) {
-    practicumElement.innerHTML = "By Spring of Year 2";
-    compExamElement.innerHTML = "During Fall of Year 3";
-  } else if (indexOfClassName < 28) {
-    practicumElement.innerHTML = "By Summer of Year 2";
-    compExamElement.innerHTML = "During Fall of Year 3";
-  }
-}
-
-function newGetPracAndCompExamDate(className, selectedClasses) {
   var indexOfClassName = selectedClasses.lastIndexOf(className);
   var compExamElement = document.getElementById("compExamDate");
   var practicumElement = document.getElementById("practicumDate");
@@ -758,7 +703,7 @@ function newGetPracAndCompExamDate(className, selectedClasses) {
         yearIndex += 1;
       }
   }
-  practicumElement.innerHTML = allSemestersWithYear[semesterOfLastClass-1]
+  practicumElement.innerHTML = "By " + allSemestersWithYear[semesterOfLastClass-1]
   compExamElement.innerHTML = allSemestersWithYear[semesterOfLastClass]
 
 }

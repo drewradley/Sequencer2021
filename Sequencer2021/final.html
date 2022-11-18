@@ -66,11 +66,8 @@
         }
 
         .menu-div {
-            display: fixed;
-            position: relative;
             float: right;
-            max-width: 30%;
-            left: -50px;
+            max-width: 33%;
         }
 
 
@@ -118,13 +115,11 @@
             border-radius: 15px;
             height: 40%;
             padding: 10px 40px 10px 10px;
-            font-size: 0.9vw;
+            font-size: 16px;
             text-align: left;
+            overflow: hidden;
             text-overflow: clip;
             white-space: nowrap;
-            overflow-x: hidden;
-            overflow-y: hidden;
-            vertical-align: center;
             line-height: 30px;
         }
 
@@ -166,10 +161,10 @@
                     <label class="dates" id="dateOneOne"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 5;">
-                    <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectOne" id="selectOneOne" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 6;">
-                    <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwo" id="selectOneTwo" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 7;">
                     <h4>8 Week Courses</h4>
@@ -178,13 +173,13 @@
                     <label class="dates" id="dateOneTwo"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 9;">
-                    <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectThree" id="selectOneThree" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 10;">
                     <label class="dates" id="dateOneThree"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 11;">
-                    <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFour" id="selectOneFour" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 2; grid-row: 2;">
@@ -194,22 +189,22 @@
                     <label class="dates" id="dateOneFour"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 5;">
-                    <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFive" id="selectOneFive" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
-                    <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSix" id="selectOneSix" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateOneFive"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 9;">
-                    <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSeven" id="selectOneSeven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 10;">
                     <label class="dates" id="dateOneSix"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 11;">
-                    <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEight" id="selectOneEight" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 3; grid-row: 2;">
@@ -219,22 +214,22 @@
                     <label class="dates" id="dateOneSeven"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 5;">
-                    <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectNine" id="selectOneNine" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
-                    <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTen" id="selectOneTen" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateOneEight"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 9;">
-                    <select name="selectEleven" id="selectOneEleven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEleven" id="selectOneEleven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 10;">
                     <label class="dates" id="dateOneNine"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 11;">
-                    <select name="selectTwelve" id="selectOneTwelve" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwelve" id="selectOneTwelve" onchange="updateAll()" class="dropdown"></select>
                 </div>
             </div>
 
@@ -252,10 +247,10 @@
                     <label class="dates" id="dateTwoOne"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 5;">
-                    <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectOne" id="selectTwoOne" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 6;">
-                    <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwo" id="selectTwoTwo" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 7;">
                     <h4>8 Week Courses</h4>
@@ -264,13 +259,13 @@
                     <label class="dates" id="dateTwoTwo"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 9;">
-                    <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectThree" id="selectTwoThree" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 10;">
                     <label class="dates" id="dateTwoThree"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 11;">
-                    <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFour" id="selectTwoFour" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 2; grid-row: 2;">
@@ -280,22 +275,22 @@
                     <label class="dates" id="dateTwoFour"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 5;">
-                    <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFive" id="selectTwoFive" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
-                    <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSix" id="selectTwoSix" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateTwoFive"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 9;">
-                    <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSeven" id="selectTwoSeven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 10;">
                     <label class="dates" id="dateTwoSix"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 11;">
-                    <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEight" id="selectTwoEight" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 3; grid-row: 2;">
@@ -305,22 +300,22 @@
                     <label class="dates" id="dateTwoSeven"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 5;">
-                    <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectNine" id="selectTwoNine" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
-                    <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTen" id="selectTwoTen" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateTwoEight"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 9;">
-                    <select name="selectEleven" id="selectTwoEleven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEleven" id="selectTwoEleven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 10;">
                     <label class="dates" id="dateTwoNine"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 11;">
-                    <select name="selectTwelve" id="selectTwoTwelve" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwelve" id="selectTwoTwelve" onchange="updateAll()" class="dropdown"></select>
                 </div>
             </div>
 
@@ -338,10 +333,10 @@
                     <label class="dates" id="dateThreeOne"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 5;">
-                    <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectOne" id="selectThreeOne" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 6;">
-                    <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwo" id="selectThreeTwo" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 7;">
                     <h4>8 Week Courses</h4>
@@ -350,13 +345,13 @@
                     <label class="dates" id="dateThreeTwo"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 9;">
-                    <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectThree" id="selectThreeThree" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 1; grid-row: 10;">
                     <label class="dates" id="dateThreeThree"></label>
                 </div>
                 <div style="grid-column: 1; grid-row: 11;">
-                    <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFour" id="selectThreeFour" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 2; grid-row: 2;">
@@ -366,22 +361,22 @@
                     <label class="dates" id="dateThreeFour"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 5;">
-                    <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectFive" id="selectThreeFive" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
-                    <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSix" id="selectThreeSix" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateThreeFive"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 9;">
-                    <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectSeven" id="selectThreeSeven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 2; grid-row: 10;">
                     <label class="dates" id="dateThreeSix"></label>
                 </div>
                 <div style="grid-column: 2; grid-row: 11;">
-                    <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEight" id="selectThreeEight" onchange="updateAll()" class="dropdown"></select>
                 </div>
 
                 <div style="grid-column: 3; grid-row: 2;">
@@ -391,22 +386,22 @@
                     <label class="dates" id="dateThreeSeven"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 5;">
-                    <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectNine" id="selectThreeNine" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
-                    <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTen" id="selectThreeTen" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateThreeEight"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 9;">
-                    <select name="selectEleven" id="selectThreeEleven" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectEleven" id="selectThreeEleven" onchange="updateAll()" class="dropdown"></select>
                 </div>
                 <div style="grid-column: 3; grid-row: 10;">
                     <label class="dates" id="dateThreeNine"></label>
                 </div>
                 <div style="grid-column: 3; grid-row: 11;">
-                    <select name="selectTwelve" id="selectThreeTwelve" onchange="countUnits()" class="dropdown"></select>
+                    <select name="selectTwelve" id="selectThreeTwelve" onchange="updateAll()" class="dropdown"></select>
                 </div>
             </div>
         
