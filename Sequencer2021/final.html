@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="header">
-        <h1 style="font-family: Arial">Plan Your Schedule.</h1>
+        <div>
+            <h1 style="font-family: Arial;">Plan Your Schedule.</h1>
         </div>
-    <title>Document</title>
+    </div>
+    <title>Schedule Planner</title>
     <!-- Styles -->
     <style>
         body {
@@ -19,10 +21,13 @@
             color: white;
             padding: 30px 40px;
             text-align: left;
+            font-family: Arial;
         }
         .container {
+            display: grid;
             padding: 30px;
             margin: 15px;
+            grid-template-columns: 60% 40%;
         }
         .scrollable-div {
             float: left;
@@ -30,33 +35,43 @@
             overflow-y: scroll;
             overflow-x: scroll;
             min-width: 65%;
-            max-width: 65%;
             height: 95vh;
         }
 
-        .row-container {
+        .row-container-menu {
             background-color: #eeeeee;
             border-radius: 15px;
             border: none;
             text-align: left;
-            padding: 30px 40px;
+            padding: 5% 10%;
             text-decoration: none;
             display: inline-block;
             font-family: "Arial";
-            width: 90%;
+            margin: 10px;
+        }
+
+        .row-container-year {
+            background-color: #eeeeee;
+            border-radius: 15px;
+            border: none;
+            text-align: left;
+            padding: 2% 5%;
+            text-decoration: none;
+            display: inline-block;
+            font-family: "Arial";
             margin: 10px;
         }
 
         .button {
             background-color: #003262;
             border: none;
+            height: auto;
             color: white;
             padding: 20px 28px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 2px 2px;
             cursor: pointer;
             border-radius: 15px;
         }
@@ -65,9 +80,21 @@
             min-height: 40vh;
         }
 
-        .menu-div {
-            float: right;
-            max-width: 33%;
+        @media screen and (max-width: 1024px) and (orientation: portrait) {
+            .container {
+                display: grid;
+                grid-template-areas: "top" "bottom";
+                padding: 0px;
+                margin: 0px;
+                grid-template-columns: 1fr;
+            }
+            .menu-div {
+                grid-area: "top";
+
+            }
+            .scrollable-div {
+                grid-area: bottom;
+            }
         }
 
 
@@ -147,7 +174,7 @@
 <body>
     <div class="container">
         <div class="scrollable-div">
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px; align-items: center;">
+            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px; align-items: center;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 1</h2>
                 </div>
@@ -233,7 +260,7 @@
                 </div>
             </div>
 
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 2</h2>
                 </div>
@@ -319,7 +346,7 @@
                 </div>
             </div>
 
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 3</h2>
                 </div>
@@ -407,7 +434,7 @@
         
         </div>
         <div class="menu-div">
-            <div class="row-container" id="top" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
+            <div class="row-container-menu" id="top" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Term and Concentration</h2>
                     
@@ -436,34 +463,34 @@
                         <option value=4>Public Health Nutrition</option>
                     </select>
                 </div>
-                <div style="grid-column: 1 / 6; grid-row: 5; align-self: center; justify-self:center; ">
-                    <button class= "button" id="btn1" onclick="getClassRecommendation()">Generate Schedule</button>
+                <div style="grid-column: 1 / 6; grid-row: 5; justify-self: center; align-self: center;">
+                    <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Schedule</button>
                 </div>
             </div>
-            <div class="row-container" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
+            <div class="row-container-menu" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Important Dates</h2>
                     
                 </div>
-                <div class="practiucm" style="grid-column: 1; grid-row: 2;">
+                <div class="practiucm" style="grid-column: 1; grid-row: 2; align-self: center;">
                     <h3>Practicum:</h3>
                 </div>
-                <div class="textbox" style="grid-column: 3; grid-row: 2; align-items: end; justify-content: end; justify-self: end;">
+                <div class="textbox" style="grid-column: 3; grid-row: 2; align-self: center; justify-content: end; justify-self: end;">
                     <label class="menudates" id="practicumDate">
                         <!-- Practicum Date will go here -->
                     </label>
                 </div>
-                <div class="compExam" style="grid-column: 1/2; grid-row: 3;">
+                <div class="compExam" style="grid-column: 1/2; grid-row: 3; align-self: center;">
                     <h3>Comprehensive Exam:</h3>
                 </div>
-                <div class="textbox" style="grid-column: 3; grid-row: 3; align-items: end; justify-content: end; justify-self: end;">
+                <div class="textbox" style="grid-column: 3; grid-row: 3; align-self: center; justify-content: end; justify-self: end;">
                     <label class="menudates" id="compExamDate">
                     <!-- Comp Exam Date will go here -->
                 </label>
                 </div>
 
             </div>
-            <div class="row-container" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
+            <div class="row-container-menu" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
                     <div style="grid-column: 1/4; grid-row: 1;">
                         <h2>Unit Count</h2>
                     </div>
