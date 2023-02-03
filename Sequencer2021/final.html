@@ -45,9 +45,11 @@
             text-align: left;
             padding: 5% 10%;
             text-decoration: none;
-            display: inline-block;
             font-family: "Arial";
             margin: 10px;
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+            grid-template-rows: 1fr 1fr 1fr 15px 1fr;
         }
 
         .row-container-year {
@@ -57,7 +59,6 @@
             text-align: left;
             padding: 2% 5%;
             text-decoration: none;
-            display: inline-block;
             font-family: "Arial";
             margin: 10px;
         }
@@ -79,21 +80,84 @@
         #row {
             min-height: 40vh;
         }
+        @media screen and (min-width: 1024px) {
+            .courselengthc2r3 {
+                display: none;
+            }
+            .courselengthc2r7  {
+                display: none;
+            }
+            .courselengthc3r3  {
+                display: none;
+            }
+            .courselengthc3r7  {
+                display: none;
+            }
+            .row-container-year {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr; 
+                grid-template-rows: 60px; 
+                align-items: center;
+            }
+        }
 
-        @media screen and (max-width: 1024px) and (orientation: portrait) {
+        /* Mobile and Reduced Window Size View*/
+        @media screen and (max-width: 1024px) {
             .container {
                 display: grid;
-                grid-template-areas: "top" "bottom";
+                grid-template-areas: "top top" "bottom bottom";
                 padding: 0px;
                 margin: 0px;
                 grid-template-columns: 1fr;
             }
             .menu-div {
                 grid-area: "top";
-
+                max-width: 1024px;
             }
             .scrollable-div {
                 grid-area: bottom;
+            }
+            .row-container-year {
+                display:table;
+                width: 100%;
+            }
+            .row-container-menu {
+                display: table;
+                /* width: 100%;*/
+                max-width: 1024px;
+            }
+            #top.row-container-menu {
+                display: grid;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            #top.row-container-menu {
+                display: table !important;
+            }
+            #mid.row-container-menu {
+                display: grid;
+                grid-template-columns: 1fr !important;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr !important;
+            }
+            .practicum {
+                grid-row: 2 !important;
+            }
+            #practicumdatetextbox {
+                grid-row: 3 !important;
+                grid-column: 1/2 !important;
+                justify-self: start !important;
+            }
+            .compExam {
+                grid-row: 4 !important;
+            }
+            #compexamdatetextbox {
+                grid-row: 5 !important;
+                grid-column: 1/2 !important;
+                justify-self: start !important;
+            }
+            .textbox {
+                padding: 10px 10px !important;
             }
         }
 
@@ -174,7 +238,7 @@
 <body>
     <div class="container">
         <div class="scrollable-div">
-            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px; align-items: center;">
+            <div class="row-container-year" id="bot">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 1</h2>
                 </div>
@@ -212,6 +276,9 @@
                 <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem2"></label></h3>
                 </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 2; grid-row: 4;">
                     <label class="dates" id="dateOneFour"></label>
                 </div>
@@ -220,6 +287,9 @@
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
                     <select name="selectSix" id="selectOneSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateOneFive"></label>
@@ -237,6 +307,9 @@
                 <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem3"></label></h3>
                 </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 3; grid-row: 4;">
                     <label class="dates" id="dateOneSeven"></label>
                 </div>
@@ -245,6 +318,9 @@
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
                     <select name="selectTen" id="selectOneTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateOneEight"></label>
@@ -260,7 +336,7 @@
                 </div>
             </div>
 
-            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+            <div class="row-container-year" id="bot">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 2</h2>
                 </div>
@@ -298,6 +374,9 @@
                 <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem5"></label></h3>
                 </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 2; grid-row: 4;">
                     <label class="dates" id="dateTwoFour"></label>
                 </div>
@@ -306,6 +385,9 @@
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
                     <select name="selectSix" id="selectTwoSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateTwoFive"></label>
@@ -323,6 +405,9 @@
                 <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem6"></label></h3>
                 </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 3; grid-row: 4;">
                     <label class="dates" id="dateTwoSeven"></label>
                 </div>
@@ -331,6 +416,9 @@
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
                     <select name="selectTen" id="selectTwoTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateTwoEight"></label>
@@ -346,7 +434,7 @@
                 </div>
             </div>
 
-            <div class="row-container-year" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 60px;">
+            <div class="row-container-year" id="bot">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 3</h2>
                 </div>
@@ -384,6 +472,9 @@
                 <div style="grid-column: 2; grid-row: 2;">
                     <h3><label class=terms id="sem8"></label></h3>
                 </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 2; grid-row: 4;">
                     <label class="dates" id="dateThreeFour"></label>
                 </div>
@@ -392,6 +483,9 @@
                 </div>
                 <div style="grid-column: 2; grid-row: 6;">
                     <select name="selectSix" id="selectThreeSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 2; grid-row: 8;">
                     <label class="dates" id="dateThreeFive"></label>
@@ -409,6 +503,9 @@
                 <div style="grid-column: 3; grid-row: 2;">
                     <h3><label class=terms id="sem9"></label></h3>
                 </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
                 <div style="grid-column: 3; grid-row: 4;">
                     <label class="dates" id="dateThreeSeven"></label>
                 </div>
@@ -417,6 +514,9 @@
                 </div>
                 <div style="grid-column: 3; grid-row: 6;">
                     <select name="selectTen" id="selectThreeTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
                 </div>
                 <div style="grid-column: 3; grid-row: 8;">
                     <label class="dates" id="dateThreeEight"></label>
@@ -434,7 +534,7 @@
         
         </div>
         <div class="menu-div">
-            <div class="row-container-menu" id="top" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 15px 1fr;">
+            <div class="row-container-menu" id="top" style="display: grid;">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Term and Concentration</h2>
                     
@@ -443,10 +543,6 @@
                 <div class="termAndCon" style="grid-column: 1; grid-row: 2;">
                     <label for="startingTerm"><h3>Starting term:</h3></label>
                 </div>
-                <div class="termAndCon" style="grid-column: 1; grid-row: 3;">
-                    <label for="concentration"><h3>Concentration:</h3></label>
-                </div>
-
                 <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 2; justify-self: stretch;">
                     <select name="startingSemester" id="startingSemester" class="dropdown" style="width: 100%;">
                         <option value=0>Fall 2022</option>
@@ -454,6 +550,9 @@
                         <option value=2>Fall 2023</option>
                         <option value=3>Spring 2024</option>
                     </select>
+                </div>
+                <div class="termAndCon" style="grid-column: 1; grid-row: 3;">
+                    <label for="concentration"><h3>Concentration:</h3></label>
                 </div>
                 <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 3; justify-self: stretch;">
                     <select name="concentration" id="concentration" class="dropdown">
@@ -467,42 +566,43 @@
                     <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Schedule</button>
                 </div>
             </div>
-            <div class="row-container-menu" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
-                <div style="grid-column: 1/4; grid-row: 1;">
-                    <h2>Important Dates</h2>
-                    
-                </div>
-                <div class="practiucm" style="grid-column: 1; grid-row: 2; align-self: center;">
-                    <h3>Practicum:</h3>
-                </div>
-                <div class="textbox" style="grid-column: 3; grid-row: 2; align-self: center; justify-content: end; justify-self: end;">
-                    <label class="menudates" id="practicumDate">
-                        <!-- Practicum Date will go here -->
-                    </label>
-                </div>
-                <div class="compExam" style="grid-column: 1/2; grid-row: 3; align-self: center;">
-                    <h3>Comprehensive Exam:</h3>
-                </div>
-                <div class="textbox" style="grid-column: 3; grid-row: 3; align-self: center; justify-content: end; justify-self: end;">
-                    <label class="menudates" id="compExamDate">
-                    <!-- Comp Exam Date will go here -->
-                </label>
-                </div>
-
-            </div>
-            <div class="row-container-menu" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
-                    <div style="grid-column: 1/4; grid-row: 1;">
-                        <h2>Unit Count</h2>
+            <div class="menu-dates-units">
+                <div class="row-container-menu" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
+                    <div class="importantdatesheader" style="grid-column: 1/4; grid-row: 1;">
+                        <h2>Important Dates</h2>
+                        
                     </div>
-                    <div class="unitCount" style="grid-column: 1; grid-row: 2;">
-                        <h3>Total Units:</h3>
+                    <div class="practiucm" style="grid-column: 1; grid-row: 2; align-self: center;">
+                        <h3>Practicum:</h3>
                     </div>
-                    <div class="textbox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
-                        <label id="countOfUnits">
-                        <!-- Unit Count will go here -->
+                    <div class="textbox" id="practicumdatetextbox" style="grid-column: 3; grid-row: 2; align-self: center; justify-content: end; justify-self: end;">
+                        <label class="menudates" id="practicumDate">
+                            <!-- Practicum Date will go here -->
                         </label>
+                    </div>
+                    <div class="compExam" style="grid-column: 1/2; grid-row: 3; align-self: center;">
+                        <h3>Comprehensive Exam:</h3>
+                    </div>
+                    <div class="textbox" id="compexamdatetextbox"style="grid-column: 3; grid-row: 3; align-self: center; justify-content: end; justify-self: end;">
+                        <label class="menudates" id="compExamDate">
+                        <!-- Comp Exam Date will go here -->
+                    </label>
+                    </div>
+
                 </div>
-            
+                <div class="row-container-menu" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
+                        <div style="grid-column: 1/4; grid-row: 1;">
+                            <h2>Unit Count</h2>
+                        </div>
+                        <div class="unitCount" style="grid-column: 1; grid-row: 2;">
+                            <h3>Total Units:</h3>
+                        </div>
+                        <div class="textbox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
+                            <label id="countOfUnits">
+                            <!-- Unit Count will go here -->
+                            </label>
+                </div>
+            </div>
             </div>
             
         </div>
