@@ -109,23 +109,18 @@
                 grid-template-columns: 1fr;
             }
             .menu-div {
-                grid-area: "top";
+                grid-area: top;
             }
             .scrollable-div {
                 grid-area: bottom;
             }
-            .row-container-year {
-                display:table;
-            }
-            .row-container-menu {
-                display: table;
-            }
-            #top.row-container-menu {
-                display: grid;
-            }
         }
 
         @media screen and (max-width: 450px) {
+            .header {
+                grid-template-columns: 1fr;
+            }
+            
             .row-container-menu {
                 width: unset;
             }
@@ -138,12 +133,6 @@
                 display: grid;
                 grid-template-columns: 1fr !important;
                 grid-template-rows: 1fr 1fr 1fr 1fr 1fr !important;
-            }
-            /* #bot.row-container-menu {
-                width: 100%;
-            } */
-            #bot.row-container-year {
-                width: 80%;
             }
             .practicum {
                 grid-row: 2 !important;
@@ -164,17 +153,15 @@
             .textbox {
                 padding: 10px 10px !important;
             }
-            .header {
-                display: table !important;
-                padding: 5% 5%;
-            }
             #inquiries-section {
                 justify-content: start !important;
+                grid-row: 2;
+                grid-column: 1 !important;
             }
             #title-section {
                 line-height: unset !important;
             }
-            .select {
+            select {
                 width: 100% !important;
             }
             .menu-div {
@@ -200,7 +187,12 @@
                 grid-column: 1 !important;
                 grid-row: 6 !important;
             }
-
+            #unitCountTextBox.textbox {
+                align-self: center !important;
+            }
+            .unitCount {
+                grid-column: 1 / 2 !important;
+            }
         }
 
 
@@ -659,7 +651,7 @@
                         <div class="unitCount" style="grid-column: 1; grid-row: 2;">
                             <h3>Total Units:</h3>
                         </div>
-                        <div class="textbox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
+                        <div class="textbox" id="unitCountTextBox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
                             <label id="countOfUnits">
                             <!-- Unit Count will go here -->
                             </label>
