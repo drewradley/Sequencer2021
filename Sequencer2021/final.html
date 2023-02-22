@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <div class="header">
-        <div>
-            <h1 style="font-family: Arial;">Plan Your Schedule.</h1>
-        </div>
-    </div>
     <title>Schedule Planner</title>
     <!-- Styles -->
     <style>
@@ -22,6 +17,9 @@
             padding: 30px 40px;
             text-align: left;
             font-family: Arial;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 100%;
         }
         .container {
             display: grid;
@@ -105,40 +103,47 @@
         @media screen and (max-width: 1024px) {
             .container {
                 display: grid;
-                grid-template-areas: "top top" "bottom bottom";
+                grid-template-areas: "top" "bottom" !important;
                 padding: 0px;
                 margin: 0px;
                 grid-template-columns: 1fr;
             }
             .menu-div {
                 grid-area: "top";
-                max-width: 1024px;
             }
             .scrollable-div {
                 grid-area: bottom;
             }
             .row-container-year {
                 display:table;
-                width: 100%;
             }
             .row-container-menu {
                 display: table;
-                /* width: 100%;*/
-                max-width: 1024px;
             }
             #top.row-container-menu {
                 display: grid;
             }
         }
 
-        @media screen and (max-width: 380px) {
+        @media screen and (max-width: 450px) {
+            .row-container-menu {
+                width: unset;
+            }
             #top.row-container-menu {
-                display: table !important;
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr !important;
             }
             #mid.row-container-menu {
                 display: grid;
                 grid-template-columns: 1fr !important;
                 grid-template-rows: 1fr 1fr 1fr 1fr 1fr !important;
+            }
+            /* #bot.row-container-menu {
+                width: 100%;
+            } */
+            #bot.row-container-year {
+                width: 80%;
             }
             .practicum {
                 grid-row: 2 !important;
@@ -159,6 +164,43 @@
             .textbox {
                 padding: 10px 10px !important;
             }
+            .header {
+                display: table !important;
+                padding: 5% 5%;
+            }
+            #inquiries-section {
+                justify-content: start !important;
+            }
+            #title-section {
+                line-height: unset !important;
+            }
+            .select {
+                width: 100% !important;
+            }
+            .menu-div {
+                margin-bottom: 10px;
+            }
+            .termLabelDiv {
+                grid-column: 1 !important;
+                grid-row: 2 !important;
+            }
+            #termSelect.selections {
+                grid-row: 3 !important;
+                grid-column: 1 !important;
+            }
+            .concentrationLabelDiv {
+                grid-column: 1 !important;
+                grid-row: 4 !important;
+            }
+            #conSelect.selections {
+                grid-column: 1 !important;
+                grid-row: 5 !important;
+            }
+            .recScheduleDiv {
+                grid-column: 1 !important;
+                grid-row: 6 !important;
+            }
+
         }
 
 
@@ -195,6 +237,7 @@
             transition: all .5s ease;
             color: black;
         }
+        
 
         .textbox {
             display: block;
@@ -225,6 +268,17 @@
             width: 100%;
             max-width: 100%;
         }
+        #title-section {
+            grid-column: 1;
+            align-self: center;
+            line-height: 2.5vh;
+        }
+        #inquiries-section {
+            grid-column: 2;
+            align-self: end;
+            display: flex;
+            justify-content: end;
+        }
 
     </style>
     <!-- Javascript File -->
@@ -236,6 +290,14 @@
     <script src="js/PHN Concentration.js"></script>
 </head>
 <body>
+    <div class="header">
+        <div id="title-section">
+            <h1 style="font-family: Arial;">Plan Your Schedule.</h1>
+        </div>
+        <div id="inquiries-section">
+            <h4> Have a question? Speak to an advisor here. </h4>
+        </div>
+    </div>
     <div class="container">
         <div class="scrollable-div">
             <div class="row-container-year" id="bot">
@@ -540,10 +602,10 @@
                     
                 </div>
                 
-                <div class="termAndCon" style="grid-column: 1; grid-row: 2;">
+                <div class="termLabelDiv" style="grid-column: 1; grid-row: 2;">
                     <label for="startingTerm"><h3>Starting term:</h3></label>
                 </div>
-                <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 2; justify-self: stretch;">
+                <div class="selections" id="termSelect" style="grid-column-start: 3; grid-column-end: 6; grid-row: 2; justify-self: stretch;">
                     <select name="startingSemester" id="startingSemester" class="dropdown" style="width: 100%;">
                         <option value=0>Fall 2022</option>
                         <option value=1>Spring 2023</option>
@@ -551,10 +613,10 @@
                         <option value=3>Spring 2024</option>
                     </select>
                 </div>
-                <div class="termAndCon" style="grid-column: 1; grid-row: 3;">
+                <div class="concentrationLabelDiv" style="grid-column: 1; grid-row: 3;">
                     <label for="concentration"><h3>Concentration:</h3></label>
                 </div>
-                <div class="selections" style="grid-column-start: 3; grid-column-end: 6; grid-row: 3; justify-self: stretch;">
+                <div class="selections" id="conSelect" style="grid-column-start: 3; grid-column-end: 6; grid-row: 3; justify-self: stretch;">
                     <select name="concentration" id="concentration" class="dropdown">
                         <option value=1>Health Policy & Management</option>
                         <option value=2>Epidemiology & Biostatistics</option>
@@ -562,7 +624,7 @@
                         <option value=4>Public Health Nutrition</option>
                     </select>
                 </div>
-                <div style="grid-column: 1 / 6; grid-row: 5; justify-self: center; align-self: center;">
+                <div class="recScheduleDiv" style="grid-column: 1 / 6; grid-row: 5; justify-self: center; align-self: center;">
                     <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Schedule</button>
                 </div>
             </div>
