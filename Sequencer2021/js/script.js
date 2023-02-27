@@ -40,10 +40,6 @@ function getConcentration() {
 function updatePage() {
   newClearDates();
   newChangeDates();
-  if (document.getElementById("error").value == 1) {
-    var changeTerm = document.getElementById("error");
-    changeTerm.innerHTML = "";
-  }
   changeMenus(getConcentration(), getStartingTerm());
   changeSemesters();
 }
@@ -399,6 +395,9 @@ function checkConflicts() {
   "selectTwoOne", "selectTwoTwo", "selectTwoThree", "selectTwoFour", "selectTwoFive", "selectTwoSix", "selectTwoSeven", "selectTwoEight", "selectTwoNine", "selectTwoTen", "selectTwoEleven", "selectTwoTwelve",
   "selectThreeOne", "selectThreeTwo", "selectThreeThree", "selectThreeFour", "selectThreeFive", "selectThreeSix", "selectThreeSeven", "selectThreeEight", "selectThreeNine", "selectThreeTen", "selectThreeEleven", "selectThreeTwelve"
   ];
+  var errorDiv = document.getElementById("errorDiv");
+  var errorLabel = document.getElementById("errorLabel");
+  var matchingCourseList = [];
   for (selectID1 of menu) {
     var match = false;
     var selectID1element = document.getElementById(selectID1);
@@ -427,8 +426,18 @@ function checkConflicts() {
         selectID2element.style.borderColor = "red";
         selectID2element.style.backgroundColor = "#ffcccb";
         match = true;
+        matchingCourseList.push(selectID1ClassName);
       }
     }
+  }
+  if (matchingCourseList.length > 0) {
+    errorDiv.style.display = "flex";
+    errorDiv.style.backgroundColor = "#ffcccb";
+    errorLabel.innerHTML = "You have selected duplicate courses.";
+
+  } else {
+    errorDiv.style.display = "none";
+    errorLabel.innerHTML = "";
   }
 }
 
@@ -444,6 +453,9 @@ function resetColors() {
     elm.style.borderColor = "#d2d2d2";
     elm.style.backgroundColor = "white";
   }
+  var errorDiv = document.getElementById("errorDiv");
+  errorDiv.style.display = "none";
+  errorLabel.innerHTML = "";
 }
 
 // recommends classes with given schedule

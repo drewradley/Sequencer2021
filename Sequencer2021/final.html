@@ -75,6 +75,17 @@
             border-radius: 15px;
         }
 
+        #errorDiv {
+            display: none;
+            padding: 2% 5%;
+            border: 2px solid red;
+            border-radius: 15px;
+            margin: 10px;
+            transition: all .5s ease;
+            justify-content: center;
+            font-family: 'Arial';
+        }
+
         #row {
             min-height: 40vh;
         }
@@ -113,6 +124,9 @@
             }
             .scrollable-div {
                 grid-area: bottom;
+            }
+            .row-container-year {
+                padding: 5% 10%;
             }
         }
 
@@ -271,6 +285,12 @@
             display: flex;
             justify-content: end;
         }
+        #advisor-questions {
+            color: #BA8530;
+        }
+        #advisor-questions:after {
+            color:#BA8530;
+        }
 
     </style>
     <!-- Javascript File -->
@@ -287,11 +307,14 @@
             <h1 style="font-family: Arial;">Plan Your Schedule.</h1>
         </div>
         <div id="inquiries-section">
-            <h4> Have a question? Speak to an advisor here. </h4>
+            <h4> Have a question? Speak to an advisor <a id="advisor-questions" href="https://onlinemph.berkeley.edu/academic-planning/student-services/directory-of-advising-and-student-services/" >here</a>.</h4>
         </div>
     </div>
     <div class="container">
         <div class="scrollable-div">
+            <div id="errorDiv">
+                <label id="errorLabel"></label>
+            </div>
             <div class="row-container-year" id="bot">
                 <div style="grid-column: 1/4; grid-row: 1;">
                     <h2>Year 1</h2>
@@ -660,10 +683,6 @@
             </div>
             
         </div>
-    </div>
-    <div id="error">
-        <!-- Error message goes here -->
-      <br>
     </div>
 </body>
 </html>
