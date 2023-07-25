@@ -36,7 +36,7 @@ var PHW220M = {
 var PHW222A = {
   name: "PHW222A: Healthcare Technology Policy",
   term: ["Spring 1",],
-  units: "4", // doesn't have a number right now
+  units: "3", // doesn't have a number right now
   color: "Red",
   type: "HPM Concentration"
 };
