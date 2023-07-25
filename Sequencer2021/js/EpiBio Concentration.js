@@ -44,7 +44,7 @@ var PHW219 = {
 var PHW225A = {
   name: "PHW225A: Intro to Applied Implementation Science",
   term: ["Spring 1"],
-  units: 2,
+  units: 1,
   color: "Green",
   type: "EpiBio Concentration"
 };
