@@ -502,7 +502,13 @@ function recommendClasses(startTerm, classes) {
         continue;
       }
       for (start of starts) {
-        document.getElementById(start).value = recClass.name;
+        // WIP FIX
+        if (recClass.type.includes("Elective") || recClass.type.includes("Electives")) {
+          document.getElementById(start).value = "Select an elective."
+          console.log("HIIII");
+        } else {
+          document.getElementById(start).value = recClass.name;
+        }
       }
       prevClassTerm = recClassTerm;
     }

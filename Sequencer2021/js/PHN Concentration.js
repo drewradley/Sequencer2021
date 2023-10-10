@@ -1,6 +1,6 @@
 // Required
-var PHW206 = {
-    name: "PHW206: Maternal & Child Health Nutrition",
+var PHW207A = {
+    name: "PHW207A: Maternal & Child Health Nutrition",
     term: ["Summer 2"],
     units: 3, //doesn't have a unit yet
     color: "Blue",
