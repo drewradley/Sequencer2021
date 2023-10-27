@@ -110,13 +110,14 @@ function newChangeDates() {
 
   for (label of dateLabels) {
     var labelElement = document.getElementById(label);
+    // console.log(labelElement);
     if (startYear == 0) {
       // 2022
       if (dateCounter >= dates.length) {
         labelElement.innerHTML = "TBD";
         continue;
       }
-      if (label == "dateOneSeven" || label == "dateTwoSeven") {
+      if (label == "dateOneSeven" || label == "dateTwoSeven" || label == "dateThreeSeven") {
         continue;
       } else {
         labelElement.innerHTML = dates[dateCounter];
@@ -124,7 +125,6 @@ function newChangeDates() {
       }
     } else if (startYear == 1) {
       // 2023
-      
       if (startTerm == 2) {
         // Spring 2023 Start
         if (!startChange) {
@@ -135,7 +135,7 @@ function newChangeDates() {
           labelElement.innerHTML = "TBD";
           continue;
         } else {
-          if (label == "dateOneFour" || label == "dateTwoFour") {
+          if (label == "dateOneFour" || label == "dateTwoFour" || label == "dateThreeFour") {
             continue;
           } else {
             labelElement.innerHTML = dates[dateCounter];
@@ -152,7 +152,7 @@ function newChangeDates() {
           labelElement.innerHTML = "TBD";
           continue;
         }
-        if (label == "dateOneSeven" || label == "dateTwoSeven") {
+        if (label == "dateOneSeven" || label == "dateTwoSeven" || label == "dateThreeSeven") {
           continue;
         } else {
           labelElement.innerHTML = dates[dateCounter];
@@ -171,12 +171,28 @@ function newChangeDates() {
           labelElement.innerHTML = "TBD";
           continue;
         } else {
-          if (label == "dateOneFour" || label == "dateTwoFour") {
+          if (label == "dateOneFour" || label == "dateTwoFour" || label == "dateThreeFour") {
             continue;
           } else {
             labelElement.innerHTML = dates[dateCounter];
             dateCounter += 1;
           }
+        }
+      } else {
+        // Fall 2024 Start
+        if (!startChange) {
+          dateCounter = 16;
+          startChange = true;
+        }
+        if (dateCounter >= dates.length) {
+          labelElement.innerHTML = "TBD";
+          continue;
+        }
+        if (label == "dateOneSeven" || label == "dateTwoSeven" || label == "dateThreeSeven") {
+          continue;
+        } else {
+          labelElement.innerHTML = dates[dateCounter];
+          dateCounter += 1;
         }
       }
     }
