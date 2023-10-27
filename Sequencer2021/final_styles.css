@@ -45,7 +45,6 @@ body {
 
 .scrollable-div {
     float: left;
-    display: fixed;
     overflow-y: scroll;
     overflow-x: scroll;
     min-width: 65%;
@@ -134,17 +133,23 @@ body {
 /* Mobile and Reduced Window Size View*/
 @media screen and (max-width: 1024px) {
     .container {
-        display: grid;
-        grid-template-areas: "top" "bottom" !important;
+        /* display: grid; */
+        /* grid-template-areas: "top" "mid" "bottom" !important; */
+        /* grid-template-rows:  1fr; */
         padding: 0px;
         margin: 0px;
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
+        display: flex;
+        flex-direction: column-reverse;
     }
     .menu-div {
-        grid-area: top;
+        /* grid-area: top; */
+        grid-row: 1;
     }
     .scrollable-div {
-        grid-area: bottom;
+        height: unset;
+        grid-row: 2;
+        overflow: unset;
     }
     .row-container-year {
         padding: 5% 10%;
@@ -227,6 +232,9 @@ body {
     }
     .unitCount {
         grid-column: 1 / 2 !important;
+    }
+    .saveAsPdfContainer {
+        display: none;
     }
 }
 

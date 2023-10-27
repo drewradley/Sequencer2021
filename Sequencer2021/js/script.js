@@ -98,6 +98,10 @@ function newChangeDates() {
     "8/21/23 - 12/10/23", "8/21/23 - 10/15/23", "10/23/23 - 12/17/23",
     "1/16/24 - 5/5/24", "1/9/24 - 3/3/24", "3/4/24 - 4/28/24",
     "5/13/24 - 6/30/24", "7/8/24 - 8/25/24",
+    // Fall 2024 Start
+    "8/26/24 - 12/15/24", "8/21/24 - 10/20/24", "10/28/24 - 12/22/24",
+    "1/21/25 - 5/11/25", "1/14/25 - 3/9/25", "3/10/25 - 5/4/25",
+    "5/12/25 - 6/29/25", "7/7/25 - 8/24/25",
   ];
   var startYear = globalStartYear;
   var startTerm = globalStartTerm;
@@ -195,6 +199,7 @@ function addOption(parentIds, content, color) {
     var element = document.createElement("option");
     var select = document.getElementById(id);
     element.innerHTML = content;
+    // element.style.fontWeight = 900;
     select.appendChild(element);
   }
 }
@@ -206,6 +211,20 @@ function setOption(parentIds, content, color) {
     element.innerHTML = content;
     document.getElementById(id).appendChild(element);
     document.getElementById(id).value = content;
+  }
+}
+
+function containsOption(parentIds, content) {
+  for (id of parentIds) {
+    var newElement = document.createElement("option");
+    newElement.innerHTML = content;
+    var selectElement = document.getElementById(id);
+    for (let i = 0; i < selectElement.length; i++) {
+      if (selectElement.options[i].value == content) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
@@ -338,6 +357,11 @@ function updateColumn(classes, startTerm, column) {
       continue;
     }
     starts = findDropdown(startTerm, classes[i].term, column, 0);
+    // WIP
+    // console.log(classes[i].term);
+    if (!containsOption(starts, "Select an elective.") && (classes[i].term.includes("Summer 1") || classes[i].term.includes("Summer 2"))) {
+      addOption(starts, "Select an elective.", "white");
+    }
     addOption(starts, classes[i].name, classes[i].color);
     // adds classes to both Fall 15 and/or Spring 15 dropdown menus
     if (classes[i].term.includes("Fall 15") || classes[i].term.includes("Spring 15")) {
@@ -421,12 +445,14 @@ function checkConflicts() {
         selectID2element.style.backgroundColor = "white";
       }
       if (selectID1ClassName == selectID2ClassName && selectID1ClassName != "") {
-        selectID1element.style.borderColor = "red";
-        selectID1element.style.backgroundColor = "#ffcccb";
-        selectID2element.style.borderColor = "red";
-        selectID2element.style.backgroundColor = "#ffcccb";
-        match = true;
-        matchingCourseList.push(selectID1ClassName);
+        if (selectID1ClassName != "Select an elective.") {
+          selectID1element.style.borderColor = "red";
+          selectID1element.style.backgroundColor = "#ffcccb";
+          selectID2element.style.borderColor = "red";
+          selectID2element.style.backgroundColor = "#ffcccb";
+          match = true;
+          matchingCourseList.push(selectID1ClassName);
+        }
       }
     }
   }
@@ -486,13 +512,13 @@ function recommendClasses(startTerm, classes) {
     for (let i=0; i < classesGivenYear.length; i++) {
       var recClass = classesGivenYear[i];
       var recClassTerm = classesMap.get(recClass)[0];
-      
+      // console.log(recClassTerm);
       if (prevClassTerm == recClassTerm) {
         second = 1;
       } else {
         second = 0;
       }
-      var thetermiwant = classesMap.get(recClass);
+      // var thetermiwant = classesMap.get(recClass);
       starts = findDropdown(startTerm, classesMap.get(recClass), col, second);
       var termIndex = termsCopy.indexOf(classesMap.get(recClass)[0]);
       termsCopy.splice(termIndex, 1);
@@ -501,15 +527,17 @@ function recommendClasses(startTerm, classes) {
       if (recClassName == "PHW289: Interdisciplinary Seminar" && col == 1) {
         continue;
       }
-      for (start of starts) {
-        // WIP FIX
-        if (recClass.type.includes("Elective") || recClass.type.includes("Electives")) {
-          document.getElementById(start).value = "Select an elective."
-          console.log("HIIII");
-        } else {
-          document.getElementById(start).value = recClass.name;
-        }
+      //  WIP
+
+      if (recClassTerm == "Summer 1" || recClassTerm == "Summer 2") {
+        document.getElementById(starts).value = "Select an elective.";
+      } else {
+        document.getElementById(starts).value = recClass.name;
       }
+      
+
+      // document.getElementById(starts).value = recClass.name;
+
       prevClassTerm = recClassTerm;
     }
     for (const term of termsCopy) {
