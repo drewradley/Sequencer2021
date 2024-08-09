@@ -724,7 +724,7 @@ function getPracAndCompExamDate(className, selectedClasses) {
   var practicumElement = document.getElementById("practicumDate");
   var separatedMenus = [];
   const semestersArr = ["sem1", "sem2", "sem3", "sem4", "sem5", "sem6", "sem7", "sem8", "sem9"];
-  const years = [2022, 2023, 2024, 2025, 2026];
+  const years = [2022, 2023, 2024, 2025, 2026, 2027, 2028];
   const termsFromFall = ["Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer"];
   const termsFromSpring = ["Spring", "Summer", "Fall", "Spring", "Summer", "Fall", "Spring", "Summer", "Fall"];
   const menu =
