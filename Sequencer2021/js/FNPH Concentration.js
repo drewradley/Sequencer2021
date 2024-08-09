@@ -1,6 +1,6 @@
 // Required
 var PHW207A = {
-    name: "PHW207A: PH Maternal & Child Health Nutrition",
+    name: "PHW207A: Maternal & Child Health Nutrition",
     term: ["Summer 2"],
     units: 3, //doesn't have a unit yet
     color: "Blue",
@@ -102,16 +102,16 @@ var PHW277 = {
 };
 
 
-var fnphElectives = [PHW204, PHW212, PHW213, PHW219, PHW220M, PHW241, PHW277]; 
+var phnElectives = [PHW204, PHW212, PHW213, PHW219, PHW220M, PHW241, PHW277]; 
 
-var fnphConcentration = [PHW289, PHW206, PHW205, PHW206A, PHW206B, PHW218, PHW204, PHW212, PHW213, PHW219,
+var phnConcentration = [PHW289, PHW206, PHW205, PHW206A, PHW206B, PHW218, PHW204, PHW212, PHW213, PHW219,
 PHW220M, PHW241R, PHW277];
 
-var fnphRecommendation = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW205, PHW212, PHW206B, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW213];
+var phnRecommendation = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW205, PHW212, PHW206B, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW213];
 
-var fnphRecommendationFall = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW205, PHW212, PHW206B, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW213];
+var phnRecommendationFall = [PHW200G, PHW250, PHW200F, PHW142, PHW200E, PHW205, PHW212, PHW206B, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW213];
 
-var fnphRecommendationFallMap = new Map([
+var phnRecommendationFallMap = new Map([
     [PHW200G, ["Fall 15"]],
     [PHW250, ["Fall 15"]], 
     [PHW200F, ["Spring 15"]],
@@ -128,9 +128,9 @@ var fnphRecommendationFallMap = new Map([
     [PHW213, ["Fall 2"]]
 ])
 
-var fnphRecommendationSpring = [PHW200G, PHW250, PHW200E, PHW205, PHW200F, PHW142, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW206B, PHW219, PHW277];
+var phnRecommendationSpring = [PHW200G, PHW250, PHW200E, PHW205, PHW200F, PHW142, PHW206A, PHW218, PHW289, PHW206, PHW220M, PHW206B, PHW219, PHW277];
 
-var fnphRecommendationSpringMap = new Map([
+var phnRecommendationSpringMap = new Map([
     [PHW200G, ["Spring 15"]], 
     [PHW250, ["Spring 15"]],
     [PHW200E, ["Summer 1"]],
