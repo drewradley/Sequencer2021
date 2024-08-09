@@ -329,7 +329,7 @@ function changeMenus(concentration, startTerm) {
   addListCond(interSummerTwo, interConcentration, "Summer 2");
   addListCond(interSummerTwo, interElectives, "Summer 2");
   addListCond(fnphSummerTwo, fnphConcentration, "Summer 2")
-  addListCond(fhphSummerTwo, fnphElectives, "Summer 2");
+  addListCond(fnphSummerTwo, fnphElectives, "Summer 2");
 
   clearOptions();
   ;
