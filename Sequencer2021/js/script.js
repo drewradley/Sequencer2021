@@ -426,7 +426,7 @@ function getClassesMap(startTerm) {
 function updateAll(selectedID) {
   countUnits();
   checkConflicts(selectedID);
-  getPracAndCompExamDate();
+  //getPracAndCompExamDate();
 }
 
 function checkConflicts() {
@@ -706,7 +706,7 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
       unitCount += classObject.units / 1;
     }
   }
-  if (unitCount >= 42 && receivedCompExamDate == false) {
+  if (unitCount >= 29 && receivedCompExamDate == false) {
     getPracAndCompExamDate(lastClassName, selectedClasses)
     receivedCompExamDate = true;
   } else if (unitCount < 42) {
