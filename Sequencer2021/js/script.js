@@ -426,6 +426,7 @@ function getClassesMap(startTerm) {
 function updateAll(selectedID) {
   countUnits();
   checkConflicts(selectedID);
+  getPracAndCompExamDate();
 }
 
 function checkConflicts() {
