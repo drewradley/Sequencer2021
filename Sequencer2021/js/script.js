@@ -706,7 +706,7 @@ function getObjectByName(allClasses, selectedClasses, unitCount) {
       unitCount += classObject.units / 1;
     }
   }
-  if (unitCount >= 29 && receivedCompExamDate == false) {
+  if (unitCount >= 40 && receivedCompExamDate == false) {
     getPracAndCompExamDate(lastClassName, selectedClasses)
     receivedCompExamDate = true;
   } else if (unitCount < 42) {
