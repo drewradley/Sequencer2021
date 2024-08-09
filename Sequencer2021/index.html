@@ -1,674 +1,411 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <div class="header">
-  <h1><fontface = "Arial Black">Online MPH Sequencer Curriculum Tool</font></h1>
-  </div>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-  <style>
-
-  body {
-    background-color: #003262;
-    margin: 0;
-  }
-  .label, select {
-    width: 300px;
-    border: 1px solid #000;
-    padding: 3px;
-    margin: 3px;
-    height: 30px;
-  }
-  /* Style the header */
-  .header {
-    background-color: #003262;
-    color: white;
-    padding: 30px;
-    text-align: center;
-  }
-  /* Style the top navigation bar */
-  .button {
-    background-color: #003262;
-    border: none;
-    color: white;
-    padding: 10px 28px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 2px 2px;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-
-  .dropdown {
-    border-radius: 20px;
-    transition: all .5s ease;
-    color: black;
-  }
-
-  .col {
-    background-color: #e6ebef;
-    border-radius: 15px;
-    border: none;
-    text-align: center;
-    padding: 5px 10px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 5px 5px;
-  }
-
-  .block {
-    background-color: white;
-    border-radius: 20px;
-    padding: 10px 10px;
-  }
-  /* The color key. */
-  .legend {
-    list-style: none; }
-  .legend li {
-    float: left; margin-right: 10px; }
-  .legend span {
-    border: 1px solid #ccc; float: left; width: 16px; height: 16px; margin: 3px; }
-
-  /* Colors */
-  .legend .core { background-color: grey; }
-  .legend .hpm { background-color: red; }
-  .legend .epiBios { background-color: green; }
-  .legend .inter { background-color: yellow; }
-  .legend .phn { background-color: blue; }
-  .legend .recommended { background-color: orange; }
-  .legend .electives { background-color: tan; }
-
-  /* Create three equal columns that floats next to each other */
-  .column {
-    float: center;
-    column-count: 3;
-    width: 33%;
-    padding: 5px;
-  }
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .inputBox {
-    background-color: #e6ebef;
-    border-radius: 15px;
-    border: none;
-    text-align: center;
-    padding: 5px 10px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 5px 5px;
-    width: 60%;
-  }
-
-  .dateBox {
-    background-color: #e6ebef;
-    border-radius: 15px;
-    border: none;
-    text-align: center;
-    padding: 5px 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin: 5px 5px;
-    width: 40%;
-  }
-
-  .topBoxContainer {
-    display: flex;
-  }
-
-  </style>
-  <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <!-- Javascript File -->
-  <script src="js/script.js"></script>
-  <script src="js/MPH Core Requirements.js"></script>
-  <script src="js/EpiBio Concentration.js"></script>
-  <script src="js/HPM Concentration.js"></script>
-  <script src="js/Interdisciplinary Concentration.js"></script>
-  <script src="js/FNPH Concentration.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Planner</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="final_styles.css">
+    <!-- Javascript File -->
+    <script src="js/script.js"></script>
+    <script src="js/MPH Core Requirements.js"></script>
+    <script src="js/EpiBio Concentration.js"></script>
+    <script src="js/HPM Concentration.js"></script>
+    <script src="js/Interdisciplinary Concentration.js"></script>
+    <script src="js/FNPH Concentration.js"></script>
 </head>
+<body>
+    <div class="header">
+        <div id="title-section">
+            <h1 style="font-family: Arial;">Plan Your Schedule.</h1>
+            <h3>How to Use this Tool</h3>
+            <p>To see a recommended class schedule, select your starting term and concentration. This will present a recommended schedule. The first year of your schedule is built in, but the additional terms can be modified to select from program options with your concentration. Note that “important dates” will update based on your term start date to indicate the terms in which you’ll need to complete your program practicum and take the comprehensive exam. If you anticipate needing to take a semester off, please speak with your program advisor regarding options. You can connect with your advisor by selecting “speak to an advisor” in the top right panel. To save your recommended schedule, select “save to PDF.” </p>
 
-  <br>
-  <div class="container">
-    <!-- Content here -->
-    <div class="row">
-      <div class="topBoxContainer"> 
-        <div class="inputBox">
-          <br>
-          <!-- User Input -->
-          <div id="hide">
-            <label  for="startingTerm"><b>Starting Term:</b></label>
-            <br>
-              <select name="startingTerm" id="startingTerm" class="dropdown">
-                <option value=1>Fall 1</option>
-                <option value=2>Spring 1</option>
-              </select>
-            <br><br>
-  
-            <label for="startingYear"><b>Starting Year:</b></label>
-            <br>
-              <select name="startingYear" id="startingYear" class="dropdown">
-                <option value=1>2021</option>
-                <option value=2>2022</option>
-                <option value=3>2023</option>
-              </select>
-            <br><br>
-  
-            <label for="concentration"><b>Concentration:</b></label>
-            <br>
-              <select name="concentration" id="concentration" class="dropdown">
-                <option value=1>Health Policy & Management</option>
-                <option value=2>Epidemiology & Biostatistics</option>
-                <option value=3>Interdisciplinary</option>
-                <option value=4>Food, Nutrition and Population Health</option>
-              </select>
-            <br><br>
-  
-            <label for="unitCount"><b>Unit Count:</b></label>
-            <label id="countOfUnits">
-              <!-- Unit Count will go here -->
-              </label>
-            <br><br>
-  
-            <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Classes</button>
-            <br><br>
-          </div>
         </div>
-        <!-- Practicum and Comp Exam Dates -->
-        <div class="dateBox"> 
-          <br>
-          <h3 style="color: #003262;"> Practicum and Comprehensive Exam Dates </h3>
-          <p style="font-size: 14px"> *Requires minimum 42 units </p>
-          <hr style="width:70%; text-align:left; margin:auto;">
-          <br>
-          <p style="text-align:center; margin:auto; font-size: 14px"> <b> Complete Practicum by: </b> </p>
-          <p style="color: #003262; font-size: 18px;">
-            <label id="practicumDate">
-            <!-- Practicum Date will go here -->
-            </label>
-          </p>
-          <br>
-          <p style="text-align:center; margin:auto; font-size: 14px"> <b> Comp Exam will take place in: </b> </p>
-          <p style="color: #003262; font-size: 18px;">
-            <label id="compExamDate">
-            <!-- Comp Exam Date will go here -->
-            </label>
-          </p>
-      </div>
-    </div>
-    <br><br>
-
-    <div id="error">
-      <!-- Error message goes here -->
-    <br>
+        <div id="inquiries-section">
+            <h4> Have a question? Speak to an advisor <a id="advisor-questions" href="https://onlinemph.berkeley.edu/academic-planning/student-services/directory-of-advising-and-student-services/" >here</a>.</h4>
+        </div>
     </div>
 
-
-    <hr>
-
-
-    <br>
     <div class="container">
-    <div class="row align-items-start">
-      <!-- Year 1 -->
-      <div class="col">
-        <br>
-        <br>
-        <h3 style="color: #003262">Year 1</h3>
-        <hr style="width:70%; text-align:center; margin:auto;">
-        <br>
-        <div class="groupOne">
-          <div id="classOne">
-            <b><label id="nameOneOne">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneOne">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectOne" id="selectOneOne" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classTwo">
-            <b><label id="nameOneTwo">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneTwo">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTwo" id="selectOneTwo" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classThree">
-            <b><label id="nameOneThree">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneThree">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectThree" id="selectOneThree" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classFour">
-            <b><label id="nameOneFour">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneFour">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFour" id="selectOneFour" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
+        <div class="saveAsPdfContainer">
+
+            <button id="saveAsPdfButton" onclick="window.print()">Save as PDF</button>
         </div>
+        <div class="scrollable-div">
+            <div id="errorDiv">
+                <label id="errorLabel"></label>
+            </div>
+            <div class="row-container-year" id="bot">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 1</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
+                    <h3><label class=terms id="sem1"></label></h3>
+                </div>
+                <div style="grid-column: 1; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateOneOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectOneOne" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectOneTwo" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateOneTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectOneThree" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateOneThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectOneFour" onchange="updateAll()" class="dropdown"></select>
+                </div>
 
-        <br>
+                <div style="grid-column: 2; grid-row: 2;">
+                    <h3><label class=terms id="sem2"></label></h3>
+                </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateOneFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectOneFive" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectOneSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateOneFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectOneSeven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateOneSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectOneEight" onchange="updateAll()" class="dropdown"></select>
+                </div>
 
-        <div class="groupTwo">
-          <div id="classFive">
-            <b><label id="nameOneFive">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneFive">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFive" id="selectOneFive" onchange="countUnits()" class="dropdown"></select>
+                <div style="grid-column: 3; grid-row: 2;">
+                    <h3><label class=terms id="sem3"></label></h3>
+                </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateOneSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectOneNine" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectOneTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateOneEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectOneEleven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateOneNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectOneTwelve" onchange="updateAll()" class="dropdown"></select>
+                </div>
             </div>
-          </div>
-          <br>
-          <div id="classSix">
-            <b><label id="nameOneSix">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneSix">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSix" id="selectOneSix" onchange="countUnits()" class="dropdown"></select>
+
+            <div class="row-container-year" id="bot">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 2</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
+                    <h3><label class=terms id="sem4"></label></h3>
+                </div>
+                <div style="grid-column: 1; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateTwoOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectTwoOne" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectTwoTwo" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateTwoTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectTwoThree" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateTwoThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectTwoFour" onchange="updateAll()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 2; grid-row: 2;">
+                    <h3><label class=terms id="sem5"></label></h3>
+                </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateTwoFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectTwoFive" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectTwoSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateTwoFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectTwoSeven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateTwoSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectTwoEight" onchange="updateAll()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 3; grid-row: 2;">
+                    <h3><label class=terms id="sem6"></label></h3>
+                </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateTwoSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectTwoNine" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectTwoTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateTwoEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectTwoEleven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateTwoNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectTwoTwelve" onchange="updateAll()" class="dropdown"></select>
+                </div>
             </div>
-          </div>
-          <br>
-          <div id="classSeven">
-            <b><label id="nameOneSeven">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneSeven">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSeven" id="selectOneSeven" onchange="countUnits()" class="dropdown"></select>
+
+            <div class="row-container-year" id="bot">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Year 3</h2>
+                </div>
+                <div style="grid-column: 1; grid-row: 2;">
+                    <h3><label class=terms id="sem7"></label></h3>
+                </div>
+                <div style="grid-column: 1; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 4;">
+                    <label class="dates" id="dateThreeOne"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 5;">
+                    <select name="selectOne" id="selectThreeOne" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 6;">
+                    <select name="selectTwo" id="selectThreeTwo" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 1; grid-row: 8;">
+                    <label class="dates" id="dateThreeTwo"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 9;">
+                    <select name="selectThree" id="selectThreeThree" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 1; grid-row: 10;">
+                    <label class="dates" id="dateThreeThree"></label>
+                </div>
+                <div style="grid-column: 1; grid-row: 11;">
+                    <select name="selectFour" id="selectThreeFour" onchange="updateAll()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 2; grid-row: 2;">
+                    <h3><label class=terms id="sem8"></label></h3>
+                </div>
+                <div class="courselengthc2r3" style="grid-column: 2; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 4;">
+                    <label class="dates" id="dateThreeFour"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 5;">
+                    <select name="selectFive" id="selectThreeFive" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 6;">
+                    <select name="selectSix" id="selectThreeSix" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc2r7" style="grid-column: 2; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 2; grid-row: 8;">
+                    <label class="dates" id="dateThreeFive"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 9;">
+                    <select name="selectSeven" id="selectThreeSeven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 2; grid-row: 10;">
+                    <label class="dates" id="dateThreeSix"></label>
+                </div>
+                <div style="grid-column: 2; grid-row: 11;">
+                    <select name="selectEight" id="selectThreeEight" onchange="updateAll()" class="dropdown"></select>
+                </div>
+
+                <div style="grid-column: 3; grid-row: 2;">
+                    <h3><label class=terms id="sem9"></label></h3>
+                </div>
+                <div class="courselengthc3r3" style="grid-column: 3; grid-row: 3;">
+                    <h4>15 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 4;">
+                    <label class="dates" id="dateThreeSeven"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 5;">
+                    <select name="selectNine" id="selectThreeNine" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 6;">
+                    <select name="selectTen" id="selectThreeTen" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div class="courselengthc3r7" style="grid-column: 3; grid-row: 7;">
+                    <h4>8 Week Courses</h4>
+                </div>
+                <div style="grid-column: 3; grid-row: 8;">
+                    <label class="dates" id="dateThreeEight"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 9;">
+                    <select name="selectEleven" id="selectThreeEleven" onchange="updateAll()" class="dropdown"></select>
+                </div>
+                <div style="grid-column: 3; grid-row: 10;">
+                    <label class="dates" id="dateThreeNine"></label>
+                </div>
+                <div style="grid-column: 3; grid-row: 11;">
+                    <select name="selectTwelve" id="selectThreeTwelve" onchange="updateAll()" class="dropdown"></select>
+                </div>
             </div>
-          </div>
-          <br>
-          <div id="classEight">
-            <b><label id="nameOneEight">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneEight">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectEight" id="selectOneEight" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
+        
         </div>
-
-        <br>
-
-        <div class="groupThree">
-          <div id="classNine">
-            <b><label id="nameOneNine">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneNine">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectNine" id="selectOneNine" onchange="countUnits()" class="dropdown"></select>
+        <div class="menu-div">
+            <div class="row-container-menu" id="top" style="display: grid;">
+                <div style="grid-column: 1/4; grid-row: 1;">
+                    <h2>Term and Concentration</h2>
+                    
+                </div>
+                
+                <div class="termLabelDiv" style="grid-column: 1; grid-row: 2;">
+                    <label for="startingTerm"><h3>Starting term:</h3></label>
+                </div>
+                <div class="selections" id="termSelect" style="grid-column-start: 3; grid-column-end: 6; grid-row: 2; justify-self: stretch;">
+                    <select name="startingSemester" id="startingSemester" class="dropdown" style="width: 100%;">
+                        <option value=0>Fall 2022</option>
+                        <option value=1>Spring 2023</option>
+                        <option value=2>Fall 2023</option>
+                        <option value=3>Spring 2024</option>
+                        <option value=4>Fall 2024</option>
+                    </select>
+                </div>
+                <div class="concentrationLabelDiv" style="grid-column: 1; grid-row: 3;">
+                    <label for="concentration"><h3>Concentration:</h3></label>
+                </div>
+                <div class="selections" id="conSelect" style="grid-column-start: 3; grid-column-end: 6; grid-row: 3; justify-self: stretch;">
+                    <select name="concentration" id="concentration" class="dropdown">
+                        <option value=1>Health Policy & Management</option>
+                        <option value=2>Epidemiology & Biostatistics</option>
+                        <option value=3>Interdisciplinary</option>
+                        <option value=4>Food, Nutrition and Population Health</option>
+                    </select>
+                </div>
+                <div class="recScheduleDiv" style="grid-column: 1 / 6; grid-row: 5; justify-self: center; align-self: center;">
+                    <button class= "button" id="btn1" onclick="getClassRecommendation()">Recommend Schedule</button>
+                </div>
             </div>
-          </div>
-          <br>
-          <div id="classTen">
-            <b><label id="nameOneTen">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateOneTen">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTen" id="selectOneTen" onchange="countUnits()" class="dropdown"></select>
+            <div class="menu-dates-units">
+                <div class="row-container-menu" id="mid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;">
+                    <div class="importantdatesheader" style="grid-column: 1/4; grid-row: 1;">
+                        <h2>Important Dates</h2>
+                        
+                    </div>
+                    <div class="practiucm" style="grid-column: 1; grid-row: 2; align-self: center;">
+                        <h3>Practicum:</h3>
+                    </div>
+                    <div class="textbox" id="practicumdatetextbox" style="grid-column: 3; grid-row: 2; align-self: center; justify-content: end; justify-self: end;">
+                        <label class="menudates" id="practicumDate">
+                            <!-- Practicum Date will go here -->
+                        </label>
+                    </div>
+                    <div class="compExam" style="grid-column: 1/2; grid-row: 3; align-self: center;">
+                        <h3>Comprehensive Exam:</h3>
+                    </div>
+                    <div class="textbox" id="compexamdatetextbox"style="grid-column: 3; grid-row: 3; align-self: center; justify-content: end; justify-self: end;">
+                        <label class="menudates" id="compExamDate">
+                        <!-- Comp Exam Date will go here -->
+                    </label>
+                    </div>
+
+                </div>
+                <div class="row-container-menu" id="bot" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr">
+                        <div style="grid-column: 1/4; grid-row: 1;">
+                            <h2>Unit Count</h2>
+                        </div>
+                        <div class="unitCount" style="grid-column: 1; grid-row: 2;">
+                            <h3>Total Units:</h3>
+                        </div>
+                        <div class="textbox" id="unitCountTextBox" style="grid-column-start: 4; grid-column-end: 5; grid-row: 2; justify-self: end;">
+                            <label id="countOfUnits">
+                            <!-- Unit Count will go here -->
+                            </label>
+                </div>
             </div>
-          </div>
-          <br>
         </div>
-      </div>
-      <!-- Year 2 -->
-      <div class="col">
-        <br>
-        <br>
-        <h3 style="color: #003262">Year 2</h3>
-        <hr style="width:70%; text-align:center; margin:auto;">
-        <br>
-        <div class="groupOne">
-          <div id="classOne">
-            <b><label id="nameTwoOne">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoOne">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectOne" id="selectTwoOne" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classTwo">
-            <b><label id="nameTwoTwo">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoTwo">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTwo" id="selectTwoTwo" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classThree">
-            <b><label id="nameTwoThree">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoThree">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectThree" id="selectTwoThree" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classFour">
-            <b><label id="nameTwoFour">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoFour">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFour" id="selectTwoFour" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
+            
         </div>
-
-        <br>
-
-        <div class="groupTwo">
-          <div id="classFive">
-            <b><label id="nameTwoFive">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoFive">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFive" id="selectTwoFive" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classSix">
-            <b><label id="nameTwoSix">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoSix">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSix" id="selectTwoSix" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classSeven">
-            <b><label id="nameTwoSeven">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoSeven">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSeven" id="selectTwoSeven" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classEight">
-            <b><label id="nameTwoEight">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoEight">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectEight" id="selectTwoEight" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-        </div>
-
-        <br>
-
-        <div class="groupThree">
-          <div id="classNine">
-            <b><label id="nameTwoNine">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoNine">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectNine" id="selectTwoNine" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classTen">
-            <b><label id="nameTwoTen">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateTwoTen">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTen" id="selectTwoTen" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-        </div>
-      </div>
-
-
-      <!-- Year 3 -->
-      <div class="col">
-        <br>
-        <br>
-        <h3 style="color: #003262">Year 3</h3>
-        <hr style="width:70%; text-align:center; margin:auto;">
-        <br>
-        <div class="groupOne">
-          <div id="classOne">
-            <b><label id="nameThreeOne">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeOne">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectOne" id="selectThreeOne" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classTwo">
-            <b><label id="nameThreeTwo">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeTwo">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTwo" id="selectThreeTwo" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classThree">
-            <b><label id="nameThreeThree">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeThree">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectThree" id="selectThreeThree" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classFour">
-            <b><label id="nameThreeFour">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeFour">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFour" id="selectThreeFour" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-        </div>
-
-        <br>
-
-        <div class="groupTwo">
-          <div id="classFive">
-            <b><label id="nameThreeFive">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeFive">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectFive" id="selectThreeFive" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classSix">
-            <b><label id="nameThreeSix">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeSix">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSix" id="selectThreeSix" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classSeven">
-            <b><label id="nameThreeSeven">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeSeven">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectSeven" id="selectThreeSeven" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classEight">
-            <b><label id="nameThreeEight">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeEight">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectEight" id="selectThreeEight" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-        </div>
-
-        <br>
-
-        <div class="groupThree">
-          <div id="classNine">
-            <b><label id="nameThreeNine">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeNine">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectNine" id="selectThreeNine" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-          <br>
-          <div id="classTen">
-            <b><label id="nameThreeTen">
-              <!-- Semester will go here -->
-            </label></b>
-            <br>
-            <i><label id="dateThreeTen">
-              <!-- Date will go here -->
-            </label></i>
-            <div>
-              <select name="selectTen" id="selectThreeTen" onchange="countUnits()" class="dropdown"></select>
-            </div>
-          </div>
-        </div>
-        <br>
-      </div>
-      </div>
     </div>
-    </div>
-    <br><br>
-  </div>
 </body>
 </html>
