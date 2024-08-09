@@ -314,12 +314,12 @@ function changeMenus(concentration, startTerm) {
   hpmConcentration
   epiBioConcentration
   interConcentration
-  fnphConcentration
+  phnConcentration
 
   var hpmSummerTwo = [];
   var epiBioSummerTwo = [];
   var interSummerTwo = [];
-  var fnphSummerTwo = [];
+  var phnSummerTwo = [];
 
   // choosing the summer classes for column one
   addListCond(hpmSummerTwo, hpmConcentration, "Summer 2");
@@ -328,14 +328,14 @@ function changeMenus(concentration, startTerm) {
   addListCond(epiBioSummerTwo, epiBioElectives, "Summer 2");
   addListCond(interSummerTwo, interConcentration, "Summer 2");
   addListCond(interSummerTwo, interElectives, "Summer 2");
-  addListCond(fnphSummerTwo, fnphConcentration, "Summer 2")
-  addListCond(fnphSummerTwo, fnphElectives, "Summer 2");
+  addListCond(phnSummerTwo, phnConcentration, "Summer 2")
+  addListCond(phnSummerTwo, phnElectives, "Summer 2");
 
   clearOptions();
   ;
   updateColumn(coreRequirements, startTerm, 1);
 
-  // updates from HPM -> EpiBio -> Interdisciplinary -> fnph
+  // updates from HPM -> EpiBio -> Interdisciplinary -> PHN
   if (concentration == 1) {
     updateColumn(hpmSummerTwo, startTerm, 1);
     updateColumn(hpmConcentration, startTerm, 2);
@@ -415,9 +415,9 @@ function getClassesMap(startTerm) {
     }
   } else if (concentration == 4) {
     if (startTerm == 1) {
-      return fnphRecommendationFallMap;
+      return phnRecommendationFallMap;
     } else if (startTerm == 2) {
-      return fnphRecommendationSpringMap;
+      return phnRecommendationSpringMap;
     }
   }
 }
